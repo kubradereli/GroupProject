@@ -1,0 +1,15 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+@foreach(var item in Model)
+            {
+                <h1>@item.AboutDetails1</h1>
+                <h2>@item.AboutDetails2</h2>
+
+            }
