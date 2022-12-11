@@ -10,13 +10,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Inner Page - OnePage Bootstrap Template</title>
+    <title>Kiitaphane</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="~/Tema/assets/img/favicon.png" rel="icon">
+    <link href="~/Tema/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -47,18 +47,24 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
 
-            <h1 class="logo"><a href="index.html">Book Hangover</a></h1>
+            <h1 class="logo"><a href="/About/Index/">Book Hangover</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto " href="#hero">Anasayfa</a></li>
+                    <li><a class="nav-link scrollto " href="/About/Index/">Anasayfa</a></li>
                     <li><a class="nav-link scrollto" href="#about">Kitaplar</a></li>
                     <li><a class="nav-link scrollto" href="#services">Kitap Etkinlikleri</a></li>
-                    <li><a class="nav-link scrollto o" href="#portfolio">İletişim</a></li>
-                    <li><a class="getstarted scrollto" href="#about">Kayıt Ol</a></li>
-                    <li><a class="getstarted scrollto" href="#about">Giriş</a></li>
+                    <li><a class="nav-link scrollto o" href="/Contact/Index/">İletişim</a></li>
+                    <li>
+                        <a class="getstarted scrollto" href="#about">Kayıt Ol
+                        <div class="icon"><i class="ri-user-3-fill"></i></div></a>
+                    </li>
+                    <li>
+                        <a class="getstarted scrollto" href="#about">Giriş
+                        <div class="icon"><i class="ri-login-box-fill"></i></div></a>
+                    </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -66,18 +72,10 @@
         </div>
     </header><!-- End Header -->
 
-    <main id="main">
+    <main>
+        @RenderBody()
+    </main>
 
-
-        <section class="inner-page">
-            <div class="container">
-                <p>
-                    @RenderBody()
-                </p>
-            </div>
-        </section>
-
-    </main><!-- End #main -->
     <!-- ======= Footer ======= -->
     <footer id="footer">
 
@@ -86,43 +84,41 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>OnePage</h3>
+                        <h3>Kiitaphane</h3>
                         <p>
-                            A108 Adam Street <br>
-                            New York, NY 535022<br>
-                            United States <br><br>
-                            <strong>Phone:</strong> +1 5589 55488 55<br>
-                            <strong>Email:</strong> info@example.com<br>
+                            Serdivan, Sakarya<br>
+                            TÜRKİYE <br><br>
+                            <strong>Telefon:</strong> +90 555 555 55 55<br>
+                            <strong>E-mail:</strong> kiitaphane@example.com<br>
                         </p>
                     </div>
 
                     <div class="col-lg-2 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
+                        <h4>Site Linkleri</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Anasayfa</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Kitaplar</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Kitap Etkinlikleri</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">İletişim</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
+                        <h4>Faydalı Linkler</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Kitapyurdu</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">BKM Kitap</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Amazon</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">İdefix</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Diğer</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4>Join Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <h4>Haber bültenimize abone olun</h4>
+                        <p>Kitap etkinliklerimizden haberdar olmak için abone olun.</p>
                         <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                            <input type="email" name="email"><input type="submit" value="Abone Ol">
                         </form>
                     </div>
 
@@ -134,7 +130,7 @@
 
             <div class="me-md-auto text-center text-md-start">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>Kiitaphane</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>Kiitaphane</span></strong>. Tüm hakları saklıdır.
                 </div>
                 <div class="credits">
                     <!-- All the links in the footer should remain intact. -->
