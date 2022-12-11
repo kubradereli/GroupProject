@@ -1,0 +1,22 @@
+﻿  @model IEnumerable<EntityLayer.Concrete.Book>
+@{
+    ViewData["Title"] = "BookDetailsAll";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+@foreach (var item in Model)
+{
+    @item.BookName
+    @item.BookID
+}
+

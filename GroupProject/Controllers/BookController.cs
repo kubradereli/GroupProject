@@ -17,5 +17,12 @@ namespace GroupProject.Controllers
             var values = bookManager.TGetList();
             return View(values);
         }
+        public IActionResult BookDetailsAll(int id)
+        {
+            
+            var values = bookManager.GetBookByID(id);
+            return View(values);
+        }
+
     }
 }
