@@ -23,7 +23,7 @@
                     <div class="icon-box">
                         <div class="icon"><i class="ri-book-fill"></i></div>
                         <h4 class="title"><a href="">Kitap Yorumları</a></h4>
-                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                        <p class="description">Kitaplar hakkında yorumları görebilir ve istediğin kitaba yorum yapabilirsiniz.</p>
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@
                     <div class="icon-box">
                         <div class="icon"><i class="ri-star-fill"></i></div>
                         <h4 class="title"><a href="">Kitap Etkinlikleri</a></h4>
-                        <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        <p class="description">Aylık olarak belirlenen kitap etkinliklerinden haberdar olup bu etkinliklere katılabilirsin.</p>
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                     <div class="icon-box">
                         <div class="icon"><i class="ri-user-3-fill"></i></div>
                         <h4 class="title"><a href="">Kullanıcı Analizleri</a></h4>
-                        <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                        <p class="description">Kullanıcılar kendilerine özel hazırlanan istatistiksel tablolara ulaşabilirler.</p>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                     <div class="icon-box">
                         <div class="icon"><i class="ri-bookmark-fill"></i></div>
                         <h4 class="title"><a href="">Ve Kitaplar Hakkında Daha Fazlası</a></h4>
-                        <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                        <p class="description">Sitemiz geliştikçe eklenen özelliklerle sizlerle olacağız...</p>
                     </div>
                 </div>
 
@@ -67,32 +67,35 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6 video-box align-self-baseline" data-aos="fade-right" data-aos-delay="100">
-                        <img src="~/Tema/assets/img/about-video.jpg" class="img-fluid" alt="">
+                        <img src="@item.AboutSmallImage1" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-3 pt-lg-0 content p-5" data-aos="fade-left" data-aos-delay="100">
-                        <h3>Bu sitede neler var?</h3>
+                        <h3>Bu Sitede Neler Var?</h3>
                         <p class="fst-italic">
                             @item.AboutDetails1
                         </p>
                         <ul>
-                            <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                            <li><i class="bx bx-check-double"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                            <li><i class="bx bx-check-double"></i> Kitap Yorumları</li>
+                            <li><i class="bx bx-check-double"></i> Kullanıcı Analizleri</li>
+                            <li><i class="bx bx-check-double"></i> İletişim ve Öneri Paneli</li>
+                            <li><i class="bx bx-check-double"></i> Ve Kitaplar Hakkında Daha Fazlası</li>
                         </ul>
                     </div>
                 </div>
                 <div class="row mt-5">
                     <div class="col-lg-6 pt-3 pt-lg-0 content p-5" data-aos="fade-left" data-aos-delay="100">
-                        <h3></h3>
+                        <h3>Bu Sitede Neler Olacak?</h3>
                         <p class="fst-italic">
                             @item.AboutDetails2
                         </p>
                         <ul>
-                            <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                            <li><i class="bx bx-check-double"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                            <li><i class="bx bx-check-double"></i> Kitap Etkinlikleri</li>
+                            <li><i class="bx bx-check-double"></i> Etkileşimli Kitap Okuma</li>
+                            <li><i class="bx bx-check-double"></i> Kitap Etkinliği İçin Kullanıcı Anketleri</li>
                         </ul>
                     </div>
                     <div class="col-lg-6 video-box align-self-baseline" data-aos="fade-right" data-aos-delay="100">
-                        <img src="~/Tema/assets/img/about-video.jpg" class="img-fluid" alt="">
+                        <img src="@item.AboutSmallImage2" class="img-fluid" alt="">
                     </div>
                 </div>
 
@@ -141,8 +144,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Kullanıcı Yorumları</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <h2>Kitaplar Hakkında Sözler</h2>
+                    <p>Ünlü yazarların, düşünürlerin kitap okumakla ilgili aydınlatıcı sözleri</p>
                 </div>
 
                 <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -152,12 +155,11 @@
                             <div class="testimonial-item">
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                    "Kitap bir limandı benim için... Ve kitaplardaki insanları sokaktakilerden daha çok sevdim."
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="~/Tema/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                                <h3>Saul Goodman</h3>
-                                <h4>Ceo &amp; Founder</h4>
+                                <h3>Cemil Meriç</h3>
+                                <h4>Yazar</h4>
                             </div>
                         </div><!-- End testimonial item -->
 
@@ -165,12 +167,11 @@
                             <div class="testimonial-item">
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                                    "Okumayan insan, hayata tek bir pencereden bakar, bildiği ezber cümlelerle olayları yorumlar ve dar kalıplı bakış açısına sahip olur."
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="~/Tema/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                                <h3>Sara Wilsson</h3>
-                                <h4>Designer</h4>
+                                <h3>Sokrates</h3>
+                                <h4>Filozof</h4>
                             </div>
                         </div><!-- End testimonial item -->
 
@@ -178,12 +179,11 @@
                             <div class="testimonial-item">
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                                    "Okumak gıdadır okuyan insanlık bilen insandır."
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="~/Tema/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                                <h3>Jena Karlis</h3>
-                                <h4>Store Owner</h4>
+                                <h3>Victor Hugo</h3>
+                                <h4>Düşünür-Yazar</h4>
                             </div>
                         </div><!-- End testimonial item -->
 
@@ -191,12 +191,11 @@
                             <div class="testimonial-item">
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                                    "Ne kadar meşgul olduğunu düşünürsen düşün okumak için zaman ayırmazsan cahilliğe teslim olursun."
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="~/Tema/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                                <h3>Matt Brandon</h3>
-                                <h4>Freelancer</h4>
+                                <h3>Konfüçyüs</h3>
+                                <h4>Filozof-Yazar</h4>
                             </div>
                         </div><!-- End testimonial item -->
 
@@ -204,12 +203,35 @@
                             <div class="testimonial-item">
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                                    "İnsan her gün bir parça müzik dinlemeli, iyi bir şiir okumalı, güzel bir tablo görmeli ve mümkünse birkaç mantıklı cümle söylemelidir."
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="~/Tema/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                                <h3>John Larson</h3>
-                                <h4>Entrepreneur</h4>
+                                <h3>Geothe</h3>
+                                <h4>Edebiyatçı</h4>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    "Sen şimdi bunları birkaç saat içinde okuyacaksın fakat inan bana ben bu işi yapabilmek için saçlarım ağarıncaya kadar çalıştım."
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                                <h3>Charles de Montesquieu</h3>
+                                <h4>Yazar</h4>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    "İnsanın tekrar tekrar okuduğu, aklının demirbaşları arasında yerini alan ve hayata bakışını değiştiren kitaplar vardır; göz atıp asla baştan sona okumadığı, bir oturuşta okuyup bir hafta sonra unuttuğu kitaplar da."
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                                <h3>George Orwell</h3>
+                                <h4>Yazar</h4>
                             </div>
                         </div><!-- End testimonial item -->
 

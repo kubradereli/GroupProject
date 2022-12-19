@@ -4,70 +4,121 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<section class="vh-100 mt-lg-5">
+<section class="100vh mt-lg-5">
     <div class="container-fluid h-custom">
+
         <div class="row d-flex justify-content-center align-items-center h-100">
-          
-            <div class=" col-lg-7 offset-xl-0">
+            <div class="col-md-9 col-lg-6 col-xl-4">
+                <img src="~/Tema/assets/img/about-img/register.jpeg"
+                     class="img-fluid" alt="Sample image">
+            </div>
+
+            <div class=" col-md-8 col-lg-6 col-xl-4 offset-xl-0">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
 
                         <form>
                             <h2 style="color: #124265">KAYIT OL</h2>
-
+                            <br />
                             <div class="row">
-                                <!-- Email input -->
-                                <div class="form-outline col-lg-6">
-                                    <label class="form-label" for="form3Example3"></label>
-                                    <input type="text" id="form3Example3" class="form-control form-control-lg"
-                                           placeholder="Kullanıcı Adı" />
+                                <div class="form-outline mb-4 col-lg-6">
+                                    <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Ad" />
                                 </div>
-
-                                <!-- Password input -->
-                                <div class="form-outline col-lg-6">
-                                    <label class="form-label" for="form3Example4"></label>
-                                    <input type="text" id="form3Example4" class="form-control form-control-lg"
-                                           placeholder="Kullanıcı Soyadı" />
+                                <div class="form-outline mb-4 col-lg-6">
+                                    <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Soyad" />
                                 </div>
                             </div>
                             
-                            <div class="row">
-                                <div class="form-outline col-lg-6">
-                                    <label class="form-label" for="form3Example3"></label>
-                                    <input type="text" id="form3Example3" class="form-control form-control-lg"
-                                           placeholder="Doğum Tarihi" />
-                                </div>
-
-                                <div class="form-outline col-lg-6">
-                                    <label class="form-label" for="form3Example3"></label>
-                                    <input type="text" id="form3Example3" class="form-control form-control-lg"
-                                           placeholder="Şehir" />
-                                </div>
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Doğum Tarihi" />
                             </div>
-
-                            <div class="row">
-                                <div class="form-outline col-lg-6">
-                                    <label class="form-label" for="form3Example3"></label>
-                                    <input type="email" id="form3Example3" class="form-control form-control-lg"
-                                           placeholder="E-mail" />
-                                </div>
-
-                                <div class="form-outline col-lg-6">
-                                    <label class="form-label" for="form3Example3"></label>
-                                    <input type="password" id="form3Example3" class="form-control form-control-lg"
-                                           placeholder="Şifre" />
-                                </div>
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Şehir" />
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="E-mail" />
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form3Example3" class="form-control form-control-lg" placeholder="Şifre" />
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form3Example3" class="form-control form-control-lg" placeholder="Şifre Tekrarı" />
                             </div>
 
                             <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="button" class="btn btn-primary">
+                                <button type="button" class="btn btn-primary btn-group-lg">
                                     Kayıt Ol
                                 </button>
+                                
                             </div>
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!--<div class="row d-flex justify-content-center align-items-center h-100">
+
+        <div class=" col-lg-7 offset-xl-0">
+            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+
+                    <form>
+                        <h2 style="color: #124265">KAYIT OL</h2>
+
+                        <div class="row">-->
+        <!-- Email input -->
+        <!--<div class="form-outline col-lg-6">
+        <label class="form-label" for="form3Example3"></label>
+        <input type="text" id="form3Example3" class="form-control form-control-lg"
+               placeholder="Kullanıcı Adı" />
+    </div>-->
+        <!-- Password input -->
+        <!--<div class="form-outline col-lg-6">
+                                <label class="form-label" for="form3Example4"></label>
+                                <input type="text" id="form3Example4" class="form-control form-control-lg"
+                                       placeholder="Kullanıcı Soyadı" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-outline col-lg-6">
+                                <label class="form-label" for="form3Example3"></label>
+                                <input type="text" id="form3Example3" class="form-control form-control-lg"
+                                       placeholder="Doğum Tarihi" />
+                            </div>
+
+                            <div class="form-outline col-lg-6">
+                                <label class="form-label" for="form3Example3"></label>
+                                <input type="text" id="form3Example3" class="form-control form-control-lg"
+                                       placeholder="Şehir" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-outline col-lg-6">
+                                <label class="form-label" for="form3Example3"></label>
+                                <input type="email" id="form3Example3" class="form-control form-control-lg"
+                                       placeholder="E-mail" />
+                            </div>
+
+                            <div class="form-outline col-lg-6">
+                                <label class="form-label" for="form3Example3"></label>
+                                <input type="password" id="form3Example3" class="form-control form-control-lg"
+                                       placeholder="Şifre" />
+                            </div>
+                        </div>
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="button" class="btn btn-primary">
+                                Kayıt Ol
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>-->
     </div>
 </section>
