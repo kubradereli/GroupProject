@@ -1,22 +1,180 @@
-﻿  @model IEnumerable<EntityLayer.Concrete.Book>
+﻿@model IEnumerable<EntityLayer.Concrete.Book>
 @{
     ViewData["Title"] = "BookDetailsAll";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 <br />
 <br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
+@*@foreach (var item in Model)
+    {
+        @item.BookName
+        @item.BookID
+    }*@
+<section id="about-video" class="about-video">
+    <div class="container" data-aos="fade-up">
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6 video-box align-self-baseline" data-aos="fade-right" data-aos-delay="100">
+                    <img src="@item.BookCoverImage" class="img-fluid" alt="">
+                    <a href="/Book/BookDetailsAll/@item.BookID" class=" "></a>
+                </div>
+
+                <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                    <h3>@item.BookName</h3>
+                    <h4>@item.BookAuthor</h4>
 
 
-@foreach (var item in Model)
-{
-    @item.BookName
-    @item.BookID
-}
 
+                    <p>
+                        Düşündüğünüz her şeyin, yaşayacağınız her şeyin belirleyicisi olduğunu hiç düşündünüz mü? "Louise Hay "Düşünce Gücüyle Tedavi" adı altında kaleme aldığı kitabında bu düşünceden yola çıkarak yepyeni bir dünyanın kapılarını açıyor. Bu öyle bir dünya ki sevginin ve öz güvenin temelleri üzerine kurulu. Ve sevgiyle özgüvenin başaramıyacağı hiçbir şey yok. Kitabı okumaya başladığınız anda, gerçekten bir şeylerin değişmesi gerektiğini farkediyor ve olumlu bir değişim içine girdiğinizi hissediyorsunuz...
+
+                        Kitap, küçük bir sivilceden, kansere kadar birçok hastalığın nedenlerinin psikolojik olumsuzluklardan kaynaklandığını satır satır anlatıyor. Hangi hastalık için, hangi olumlu öneriyi düşüncelerinizin besini olarak kullanacağınızı da söylüyor.
+                    </p>
+                    <p class="fst-italic">
+                        Kitap Alıntıları
+                    </p>
+
+                    <ul>
+                        <li><i class="bx bx-check-double"></i> “Her deneyim bir başarıdır.”</li>
+                        <li><i class="bx bx-check-double"></i> Suçlamak yararsızdır. Suçlamak gücümüzden vazgeçmek demektir.</li>
+                        <li><i class="bx bx-check-double"></i> Nefesimiz hayattaki en değerli şey. Ama nefes verdiğimizde, bir sonraki nefesi almak için havanın orada olacağından zerre kadar şüphe etmeyiz. Bir nefes daha almazsak, üç dakika dayanamayız. Bizi yaratan GÜÇ, hayatımız boyunca yetecek nefesi bize verdiğine göre, neden tüm diğer ihtiyaçlarımızın da karşılanacağına güvenemiyoruz?</li>
+                        <li><i class="bx bx-check-double"></i> "Okullarda öğretilen ilk dersin 'Düşünceleriniz Hayatınızı Nasıl Şekillendiriyor?' olmasını çok isterdim. "Çocukların savaş tarihlerini ezberlemelerinin önemini hiç anlamış değilim. Düşünce enerjisinin ziyanı gibi geliyor bana. Bunların yerine, onlara şu tür önemli konuları öğretebiliriz: Zihin Nasıl Çalışır, Mali Durumla Nasıl Baş Edilir, Ekonomik Güvence İçin Nasıl Yatırım Yapılır, Nasıl Anne Baba Olunur, Sağlıklı İlişkiler Nasıl Yaratılır, Özgüven ve Özdeğer Nasıl Kazanılır ve Korunur vb. "Bugün öğretilen derslerin yanı sıra bu konuların da öğretildiği okullarda yetişen bir kuşağın yarattığı dünyayı düşünebiliyor musunuz? "Kendilerine saygı ve sevgi duymayı bilen mutlu insanların dünyasına sahip olacaktık.”</li>
+
+                    </ul>
+                </div>
+                <section id="faq" class="faq section-bg">
+                    <div class="container" data-aos="fade-up">
+
+                        <div class="section-title">
+                            <h2>Kitap Hakkında</h2>
+
+                        </div>
+
+                        <div class="faq-list">
+                            <ul>
+                                <li data-aos="fade-up">
+                                    <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Kitabın Yazarı Louise L. Hay Kimdir? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                                        <p>
+                                            Louise L. Hay 8 Ekim 1926 yılında Kaliforniya’da doğmuştur. Yazar çocukluk dönemi ile birlikte geçirdiği ağır deneyimler sonucunda kendini büyütmüş bu yöntemleri insanlara da öğretmiştir. Orta yaşlarda yakalandığı kanser hastalığını içsel gücü ile iyileştirmiştir.
+
+                                            Yetiştirdiği öğrencileri onun yöntemlerini her zaman temel almışlardır. Bu alanda kitaplar yazmıştır. Başkalarını eğitmiş ve dünyada sayılı kişisel gelişimciler arasına girmeyi başarmıştır.
+
+                                            Louise L. Hay 1980’li yıllardan itibaren tüm dünyada insanın kendisini ve hayatının her alanını iyileştirme akımının öncülerinden olmuştur. Yazarın kişisel gelişim alanında kaleme aldığı kitapları bir milyondan fazla satış rakamına ulaşmıştır.
+
+                                            Louise Hay House isimli bir şirket kurmuştur. Bu firmaya önce evinin salonunda başladı ve hızla ünlü yazarların ve uzmanların kitaplarının yayınlandığı oldukça başarılı bir şirket haline geldi.
+
+                                            Yazar 81 yaşında iken kendi filmini yaptı. Yazar 89 yaşına kadar San Diego’da Bahçecilik ve danslarla ilgilendi. 30 Ağustos 2017 yılında Kaliforniya’da yaşama veda etmiştir.
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li data-aos="fade-up" data-aos-delay="100">
+                                    <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Louise L. Hay Kitapları - Eserleri <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                                        <p>
+                                            Düşünce Gücüyle Tedavi <br />
+                                            Pozitif Gücün Büyüsü<br />
+                                            Düşüncenin İyileştirici Gücü<br />
+                                            Tüm Hastalıkların Zihinsel Nedenleri<br />
+                                            21 Günde Güç İçinizde<br />
+                                            Her Gün Yeni Bir Hayat<br />
+                                            Güçlü Kadınlar<br />
+                                            Düşünce Gücüyle Tedavi - 2<br />
+                                            Hayat Sizi Seviyor!<br />
+                                            Pozitif Düşünce Gücüyle Mutlu Yaşamın Sırları<br />
+                                            Pozitif Düşünce Gücüyle Yaşam Boyu Mutluluk<br />
+                                            Kalp Gücüyle Tedavi<br />
+                                            Her Şey Yolunda<br />
+                                            Olağanüstü Bir Hayat Yaratabilirsiniz<br />
+                                            Güzel Yaşamın Sırları<br />
+                                            Sən Həyatını Yaxşılaşdıra Bilərsən<br />
+                                            Düşünüyorum, Öyleyse Varım!<br />
+                                            Bedenini Sev<br />
+                                            Sağlıklı Yaşam İçin Kendini Sev<br />
+                                            Pozitif Düşünce Gücüyle Yaşam Boyu Mutluluk<br />
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li data-aos="fade-up" data-aos-delay="200">
+                                    <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Düşünce Gücüyle Tedavi PDF indirme linki var mı? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                                        <p>
+                                            Louise L. Hay - Düşünce Gücüyle Tedavi kitabı için internette en çok yapılan aramalardan birisi de Düşünce Gücüyle Tedavi PDF linkidir. İnternette ücretli olarak satılan çoğu kitabın PDFleri bulunmaktadır. Ancak bu PDF'leri yasal olmayan yollarla indirmek ve kullanmak hem yasalara hem de ahlaka aykırıdır. Yayın evlerinin sitesinden PDF satılıyorsa indirebilirsiniz.
+                                        </p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </section><!-- End Frequently Asked Questions Section -->
+            }
+        </div>
+
+    </div>
+</section><!-- End About Video Section -->
+<section id="testimonials" class="testimonials">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Kullanıcı Yorumları</h2>
+       </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Kitabı eline alan herkese vereceğim ilk tavsiye, kesinlikle kitabın en sonundaki “Benim Hikayem” bölümünü okumaları gerektiği olacaktır. Eğer ki kitabı oradan okumaya başlarsanız, emin olun ki kitapta yazan her şeye daha çok inanacak ve böylelikle söylenilen davranışları daha kolay uygulamış olacaksınız.
+
+                            Eserin özü, kendinizden ziyade düşüncelerinizi değiştirmeye başlamanız gerektiğinden geçiyor. Ne zaman ki düşüncelerinizi değiştirmeye başladınız işte o zaman duygularınızın ve davranışlarınızın da yönünü değiştirmiş olacaksınız.
+
+                            Hayatında güzel değişiklikler olmasını isteyen ve de bu değişiklikleri gerçekleştirebilmeye cesaret edebilecek bireylere, kesinlikle bu eseri okumaları gerektiğini tavsiye ediyorum.
+
+                            Keyifli okumalar…
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+
+                        <h3>Aleyna Barut</h3>
+                        <h4>Psikolojik Danışman </h4>
+                    </div>
+                </div><!-- End testimonial item -->
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Kitapta en çok sevdiğim kısım tek tek hastalıkların bilinçaltı sebeplerini incelemiş ve kitap boyu ne yapmamız gerektiğini anlatmış.Mesela vücudunuzun herhangi bir yerinde bir ağrı oluştu bunun sebebi ya sevgiye hasret çekmekmiş  ya da dokunulmayı özlemekmiş.(Tabi %90 böyle herkeste olucak diye bir kural yok.) Ve size bu durumda ne yapmanız gerektiği yazıyor.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+
+                        <h3>Kübra Dereli</h3>
+                        <h4>UI &amp; UX Designer </h4>
+                    </div>
+                </div><!-- End testimonial item -->
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Düşünceleri farkedip olumsuz düşünceleri olumluya dönüştürmek ve bunu sürekli alışkanlık haline getirmek çok önemli.  Çocukluğumuzdan beri yaşadığımız olaylar ve bize etiketlenen sözler bizim inanç ve düşünce sistemimizi belirliyor. Biz ne düşünüyorsak oyuz. Nasıl düşünüyorsak kendimize onu çekiyoruz. Bunları tespit edip olumlu yönde değiştirmek bizim elimizde.  Kitap çok kolay okunan bir kitap fakat yazar çok fazla tekrara düşmüş. Belki de üstünde durmak istediği konuya vurgu yapmak amaçlı bilerek tekrarlamış. Büyük beklentilerle okunmamalı. Keyifli okumalar.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+
+                        <h3>Selinnur Göl</h3>
+                        <h4>Gazeteci </h4>
+                    </div>
+                </div><!-- End testimonial item -->
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+</section><!-- End Testimonials Section -->
