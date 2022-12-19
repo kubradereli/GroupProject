@@ -32,7 +32,28 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
-/*--------------------------------------------------------------
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+    border-radius: 50px;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+    border-radius: 50px;
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+        border-radius: 50px;
+    }
+}
+
+
 # Back to top button
 --------------------------------------------------------------*/
 .back-to-top {
@@ -410,6 +431,7 @@ h6 {
   background-size: cover;
   position: relative;
 }
+
 
 #hero:before {
   content: "";
