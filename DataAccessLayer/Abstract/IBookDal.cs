@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IBookDal : IGenericDal<Book>
     {
+        List<Book> GetListWithCategory();
     }
 }

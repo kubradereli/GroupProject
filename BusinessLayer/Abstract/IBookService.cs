@@ -9,6 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IBookService : IGenericService<Book>
     {
-
+        List<Book> GetBookListWithCategory();
     }
 }

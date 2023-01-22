@@ -14,9 +14,10 @@ namespace GroupProject.Controllers
 
         public IActionResult Index()
         {
-            var values = bookManager.TGetList();
+            var values = bookManager.GetBookListWithCategory();
             return View(values);
         }
+
         public IActionResult BookDetailsAll(int id)
         {
             
