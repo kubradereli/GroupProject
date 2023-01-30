@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace GroupProject.Controllers
     {
         AboutManager aboutManager = new AboutManager(new EfAboutRepository());
 
+       
         public IActionResult Index()
         {
             var values = aboutManager.TGetList();

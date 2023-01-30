@@ -11,11 +11,8 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int AdminID { get; set; }
-
         public string AdminUsername { get; set; }
-
         public string AdminPassword { get; set; }
-
         public List<ReadingActivity> ReadingActivities { get; set; }
     }
 }

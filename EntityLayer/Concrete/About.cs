@@ -11,17 +11,11 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int AboutID { get; set; }
-
         public string AboutDetails1 { get; set; }
-
         public string AboutDetails2 { get; set; }
-
         public string AboutBackgroundImage { get; set; }
-
         public string AboutSmallImage1 { get; set; }
-
         public string AboutSmallImage2 { get; set; }
-
         public bool AboutStatus { get; set; }
     }
 }
