@@ -1,70 +1,131 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    Layout = null;
 }
 
+<!DOCTYPE html>
+<html lang="en">
 
-<section class="vh-100 mt-lg-5">
-    <div class="container-fluid h-custom">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class=" col-md-8 col-lg-6 col-xl-4 offset-xl-0">
-                <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-                        <form method="post">
+    <title>OnePage Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-                            <h2 style="color: #124265">GİRİŞ YAP</h2>
+    <!-- Favicons -->
+    <link href="~/Tema/assets/img/favicon.png" rel="icon">
+    <link href="~/Tema/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-                                <label class="form-label" for="form3Example3"></label>
-                                <input type="email" name="UserMail" id="form3Example3" class="form-control form-control-lg"
-                                       placeholder="Email" />
+    <!-- Vendor CSS Files -->
+    <link href="~/Tema/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Tema/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Tema/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Tema/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Tema/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Tema/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Tema/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-                            </div>
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
 
-                            <!-- Password input -->
-                            <div class="form-outline mb-3">
-                                <label class="form-label" for="form3Example4"></label>
-                                <input type="password" name="UserPassword" id="form3Example4" class="form-control form-control-lg"
-                                       placeholder="Şifre" />
+    <!-- =======================================================
+    * Template Name: OnePage - v4.9.2
+    * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
 
-                            </div>
-                            <br />
+<body>
 
-                            <div class="d-flex justify-content-between align-items-center">
-                                <!-- Checkbox -->
-                                <div class="form-check mb-0">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                                    <label class="form-check-label" for="form2Example3">
-                                        Beni Hatırla
-                                    </label>
+    <section class="vh-100 mt-lg-5">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class=" col-md-8 col-lg-6 col-xl-4 offset-xl-0">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <form method="post">
+
+                                <h2 style="color: #124265">GİRİŞ YAP</h2>
+
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+
+                                    <label class="form-label" for="form3Example3"></label>
+                                    <input type="email" name="UserMail" id="form3Example3" class="form-control form-control-lg"
+                                           placeholder="Email" />
+
                                 </div>
-                                <a href="#!" class="link-primary">Şifremi Unuttum</a>
-                            </div>
-                            <br />
-                            <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="submit" class="btn btn-primary btn-group-lg">
-                                    Giriş Yap
-                                </button>
-                                <p class="small fw-bold mt-2 pt-1 mb-0">
-                                    Hesabınız yok mu? <a href="/Register/Index/"
-                                                         class="link-primary">Kayıt Ol</a>
-                                </p>
-                            </div>
 
-                        </form>
+                                <!-- Password input -->
+                                <div class="form-outline mb-3">
+                                    <label class="form-label" for="form3Example4"></label>
+                                    <input type="password" name="UserPassword" id="form3Example4" class="form-control form-control-lg"
+                                           placeholder="Şifre" />
+
+                                </div>
+                                <br />
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <!-- Checkbox -->
+                                    <div class="form-check mb-0">
+                                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                        <label class="form-check-label" for="form2Example3">
+                                            Beni Hatırla
+                                        </label>
+                                    </div>
+                                    <a href="#!" class="link-primary">Şifremi Unuttum</a>
+                                </div>
+                                <br />
+                                <div class="text-center text-lg-start mt-4 pt-2">
+                                    <button type="submit" class="btn btn-primary btn-group-lg">
+                                        Giriş Yap
+                                    </button>
+                                    <p class="small fw-bold mt-2 pt-1 mb-0">
+                                        Hesabınız yok mu? <a href="/Register/Index/"
+                                                             class="link-primary">Kayıt Ol</a>
+                                    </p>
+                                </div>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-9 col-lg-6 col-xl-4">
-                <img src="~/Tema/assets/img/about-img/login.jpeg"
-                     class="img-fluid" alt="Sample image">
+                <div class="col-md-9 col-lg-6 col-xl-4">
+                    <img src="~/Tema/assets/img/about-img/login.jpeg"
+                         class="img-fluid" alt="Sample image">
+                </div>
             </div>
         </div>
-    </div>
 
-</section>
+    </section>
+
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Tema/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/Tema/assets/vendor/aos/aos.js"></script>
+    <script src="~/Tema/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Tema/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Tema/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Tema/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Tema/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Tema/assets/js/main.js"></script>
+
+</body>
+
+</html>
+
+
 
