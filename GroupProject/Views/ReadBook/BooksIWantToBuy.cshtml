@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EntityLayer.Concrete.ReadBook>
+@{
+    ViewData["Title"] = "BooksIWantToBuy";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">OKUDUĞUM KİTAPLAR AJANDASI</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Kitap Adı</th>
+                        <th>Yazar</th>
+                        <th>Sayfa Sayısı</th>
+                        <th>Yayınevi</th>
+                        <th>Kategori</th>
+                        <th>Okunan Tarih</th>
+                        <th>Kitap Puanı</th>
+                        <th>Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Book.BookName</td>
+                            <td>@item.Book.BookAuthor</td>
+                            <td>@item.Book.BookPageCount</td>
+                            <td>@item.Book.BookPublishingHouse</td>
+                            <td>@item.Book.Category.CategoryName</td>
+                            <td>@item.ReadingDate</td>
+                            <td>@item.ReadBookReviewPoint</td>
+                            <td><button class="btn btn-primary">Güncelle</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<a href="#" class="btn btn-success btn-icon-split mr-5" style="float:right">
+    <span class="icon text-white-50">
+        <i class="fas fa-plus"></i>
+    </span>
+    <span class="text">EKLE</span>
+</a>
+

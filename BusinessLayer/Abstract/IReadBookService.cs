@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IReadBookService : IGenericService<ReadBook>
     {
+        List<ReadBook> GetReadBookListWithBook();
     }
 }

@@ -1,6 +1,8 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +13,12 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfReadBookRepository : GenericRepository<ReadBook>, IReadBookDal
     {
+        public List<ReadBook> GetListWithBook()
+        {
+            using (var c = new Context())
+            {
+                return c.ReadBooks.Include(x => x.Book.Category).ToList();
+            }
+        }
     }
 }

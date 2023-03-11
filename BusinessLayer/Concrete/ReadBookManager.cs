@@ -42,5 +42,10 @@ namespace BusinessLayer.Concrete
         {
             _readBookDal.Update(t);
         }
+
+        public List<ReadBook> GetReadBookListWithBook()
+        {
+            return _readBookDal.GetListWithBook();
+        }
     }
 }
