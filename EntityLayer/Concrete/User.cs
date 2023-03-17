@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -33,5 +34,7 @@ namespace EntityLayer.Concrete
         public List<ReadBook> ReadBooks { get; set; }
 
         public List<UserReadingActivity> UserReadingActivities { get; set; }
+
+        public Roles UserRole { get; set; } = Roles.User;
     }
 }

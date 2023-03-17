@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,17 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.UserName).NotEmpty().WithMessage("Ad kısmı boş geçilemez");
             RuleFor(x => x.UserSurname).NotEmpty().WithMessage("Soyad kısmı boş geçilemez");
             RuleFor(x => x.UserMail).NotEmpty().WithMessage("Mail adresi boş geçilemez");
+            RuleFor(x => x.UserMail).Must(UserEmailMustBeUnique).WithMessage("Mail adresi daha önce kullanılmış");
             RuleFor(x => x.UserPassword).NotEmpty().WithMessage("Şifre boş geçilemez");
             RuleFor(x => x.UserName).MinimumLength(2).WithMessage("Lütfen en az 2 karakter girişi yapınız.");
             RuleFor(x => x.UserName).MaximumLength(50).WithMessage("Lütfen en fazla 50 karakter girişi yapınız.");
 
+        }
+
+        private bool UserEmailMustBeUnique(string email)
+        {
+            Context c = new Context();
+            return c.Users.FirstOrDefault(x => x.UserMail == email) == null;
         }
     }
 }

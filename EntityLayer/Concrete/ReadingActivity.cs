@@ -20,6 +20,10 @@ namespace EntityLayer.Concrete
 
         public DateTime ActivityCreateDate { get; set; }
 
+        public DateTime ActivityStartDate { get; set; }
+
+        public DateTime ActivityFinishDate { get; set; }
+
         public bool ActivityStatus { get; set; }
 
         public List<UserReadingActivity> UserReadingActivities { get; set; }

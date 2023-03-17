@@ -32,7 +32,7 @@
                             <td>@item.Book.BookPageCount</td>
                             <td>@item.Book.BookPublishingHouse</td>
                             <td>@item.Book.Category.CategoryName</td>
-                            <td>@item.ReadingDate</td>
+                            <td>@item.ReadingDate.ToString("dd MMMM yyyy")</td>
                             <td>@item.ReadBookReviewPoint</td>
                             <td><button class="btn btn-primary">Güncelle</button></td>
                         </tr>
@@ -42,7 +42,7 @@
         </div>
     </div>
 </div>
-<a href="#" class="btn btn-success btn-icon-split mr-5" style="float:right">
+<a href="/ReadBook/BookAdd/" class="btn btn-success btn-icon-split mr-5" style="float:right">
     <span class="icon text-white-50">
         <i class="fas fa-plus"></i>
     </span>

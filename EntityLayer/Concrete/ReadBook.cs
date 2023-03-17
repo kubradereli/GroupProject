@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,12 +23,11 @@ namespace EntityLayer.Concrete
 
         public DateTime ReadingDate { get; set; }
 
+        public DateTime CompletionDate { get; set; }
+
         public int ReadBookReviewPoint { get; set; }
 
-        public int BookReadStatus { get; set; }
-        // 1 okundu
-        // 2 okunacak
-        // 3 satın alınacak
+        public BookReadStatusEnum BookReadStatus { get; set; }
 
         public string Description { get; set; }
     }
