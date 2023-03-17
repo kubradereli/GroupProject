@@ -12,11 +12,10 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=SELINGOL\\MSSQLSERVER01;database=BookDb;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=localhost;database=BookDb;integrated security=true;");
         }
 
         public DbSet<About> Abouts { get; set; }
-        public DbSet<Admin> Admins { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }

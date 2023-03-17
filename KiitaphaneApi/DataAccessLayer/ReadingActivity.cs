@@ -19,6 +19,6 @@ namespace KiitaphaneApi.DataAccessLayer
         public int BookID { get; set; }
         public Book Book { get; set; }
         public int AdminID { get; set; }
-        public Admin Admin { get; set; }
+        public User Admin { get; set; }
     }
 }
