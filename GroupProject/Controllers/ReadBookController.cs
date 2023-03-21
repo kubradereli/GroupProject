@@ -19,6 +19,7 @@ namespace GroupProject.Controllers
     public class ReadBookController : Controller
     {
         ReadBookManager readBookManager = new ReadBookManager(new EfReadBookRepository());
+        BookManager bookManager = new BookManager(new EfBookRepository());
 
         public IActionResult BooksIRead()
         {
@@ -67,10 +68,7 @@ namespace GroupProject.Controllers
         [HttpPost]
         public IActionResult BookAdd(ReadBook p)
         {
-            BookAddValidator bv = new BookAddValidator();
-            ValidationResult results = bv.Validate(p);
-            if (results.IsValid)
-            {
+          
                 Context c = new Context();
                 var userMail = User.Identity.Name;
                 p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
@@ -78,19 +76,30 @@ namespace GroupProject.Controllers
                 p.Book.BookStatus = true;
                 //p.ReadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 readBookManager.TAdd(p);
-                return RedirectToAction("BooksIRead", "ReadBook");
-            }
-            else
-            {
-                foreach (var item in results.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                    BookAdd();
-                }
-            }
-            return View();
-            
+                return RedirectToAction("BooksIRead", "ReadBook");            
+        }
+        
+        [HttpGet]
+        public IActionResult EditBook(int id)
+        {
+            BookAdd();
+            ReadBook readBook = readBookManager.TGetById(id);
+            Book book = bookManager.TGetById(readBook.BookID);
+            readBook.Book = book;
+            return View(readBook);
         }
 
+        [HttpPost]
+        public IActionResult EditBook(ReadBook p )
+        {
+       
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            p.BookReadStatus = BookReadStatusEnum.Okundu;
+            p.Book.BookStatus = true;
+            readBookManager.TUpdate(p);
+            return RedirectToAction("BooksIRead");
+        }
     }
 }

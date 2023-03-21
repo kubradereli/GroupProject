@@ -66,41 +66,40 @@
                                     <div class="row">
                                         <div class="form-outline mb-4 col-lg-6">
                                             <label for="validationCustom01">Ad</label>
-                                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control form-control-md" })
+                                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control form-control-md", required = "required" })
                                             @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "text-danger" })
-                                            @*<input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Ad" />*@
                                         </div>
                                         <div class="form-outline mb-4 col-lg-6">
                                             <label for="validationCustom02">Soyad</label>
-                                            @Html.TextBoxFor(x => x.UserSurname, new { @class = "form-control form-control-md" })
+                                            @Html.TextBoxFor(x => x.UserSurname, new { @class = "form-control form-control-md", required = "required" })
                                             @Html.ValidationMessageFor(x => x.UserSurname, "", new { @class = "text-danger" })
-                                            @*<input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Soyad" />*@
+                                        
                                         </div>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label for="validationCustom03">Doğum Tarihi</label>
-                                        @Html.TextBoxFor(x => x.UserDateOfBirth, new { @class = "form-control form-control-md" })
+                                        @Html.TextBoxFor(x => x.UserDateOfBirth, new { @class = "form-control form-control-md" , type="date", required = "required" })
                                         @Html.ValidationMessageFor(x => x.UserDateOfBirth, "", new { @class = "text-danger" })
-                                        @*<input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Doğum Tarihi" />*@
+                                    
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label for="validationCustom04">Şehir</label>
-                                        @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control form-control-md" })
+                                        @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control form-control-md", required = "required" })
                                         @Html.ValidationMessageFor(x => x.UserCity, "", new { @class = "text-danger" })
-                                        @*<input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Şehir" />*@
+                                       
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label for="validationCustom05">E-mail</label>
-                                        @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control form-control-md" })
-                                        @Html.ValidationMessageFor(x => x.UserMail, "", new { @class = "text-danger" })
-                                        @*<input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="E-mail" />*@
+                                        @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control form-control-md", required = "required", type = "mail" })
+                                        @Html.ValidationMessageFor(x => x.UserMail, "", new { @class = "text-danger"  })
+                                  
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label for="validationCustom06">Şifre</label>
-                                        @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control form-control-md" })
-                                        @Html.ValidationMessageFor(x => x.UserPassword, "", new { @class = "text-danger" })
-                                        @*<input type="password" id="form3Example3" class="form-control form-control-lg" placeholder="Şifre" />*@
+                                        @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control form-control-md", required = "required", type = "password" })
+                                        @Html.ValidationMessageFor(x => x.UserPassword, "", new { @class = "text-danger"  })
+                               
                                     </div>
                                     @*<div class="form-outline mb-4">
                                         <input type="password" id="form3Example3" class="form-control form-control-lg" placeholder="Şifre Tekrarı" />

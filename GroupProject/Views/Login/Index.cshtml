@@ -50,7 +50,7 @@
                 <div class=" col-md-8 col-lg-6 col-xl-4 offset-xl-0">
                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
                         <div class="card-body p-5 text-center">
-
+                           
                             <form method="post">
 
                                 <h2 style="color: #124265">GİRİŞ YAP</h2>
@@ -68,11 +68,14 @@
                                 <div class="form-outline mb-3">
                                     <label class="form-label" for="form3Example4"></label>
                                     <input type="password" name="UserPassword" id="form3Example4" class="form-control form-control-lg"
-                                           placeholder="Şifre" />
+                                           placeholder="*******" />
 
                                 </div>
-                                <br />
+                                
+                                <span style="font-weight: Bold; color: red">@ViewBag.mesaj</span>
 
+                                <br />
+                                <br />
                                 <div class="d-flex justify-content-between align-items-center">
                                     <!-- Checkbox -->
                                     <div class="form-check mb-0">

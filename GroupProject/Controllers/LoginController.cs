@@ -40,6 +40,8 @@ namespace GroupProject.Controllers
             }
             else
             {
+                ViewBag.mesaj = "Geçersiz Kullanıcı.Lütfen bilgileri doğru giriniz.";
+            
                 return View();
             }
         }

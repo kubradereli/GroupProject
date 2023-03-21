@@ -18,7 +18,8 @@
                         <th>Sayfa Sayısı</th>
                         <th>Yayınevi</th>
                         <th>Kategori</th>
-                        <th>Okunan Tarih</th>
+                        <th>Okuma Başlangıç Tarihi</th>
+                        <th>Okuma Bitiş Tarihi</th>
                         <th>Kitap Puanı</th>
                         <th>Güncelle</th>
                     </tr>
@@ -26,16 +27,19 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@item.Book.BookName</td>
-                            <td>@item.Book.BookAuthor</td>
-                            <td>@item.Book.BookPageCount</td>
-                            <td>@item.Book.BookPublishingHouse</td>
-                            <td>@item.Book.Category.CategoryName</td>
-                            <td>@item.ReadingDate.ToString("dd MMMM yyyy")</td>
-                            <td>@item.ReadBookReviewPoint</td>
-                            <td><button class="btn btn-primary">Güncelle</button></td>
-                        </tr>
+                    <tr>
+                        <td>@item.Book.BookName</td>
+                        <td>@item.Book.BookAuthor</td>
+                        <td>@item.Book.BookPageCount</td>
+                        <td>@item.Book.BookPublishingHouse</td>
+                        <td>@item.Book.Category.CategoryName</td>
+                        <td>@item.ReadingDate.ToString("dd MMMM yyyy")</td>
+                        <td>@item.CompletionDate.ToString("dd MMMM yyyy")</td>
+                        <td>@item.ReadBookReviewPoint</td>
+                        <td><a href="/ReadBook/EditBook/@item.ReadBookID" class="btn btn-primary">Güncelle</a></td>
+                        @*<td>@Html.ActionLink("Güncelle", "EditBook", new { id = item.ReadBookID })</td>*@
+
+                    </tr>
                     }
                 </tbody>
             </table>
