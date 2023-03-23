@@ -5,10 +5,21 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">OKUYACAĞIM KİTAPLAR AJANDASI</h6>
+        <div class="row">
+            <div class="col-sm-6">
+                <h6 class="m-0 font-weight-bold text-primary mt-2">OKUYACAĞIM KİTAPLAR AJANDASI</h6>
+            </div>
+            <div class="col-sm-6">
+                <a href="#" class="btn btn-success btn-icon-split mr-3" style="float:right">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">YENİ KİTAP EKLE</span>
+                </a>
+            </div>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -20,8 +31,7 @@
                         <th>Sayfa Sayısı</th>
                         <th>Yayınevi</th>
                         <th>Kategori</th>
-                        <th>Okunan Tarih</th>
-                        <th>Kitap Puanı</th>
+                        <th>Listeye Eklenen Tarih</th>
                         <th>Güncelle</th>
                     </tr>
                 </thead>
@@ -35,7 +45,6 @@
                             <td>@item.Book.BookPublishingHouse</td>
                             <td>@item.Book.Category.CategoryName</td>
                             <td>@item.ReadingDate</td>
-                            <td>@item.ReadBookReviewPoint</td>
                             <td><button class="btn btn-primary">Güncelle</button></td>
                         </tr>
                     }
@@ -44,9 +53,3 @@
         </div>
     </div>
 </div>
-<a href="#" class="btn btn-success btn-icon-split mr-5" style="float:right">
-    <span class="icon text-white-50">
-        <i class="fas fa-plus"></i>
-    </span>
-    <span class="text">EKLE</span>
-</a>

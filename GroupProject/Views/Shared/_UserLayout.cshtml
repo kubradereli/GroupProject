@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@*@using BusinessLayer.Concrete;
+@inject UserManager _usermanager
+@{ 
+    var kullanici = _usermanager.TGetById(1);
+}*@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -21,7 +26,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-book"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Kiitaphane</div>
+                <div class="sidebar-brand-text mx-3">KİİTAPHANE</div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
@@ -34,23 +39,23 @@
             <!-- Kitap Listelerim -->
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
-                Kitap Listelerim
+                KİTAP LİSTELERİM
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="/ReadBook/BooksIRead/">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-book"></i>
                     <span>Okuduğum Kitaplar</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/ReadBook/BooksIWillRead/">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-book"></i>
                     <span>Okuyacağım Kitaplar</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/ReadBook/BooksIWantToBuy/">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-book"></i>
                     <span>Satın Almak İstediğim Kitaplar</span>
                 </a>
             </li>
@@ -58,17 +63,17 @@
             <!-- Etkinlik Listelerim -->
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
-                Etkinlik Listelerim
+                ETKİNLİK LİSTELERİM
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-circle"></i>
                     <span>Katıldığım Etkinlikler</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-star"></i>
                     <span>Favori Etkinliklerim</span>
                 </a>
             </li>
@@ -76,17 +81,17 @@
             <!-- Kitap Okuma İstatistikleri -->
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
-                Kitap Okuma İstatistikleri
+                KİTAP OKUMA İSTATİSTİKLERİ
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-chart-line"></i>
                     <span>Okunan Sayfa Sayısı</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-chart-pie"></i>
                     <span>Genel Kitap İstatistikleri</span>
                 </a>
             </li>
@@ -273,7 +278,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Kübra Dereli</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Kübra</span>
                                 <img class="img-profile rounded-circle"
                                      src="~/AdminTema/img/undraw_profile.svg">
                             </a>

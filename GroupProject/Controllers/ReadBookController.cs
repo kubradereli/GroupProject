@@ -55,7 +55,7 @@ namespace GroupProject.Controllers
         public IActionResult BookAdd()
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
-            List<SelectListItem> categoryvalues = (from x in categoryManager.TGetList()
+            List<SelectListItem> categoryvalues = (from x in categoryManager.TGetList().OrderBy(s=>s.CategoryName)
                                                    select new SelectListItem
                                                    {
                                                        Text = x.CategoryName,

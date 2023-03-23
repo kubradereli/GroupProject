@@ -6,7 +6,19 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">OKUDUĞUM KİTAPLAR AJANDASI</h6>
+        <div class="row">
+            <div class="col-sm-6">
+                <h6 class="m-0 font-weight-bold text-primary mt-2">OKUDUĞUM KİTAPLAR AJANDASI</h6>
+            </div>
+            <div class="col-sm-6">
+                <a href="/ReadBook/BookAdd/" class="btn btn-success btn-icon-split mr-3" style="float:right">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">YENİ KİTAP EKLE</span>
+                </a>
+            </div>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -20,35 +32,32 @@
                         <th>Kategori</th>
                         <th>Okuma Başlangıç Tarihi</th>
                         <th>Okuma Bitiş Tarihi</th>
+                        <th>Kaç Günde Okundu</th>
                         <th>Kitap Puanı</th>
+                        <th>Notlar / Değerlendirmler</th>
                         <th>Güncelle</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>@item.Book.BookName</td>
-                        <td>@item.Book.BookAuthor</td>
-                        <td>@item.Book.BookPageCount</td>
-                        <td>@item.Book.BookPublishingHouse</td>
-                        <td>@item.Book.Category.CategoryName</td>
-                        <td>@item.ReadingDate.ToString("dd MMMM yyyy")</td>
-                        <td>@item.CompletionDate.ToString("dd MMMM yyyy")</td>
-                        <td>@item.ReadBookReviewPoint</td>
-                        <td><a href="/ReadBook/EditBook/@item.ReadBookID" class="btn btn-primary">Güncelle</a></td>
-                        @*<td>@Html.ActionLink("Güncelle", "EditBook", new { id = item.ReadBookID })</td>*@
-
-                    </tr>
+                        <tr>
+                            <td>@item.Book.BookName</td>
+                            <td>@item.Book.BookAuthor</td>
+                            <td>@item.Book.BookPageCount</td>
+                            <td>@item.Book.BookPublishingHouse</td>
+                            <td>@item.Book.Category.CategoryName</td>
+                            <td>@item.ReadingDate.ToString("dd MMMM yyyy")</td>
+                            <td>@item.CompletionDate.ToString("dd MMMM yyyy")</td>
+                            <td>@((item.CompletionDate-item.ReadingDate).Days)</td>
+                            <td>@item.ReadBookReviewPoint</td>
+                            <td>@item.Description</td>
+                            <td><a href="/ReadBook/EditBook/@item.ReadBookID" class="btn btn-primary">Güncelle</a></td>
+                            @*<td>@Html.ActionLink("Güncelle", "EditBook", new { id = item.ReadBookID })</td>*@
+                        </tr>
                     }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<a href="/ReadBook/BookAdd/" class="btn btn-success btn-icon-split mr-5" style="float:right">
-    <span class="icon text-white-50">
-        <i class="fas fa-plus"></i>
-    </span>
-    <span class="text">EKLE</span>
-</a>
