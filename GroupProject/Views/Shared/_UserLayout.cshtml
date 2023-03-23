@@ -1,8 +1,4 @@
-﻿@*@using BusinessLayer.Concrete;
-@inject UserManager _usermanager
-@{ 
-    var kullanici = _usermanager.TGetById(1);
-}*@
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,13 +24,25 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">KİİTAPHANE</div>
             </a>
-            <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="/User/Index/">
-                    <i class="fas fa-user"></i>
-                    <span>Kullanıcı Paneli</span>
+            <!-- Kitap Okuma İstatistikleri -->
+            <hr class="sidebar-divider pt-4">
+            <div class="sidebar-heading">
+                KİTAP OKUMA İSTATİSTİKLERİ
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-chart-pie"></i>
+                    <span>Genel Kitap İstatistikleri</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-chart-line"></i>
+                    <span>Okunan Sayfa Sayısı</span>
+                </a>
+            </li>
+
+
 
             <!-- Kitap Listelerim -->
             <hr class="sidebar-divider">
@@ -53,12 +61,7 @@
                     <span>Okuyacağım Kitaplar</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ReadBook/BooksIWantToBuy/">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Satın Almak İstediğim Kitaplar</span>
-                </a>
-            </li>
+
 
             <!-- Etkinlik Listelerim -->
             <hr class="sidebar-divider">
@@ -78,23 +81,7 @@
                 </a>
             </li>
 
-            <!-- Kitap Okuma İstatistikleri -->
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                KİTAP OKUMA İSTATİSTİKLERİ
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-line"></i>
-                    <span>Okunan Sayfa Sayısı</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-pie"></i>
-                    <span>Genel Kitap İstatistikleri</span>
-                </a>
-            </li>
+
 
             <!-- Navbar Alt Kısım -->
             <hr class="sidebar-divider d-none d-md-block">

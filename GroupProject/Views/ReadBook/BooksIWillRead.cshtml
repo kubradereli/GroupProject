@@ -33,20 +33,24 @@
                         <th>Kategori</th>
                         <th>Listeye Eklenen Tarih</th>
                         <th>Güncelle</th>
+                        <th>Okundu</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@item.Book.BookName</td>
-                            <td>@item.Book.BookAuthor</td>
-                            <td>@item.Book.BookPageCount</td>
-                            <td>@item.Book.BookPublishingHouse</td>
-                            <td>@item.Book.Category.CategoryName</td>
-                            <td>@item.ReadingDate</td>
-                            <td><button class="btn btn-primary">Güncelle</button></td>
-                        </tr>
+                    <tr>
+                        <td>@item.Book.BookName</td>
+                        <td>@item.Book.BookAuthor</td>
+                        <td>@item.Book.BookPageCount</td>
+                        <td>@item.Book.BookPublishingHouse</td>
+                        <td>@item.Book.Category.CategoryName</td>
+                        <td>@item.ReadingDate.ToString("dd MMMM yyyy")</td>
+                        <td><a href="/ReadBook/BooksIWillReadEdit/@item.ReadBookID" class="btn btn-primary">Güncelle</a></td>
+                        <td><a href="#" class="btn btn-info btn-circle">
+                            <i class="fas fa-check"></i>
+                        </a></td>
+                    </tr>
                     }
                 </tbody>
             </table>

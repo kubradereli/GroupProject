@@ -51,6 +51,8 @@ namespace GroupProject.Controllers
             return View(values);
         }
 
+        // Okuduğum Kitaplar Sayfası için
+
         [HttpGet]
         public IActionResult BookAdd()
         {
@@ -100,6 +102,59 @@ namespace GroupProject.Controllers
             p.Book.BookStatus = true;
             readBookManager.TUpdate(p);
             return RedirectToAction("BooksIRead");
+        }
+
+        //
+
+        //Satın Alacağım Kitaplar İçin
+
+        [HttpGet]
+        public IActionResult BooksIWillReadAdd()
+        {
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> categoryvalues = (from x in categoryManager.TGetList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString()
+                                                   }).ToList();
+            ViewBag.cv = categoryvalues;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult BooksIWillReadAdd(ReadBook p)
+        {
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            p.BookReadStatus = BookReadStatusEnum.Okunacak;
+            p.Book.BookStatus = true;
+            readBookManager.TAdd(p);
+            return RedirectToAction("BooksIWillRead", "ReadBook");
+        }
+
+        [HttpGet]
+        public IActionResult BooksIWillReadEdit(int id)
+        {
+            BooksIWillReadAdd();
+            ReadBook readBook = readBookManager.TGetById(id);
+            Book book = bookManager.TGetById(readBook.BookID);
+            readBook.Book = book;
+            return View(readBook);
+        }
+
+        [HttpPost]
+        public IActionResult BooksIWillReadEdit(ReadBook p)
+        {
+
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            p.BookReadStatus = BookReadStatusEnum.Okunacak;
+            p.Book.BookStatus = true;
+            readBookManager.TUpdate(p);
+            return RedirectToAction("BooksIWillRead");
         }
     }
 }

@@ -36,7 +36,15 @@ namespace GroupProject.Controllers
                 var useridentity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "About");
+                if (datavalue.UserRole == EntityLayer.Enums.Roles.Admin)
+                {
+                    return RedirectToAction("Index", "Contact");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "About");
+                }
+                
             }
             else
             {

@@ -1,0 +1,40 @@
+﻿@model EntityLayer.Concrete.ReadBook
+@{
+    ViewData["Title"] = "BooksIWillReadEdit";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>Kitap Bilgileri Güncelleme Sayfası</h1>
+<br>
+@using (Html.BeginForm("BooksIWillReadEdit", "ReadBook", FormMethod.Post))
+{
+    @Html.Label("Kitap Adı")
+    @Html.TextBoxFor(x => x.Book.BookName, new { @class = "form-control" })
+
+    @Html.HiddenFor(x => x.BookID, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.Book.BookID, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.ReadBookID, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Kitap Yazarı")
+    @Html.TextBoxFor(x => x.Book.BookAuthor, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Kitap Sayfa Sayısı")
+    @Html.TextBoxFor(x => x.Book.BookPageCount, new { @class = "form-control", type = "number" })
+
+    <br />
+    @Html.Label("Kitap Yayınevi")
+    @Html.TextBoxFor(x => x.Book.BookPublishingHouse, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.Book.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-success mr-5" style="float:right">Güncelle</button>
+    <br />
+    <br />
+    <br />
+    <br />
+}

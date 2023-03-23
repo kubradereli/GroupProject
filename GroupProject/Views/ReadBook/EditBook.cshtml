@@ -13,6 +13,8 @@
         {
             @Html.HiddenFor(x => x.BookID, new { @class = "form-control" })
             @Html.HiddenFor(x => x.ReadBookID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.Book.BookID, new { @class = "form-control" })
+            <br />
 
             <div class="row pt-3">
                 <div class="col-lg-6">

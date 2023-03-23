@@ -10476,7 +10476,7 @@ a:focus {
   text-align: center;
   padding: 0 1rem;
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: 0.80rem;
 }
 
 .sidebar .sidebar-card {
@@ -10686,7 +10686,7 @@ a:focus {
 }
 
 .sidebar-dark .sidebar-heading {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255);
 }
 
 .sidebar-dark .nav-item .nav-link {
