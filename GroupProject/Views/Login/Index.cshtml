@@ -8,127 +8,97 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <title>OnePage Bootstrap Template - Index</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    <link href="~/Tema/assets/img/favicon.png" rel="icon">
-    <link href="~/Tema/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Custom fonts for this template-->
+    <link href="~/AdminTema/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="~/AdminTema/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="~/Tema/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="~/Tema/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Tema/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="~/Tema/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="~/Tema/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="~/Tema/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="~/Tema/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-    * Template Name: OnePage - v4.9.2
-    * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
 
-<body>
+<body class="bg-gradient-primary">
 
-    <section class="vh-100 mt-lg-5">
-        <div class="container-fluid h-custom">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class=" col-md-8 col-lg-6 col-xl-4 offset-xl-0">
-                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
-                           
-                            <form method="post">
+    <div class="container">
 
-                                <h2 style="color: #124265">GİRİŞ YAP</h2>
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
 
-                                <!-- Email input -->
-                                <div class="form-outline mb-4">
+            <div class="col-xl-10 col-lg-12 col-md-9">
 
-                                    <label class="form-label" for="form3Example3"></label>
-                                    <input type="email" name="UserMail" id="form3Example3" class="form-control form-control-lg"
-                                           placeholder="Email" />
-
-                                </div>
-
-                                <!-- Password input -->
-                                <div class="form-outline mb-3">
-                                    <label class="form-label" for="form3Example4"></label>
-                                    <input type="password" name="UserPassword" id="form3Example4" class="form-control form-control-lg"
-                                           placeholder="*******" />
-
-                                </div>
-                                
-                                <span style="font-weight: Bold; color: red">@ViewBag.mesaj</span>
-
-                                <br />
-                                <br />
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <!-- Checkbox -->
-                                    <div class="form-check mb-0">
-                                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                                        <label class="form-check-label" for="form2Example3">
-                                            Beni Hatırla
-                                        </label>
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Tekrar Hoş Geldin!</h1>
                                     </div>
-                                    <a href="#!" class="link-primary">Şifremi Unuttum</a>
-                                </div>
-                                <br />
-                                <div class="text-center text-lg-start mt-4 pt-2">
-                                    <button type="submit" class="btn btn-primary btn-group-lg">
-                                        Giriş Yap
-                                    </button>
-                                    <p class="small fw-bold mt-2 pt-1 mb-0">
-                                        Hesabınız yok mu? <a href="/Register/Index/"
-                                                             class="link-primary">Kayıt Ol</a>
-                                    </p>
-                                </div>
+                                    <form method="post" class="user">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                   id="exampleInputEmail" aria-describedby="emailHelp" name="UserMail"
+                                                   placeholder="Email Adresi">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="UserPassword" class="form-control form-control-user"
+                                                   id="exampleInputPassword" placeholder="Şifre">
+                                        </div>
+                                        <span style="font-weight: Bold; color: red">@ViewBag.mesaj</span>
+                                        <br />
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">
+                                                    Beni Hatırla
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Giriş
+                                        </button>
 
-                            </form>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Şifremi Unuttum</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="/Register/Index/">Hesap Oluştur!</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 col-lg-6 col-xl-4">
-                    <img src="~/Tema/assets/img/about-img/login.jpeg"
-                         class="img-fluid" alt="Sample image">
-                </div>
+
             </div>
+
         </div>
 
-    </section>
+    </div>
 
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/AdminTema/vendor/jquery/jquery.min.js"></script>
+    <script src="~/AdminTema/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Core plugin JavaScript-->
+    <script src="~/AdminTemavendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Vendor JS Files -->
-    <script src="~/Tema/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="~/Tema/assets/vendor/aos/aos.js"></script>
-    <script src="~/Tema/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Tema/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="~/Tema/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="~/Tema/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="~/Tema/assets/vendor/php-email-form/validate.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="~/Tema/assets/js/main.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/AdminTema/js/sb-admin-2.min.js"></script>
 
 </body>
 
 </html>
-
-
-
