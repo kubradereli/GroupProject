@@ -156,5 +156,32 @@ namespace GroupProject.Controllers
             readBookManager.TUpdate(p);
             return RedirectToAction("BooksIWillRead");
         }
+
+        // Okundu Bilgisi Butona Tıklayınca
+
+        [HttpGet]
+        public IActionResult CheckReadBooks(int id)
+        {
+            BooksIWillReadAdd();
+            ReadBook readBook = readBookManager.TGetById(id);
+            Book book = bookManager.TGetById(readBook.BookID);
+            readBook.Book = book;
+            return View(readBook);
+           
+        }
+
+        [HttpPost]
+        public IActionResult CheckReadBooks(ReadBook p)
+        {
+            EditBook(p);
+            //Context c = new Context();
+            //var userMail = User.Identity.Name;
+            //p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            //p.BookReadStatus = BookReadStatusEnum.Okundu;
+            //p.Book.BookStatus = true;
+            
+            return RedirectToAction("BooksIWillRead");
+        }
+
     }
 }
