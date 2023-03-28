@@ -20,7 +20,18 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
+    <div class="card-body">       
+        <div class="row">
+            <div class="col-lg-2 pb-2">
+                <select class="select" onchange="" aria-haspopup="true" aria-expanded="false" id="filter">
+                    <option value=1>Okunan Tarihe Göre Artan</option>
+                    <option value=2>Okunan Tarihe Göre Azalan</option>
+                    <option value=3>Kitap Adına Göre A-Z</option>
+                    <option value=4>Kitap Adına Göre Z-A</option>
+                </select>
+            </div>
+            <div class="col-lg-10"></div>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>

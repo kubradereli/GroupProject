@@ -27,7 +27,7 @@ namespace GroupProject.Controllers
             var userMail = User.Identity.Name;
             var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
 
-            var values = readBookManager.GetReadBookListWithBook().Where(s => s.BookReadStatus == BookReadStatusEnum.Okundu && s.UserID==userID).OrderBy(x => x.ReadingDate);
+            var values = readBookManager.GetReadBookListWithBook().Where(s => s.BookReadStatus == BookReadStatusEnum.Okundu && s.UserID == userID).OrderBy(x => x.ReadingDate);
             return View(values);
         }
 
@@ -41,23 +41,12 @@ namespace GroupProject.Controllers
             return View(values);
         }
 
-        public IActionResult BooksIWantToBuy()
-        {
-            Context c = new Context();
-            var userMail = User.Identity.Name;
-            var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
-
-            var values = readBookManager.GetReadBookListWithBook().Where(s => s.BookReadStatus == BookReadStatusEnum.SatınAlınacak && s.UserID == userID);
-            return View(values);
-        }
-
         // Okuduğum Kitaplar Sayfası için
-
         [HttpGet]
         public IActionResult BookAdd()
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
-            List<SelectListItem> categoryvalues = (from x in categoryManager.TGetList().OrderBy(s=>s.CategoryName)
+            List<SelectListItem> categoryvalues = (from x in categoryManager.TGetList().OrderBy(s => s.CategoryName)
                                                    select new SelectListItem
                                                    {
                                                        Text = x.CategoryName,
@@ -70,17 +59,17 @@ namespace GroupProject.Controllers
         [HttpPost]
         public IActionResult BookAdd(ReadBook p)
         {
-          
-                Context c = new Context();
-                var userMail = User.Identity.Name;
-                p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
-                p.BookReadStatus = BookReadStatusEnum.Okundu;
-                p.Book.BookStatus = true;
-                //p.ReadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                readBookManager.TAdd(p);
-                return RedirectToAction("BooksIRead", "ReadBook");            
+
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            p.BookReadStatus = BookReadStatusEnum.Okundu;
+            p.Book.BookStatus = true;
+            //p.ReadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            readBookManager.TAdd(p);
+            return RedirectToAction("BooksIRead", "ReadBook");
         }
-        
+
         [HttpGet]
         public IActionResult EditBook(int id)
         {
@@ -92,9 +81,9 @@ namespace GroupProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditBook(ReadBook p )
+        public IActionResult EditBook(ReadBook p)
         {
-       
+
             Context c = new Context();
             var userMail = User.Identity.Name;
             p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
@@ -103,8 +92,6 @@ namespace GroupProject.Controllers
             readBookManager.TUpdate(p);
             return RedirectToAction("BooksIRead");
         }
-
-        //
 
         //Satın Alacağım Kitaplar İçin
 
@@ -130,6 +117,7 @@ namespace GroupProject.Controllers
             p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
             p.BookReadStatus = BookReadStatusEnum.Okunacak;
             p.Book.BookStatus = true;
+            p.ReadingDate = DateTime.Now;
             readBookManager.TAdd(p);
             return RedirectToAction("BooksIWillRead", "ReadBook");
         }
@@ -167,7 +155,7 @@ namespace GroupProject.Controllers
             Book book = bookManager.TGetById(readBook.BookID);
             readBook.Book = book;
             return View(readBook);
-           
+
         }
 
         [HttpPost]
@@ -179,7 +167,7 @@ namespace GroupProject.Controllers
             //p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
             //p.BookReadStatus = BookReadStatusEnum.Okundu;
             //p.Book.BookStatus = true;
-            
+
             return RedirectToAction("BooksIWillRead");
         }
 

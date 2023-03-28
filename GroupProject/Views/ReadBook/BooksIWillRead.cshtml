@@ -32,6 +32,7 @@
                         <th>Yayınevi</th>
                         <th>Kategori</th>
                         <th>Listeye Eklenen Tarih</th>
+                        <th>Notlar / Değerlendirmeler</th>
                         <th>Güncelle</th>
                         <th>Okundu</th>
                     </tr>
@@ -46,6 +47,7 @@
                         <td>@item.Book.BookPublishingHouse</td>
                         <td>@item.Book.Category.CategoryName</td>
                         <td>@item.ReadingDate.ToString("dd MMMM yyyy")</td>
+                        <td>@item.Description</td>
                         <td><a href="/ReadBook/BooksIWillReadEdit/@item.ReadBookID" class="btn btn-primary">Güncelle</a></td>
                         <td><a href="/ReadBook/CheckReadBooks/@item.ReadBookID" class="btn btn-info btn-circle">
                             <i class="fas fa-check"></i>

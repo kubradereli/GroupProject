@@ -39,8 +39,8 @@
                     @Html.TextBoxFor(x => x.Book.BookPublishingHouse, new { @class = "form-control", required = "required" })
                 </div>
                 <div class="col-lg-6">
-                    @Html.Label("Listeye Eklenen Tarih")
-                    @Html.TextBoxFor(x => x.ReadingDate, new { @class = "form-control", type = "date", required = "required" })
+                    @Html.Label("Notlar / Değerlendirmeler")
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control"})
                 </div>
             </div>
             <div class="pt-3">
