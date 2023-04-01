@@ -21,24 +21,91 @@ namespace GroupProject.Controllers
         ReadBookManager readBookManager = new ReadBookManager(new EfReadBookRepository());
         BookManager bookManager = new BookManager(new EfBookRepository());
 
-        public IActionResult BooksIRead()
+        public IActionResult BooksIRead(string sort)
         {
             Context c = new Context();
             var userMail = User.Identity.Name;
             var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            var model = readBookManager.GetReadBookListWithBook().Where(s => s.BookReadStatus == BookReadStatusEnum.Okundu && s.UserID == userID);
 
-            var values = readBookManager.GetReadBookListWithBook().Where(s => s.BookReadStatus == BookReadStatusEnum.Okundu && s.UserID == userID).OrderBy(x => x.ReadingDate);
-            return View(values);
+            switch (sort)
+            {
+                case "BookNameASC":
+                    model = model.OrderBy(r => r.Book.BookName).ToList();
+                    break;
+                case "BookNameDESC":
+                    model = model.OrderByDescending(r => r.Book.BookName).ToList();
+                    break;
+                case "BookAuthorASC":
+                    model = model.OrderBy(r => r.Book.BookAuthor).ToList();
+                    break;
+                case "BookAuthorDESC":
+                    model = model.OrderByDescending(r => r.Book.BookAuthor).ToList();
+                    break;
+                case "BookPageCountASC":
+                    model = model.OrderBy(r => r.Book.BookPageCount).ToList();
+                    break;
+                case "BookPageCountDESC":
+                    model = model.OrderByDescending(r => r.Book.BookPageCount).ToList();
+                    break;
+                case "ReadingDateASC":
+                    model = model.OrderBy(r => r.ReadingDate).ToList();
+                    break;
+                case "ReadingDateDESC":
+                    model = model.OrderByDescending(r => r.ReadingDate).ToList();
+                    break;
+                case "CompletionDateASC":
+                    model = model.OrderBy(r => r.CompletionDate).ToList();
+                    break;
+                case "CompletionDateDESC":
+                    model = model.OrderByDescending(r => r.CompletionDate).ToList();
+                    break;
+                default:
+                    model = model.OrderByDescending(r => r.CompletionDate).ToList();
+                    break;
+            }
+
+            return View(model);
         }
 
-        public IActionResult BooksIWillRead()
+        public IActionResult BooksIWillRead(string sort)
         {
             Context c = new Context();
             var userMail = User.Identity.Name;
             var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            var model = readBookManager.GetReadBookListWithBook().Where(s => s.BookReadStatus == BookReadStatusEnum.Okunacak && s.UserID == userID);
 
-            var values = readBookManager.GetReadBookListWithBook().Where(s => s.BookReadStatus == BookReadStatusEnum.Okunacak && s.UserID == userID);
-            return View(values);
+            switch (sort)
+            {
+                case "BookNameASC":
+                    model = model.OrderBy(r => r.Book.BookName).ToList();
+                    break;
+                case "BookNameDESC":
+                    model = model.OrderByDescending(r => r.Book.BookName).ToList();
+                    break;
+                case "BookAuthorASC":
+                    model = model.OrderBy(r => r.Book.BookAuthor).ToList();
+                    break;
+                case "BookAuthorDESC":
+                    model = model.OrderByDescending(r => r.Book.BookAuthor).ToList();
+                    break;
+                case "BookPageCountASC":
+                    model = model.OrderBy(r => r.Book.BookPageCount).ToList();
+                    break;
+                case "BookPageCountDESC":
+                    model = model.OrderByDescending(r => r.Book.BookPageCount).ToList();
+                    break;
+                case "ReadingDateASC":
+                    model = model.OrderBy(r => r.ReadingDate).ToList();
+                    break;
+                case "ReadingDateDESC":
+                    model = model.OrderByDescending(r => r.ReadingDate).ToList();
+                    break;
+                default:
+                    model = model.OrderByDescending(r => r.ReadingDate).ToList();
+                    break;
+            }
+            return View(model);
         }
 
         // Okuduğum Kitaplar Sayfası için
@@ -171,5 +238,9 @@ namespace GroupProject.Controllers
             return RedirectToAction("BooksIWillRead");
         }
 
+        public IActionResult BookStatistics()
+        {
+            return View();
+        }
     }
 }

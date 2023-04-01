@@ -1,4 +1,9 @@
-﻿
+﻿<style>
+    .sidebar-heading {
+        font-size: 0.9rem !important;
+        color: rgba(255,255,255,.95) !important;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,10 +32,10 @@
             <!-- Kitap Okuma İstatistikleri -->
             <hr class="sidebar-divider pt-4">
             <div class="sidebar-heading">
-                KİTAP OKUMA İSTATİSTİKLERİ
+                KİTAP İSTATİSTİKLERİ
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/ReadBook/BookStatistics/">
                     <i class="fas fa-fw fa-chart-pie"></i>
                     <span>Genel Kitap İstatistikleri</span>
                 </a>
@@ -344,5 +349,6 @@
     <script src="~/AdminTema/vendor/chart.js/Chart.min.js"></script>
     <script src="~/AdminTema/js/demo/chart-area-demo.js"></script>
     <script src="~/AdminTema/js/demo/chart-pie-demo.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -3,7 +3,18 @@
     ViewData["Title"] = "BooksIRead";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
+<style>
+    .btn-a {
+        border: 2px solid #E3E6F0;
+        background-color: transparent;
+        color: #E3E6F0;
+        color: #000;
+    }
+    .btn-a:hover {
+        background-color: #E3E6F0;
+        color: #000;
+    }
+</style>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <div class="row">
@@ -20,20 +31,31 @@
             </div>
         </div>
     </div>
-    <div class="card-body">       
+    <div class="card-body">
         <div class="row">
-            <div class="col-lg-2 pb-2">
-                <select class="select" onchange="" aria-haspopup="true" aria-expanded="false" id="filter">
-                    <option value=1>Okunan Tarihe Göre Artan</option>
-                    <option value=2>Okunan Tarihe Göre Azalan</option>
-                    <option value=3>Kitap Adına Göre A-Z</option>
-                    <option value=4>Kitap Adına Göre Z-A</option>
-                </select>
+            <div class="dropdown show mb-2 col-lg-2">
+                <a class="btn btn-a form-control dropdown-toggle" href="#" role="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sırala
+                </a>
+                <div class="dropdown-menu" aria-labelledby="sortDropdown">
+                    <a class="dropdown-item" href="?sort=BookNameASC">Kitap Adı (A-Z)</a>
+                    <a class="dropdown-item" href="?sort=BookNameDESC">Kitap Adı (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=BookAuthorASC">Yazar (A-Z)</a>
+                    <a class="dropdown-item" href="?sort=BookAuthorDESC">Yazar (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=BookPageCountASC">Sayfa Sayısı (Azdan Çoğa)</a>
+                    <a class="dropdown-item" href="?sort=BookPageCountDESC">Sayfa Sayısı (Çoktan Aza)</a>
+                    <a class="dropdown-item" href="?sort=ReadingDateASC">Okuma Başlangıç Tarihi (Yeni-Eski)</a>
+                    <a class="dropdown-item" href="?sort=ReadingDateDESC">Okuma Başlangıç Tarihi (Eski-Yeni)</a>
+                    <a class="dropdown-item" href="?sort=CompletionDateASC">Okuma Bitiş Tarihi (Yeni-Eski)</a>
+                    <a class="dropdown-item" href="?sort=CompletionDateDESC">Okuma Bitiş Tarihi (Eski-Yeni)</a>
+                </div>
             </div>
-            <div class="col-lg-10"></div>
+            <div class="form-group  col-lg-2">
+                <input type="text" id="searchInput" class="form-control" placeholder="Ara...">
+            </div>
         </div>
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Kitap Adı</th>
@@ -72,3 +94,15 @@
         </div>
     </div>
 </div>
+@section scripts{ 
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("table tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+}
