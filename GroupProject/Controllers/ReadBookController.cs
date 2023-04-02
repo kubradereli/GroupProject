@@ -20,6 +20,7 @@ namespace GroupProject.Controllers
     {
         ReadBookManager readBookManager = new ReadBookManager(new EfReadBookRepository());
         BookManager bookManager = new BookManager(new EfBookRepository());
+        private static bool bookSortAsc = false;
 
         public IActionResult BooksIRead(string sort)
         {
@@ -30,11 +31,18 @@ namespace GroupProject.Controllers
 
             switch (sort)
             {
-                case "BookNameASC":
-                    model = model.OrderBy(r => r.Book.BookName).ToList();
+                case "BookName":
+                    if (bookSortAsc)
+                    {
+                        model = model.OrderByDescending(r => r.Book.BookName).ToList();
+                    }
+                    else
+                    {
+                        model = model.OrderBy(r => r.Book.BookName).ToList();
+                    }
+                    bookSortAsc = !bookSortAsc;
                     break;
                 case "BookNameDESC":
-                    model = model.OrderByDescending(r => r.Book.BookName).ToList();
                     break;
                 case "BookAuthorASC":
                     model = model.OrderBy(r => r.Book.BookAuthor).ToList();

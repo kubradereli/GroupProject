@@ -18,6 +18,7 @@ namespace BusinessLayer.Concrete
             _readingActivityDal = readingActivityDal;
         }
 
+      
         public void TAdd(ReadingActivity t)
         {
             _readingActivityDal.Insert(t);
@@ -42,5 +43,11 @@ namespace BusinessLayer.Concrete
         {
             _readingActivityDal.Update(t);
         }
+
+        public List<ReadingActivity> GetReadingActivitiesListWithBook()
+        {
+            return _readingActivityDal.GetListWithBook();
+        }
+
     }
 }

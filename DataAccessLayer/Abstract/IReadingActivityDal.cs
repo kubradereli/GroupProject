@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IReadingActivityDal : IGenericDal<ReadingActivity>
     {
+        List<ReadingActivity> GetListWithBook();
     }
 }

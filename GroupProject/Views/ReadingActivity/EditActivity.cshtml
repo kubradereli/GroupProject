@@ -1,0 +1,70 @@
+﻿@model EntityLayer.Concrete.ReadingActivity
+@{
+    ViewData["Title"] = "EditActivity";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h5 class="m-0 font-weight-bold text-primary">KİTAP BİLGİLERİ GÜNCELLE - OKUDUĞUM KİTAPLAR</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("EditActivity", "ReadingActivity", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.BookID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.ActivityID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.Book.BookID, new { @class = "form-control" })
+            <br />
+
+            <div class="row pt-3">
+                <div class="col-lg-12">
+                    @Html.Label("Etkinlik Adı")
+                    @Html.TextBoxFor(x => x.ActivityTitle, new { @class = "form-control", required = "required" })
+                </div>
+
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-6">
+                    @Html.Label("Kitap Adı")
+                    @Html.TextBoxFor(x => x.Book.BookName, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-lg-6">
+                    @Html.Label("Kitap Yazarı")
+                    @Html.TextBoxFor(x => x.Book.BookAuthor, new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-6">
+                    @Html.Label("Kategori")
+                    @Html.DropDownListFor(x => x.Book.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6">
+                    @Html.Label("Kitap Sayfa Sayısı")
+                    @Html.TextBoxFor(x => x.Book.BookPageCount, new { @class = "form-control", type = "number", required = "required" })
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-6">
+                    @Html.Label("Aktivite Başlangıç Tarihi")
+                    @Html.EditorFor(x => x.ActivityStartDate, new { htmlAttributes = new { @class = "form-control datepicker w-100", required = "required" } })
+                </div>
+                <div class="col-lg-6">
+                    @Html.Label("Aktivite Bitiş Tarihi")
+                    @Html.EditorFor(x => x.ActivityFinishDate, new { htmlAttributes = new { @class = "form-control datepicker w-100", required = "required" } })
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-12">
+                    @Html.Label("Etkinlik Açıklaması")
+                    @Html.TextAreaFor(x => x.ActivityContent, new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+            <div class="pt-3">
+                <button class="btn btn-success pr-4 pl-4 pt-2 pb-2" style="float:right; font-size: 20px"> <i class="fas fa-edit pr-3"></i>GÜNCELLE</button>
+            </div>
+        }
+    </div>
+</div>
+

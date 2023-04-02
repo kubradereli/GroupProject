@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IReadingActivityService : IGenericService<ReadingActivity>
     {
+        List<ReadingActivity> GetReadingActivitiesListWithBook();
     }
 }

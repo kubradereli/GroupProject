@@ -38,7 +38,7 @@ namespace GroupProject.Controllers
                 await HttpContext.SignInAsync(principal);
                 if (datavalue.UserRole == EntityLayer.Enums.Roles.Admin)
                 {
-                    return RedirectToAction("Index", "Contact");
+                    return RedirectToAction("ReadingActivityList", "ReadingActivity");
                 }
                 else
                 {
