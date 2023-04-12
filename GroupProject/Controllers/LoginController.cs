@@ -23,7 +23,7 @@ namespace GroupProject.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async  Task<IActionResult> Index(User p)
+        public async  Task<IActionResult> Index(User p,bool rememberMe = false)
         {
             Context c = new Context();
             var datavalue = c.Users.FirstOrDefault(x => x.UserMail == p.UserMail && x.UserPassword == p.UserPassword);
@@ -35,7 +35,12 @@ namespace GroupProject.Controllers
                 };
                 var useridentity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
-                await HttpContext.SignInAsync(principal);
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = rememberMe // Set the persistent flag based on the "rememberMe" parameter
+                };
+
+                await HttpContext.SignInAsync(principal, authProperties);
                 if (datavalue.UserRole == EntityLayer.Enums.Roles.Admin)
                 {
                     return RedirectToAction("ReadingActivityList", "ReadingActivity");
@@ -48,7 +53,7 @@ namespace GroupProject.Controllers
             }
             else
             {
-                ViewBag.mesaj = "Geçersiz Kullanıcı.Lütfen bilgileri doğru giriniz.";
+                ViewBag.mesaj = "Hatalı E-mail veya şifre.Lütfen tekrar deneyiniz.";
             
                 return View();
             }

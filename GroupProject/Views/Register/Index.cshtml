@@ -85,8 +85,8 @@
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label for="validationCustom04">Şehir</label>
-                                        @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control form-control-md", required = "required" })
-                                        @Html.ValidationMessageFor(x => x.UserCity, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(x => x.UserCity, ViewBag.Cities as List<SelectListItem>, "Seçiniz", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.UserCity, "", new { @class = "text-danger" })
                                        
                                     </div>
                                     <div class="form-outline mb-4">

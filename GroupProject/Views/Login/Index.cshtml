@@ -12,6 +12,10 @@
         background-color: #aed6f1 !important;
         background-image: linear-gradient(180deg, #aed6f1 10%, #aed6f1 100%) !important;
     }
+
+    .alert {
+        border-radius: 0.25rem;
+    }
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,11 +72,19 @@
                                             <input type="password" name="UserPassword" class="form-control form-control-user"
                                                    id="exampleInputPassword" placeholder="Şifre" style="font-size: 1.2rem">
                                         </div>
-                                        <span style="font-weight: Bold; color: red">@ViewBag.mesaj</span>
-                                        <br />
+                                        @if (!String.IsNullOrEmpty(ViewBag.mesaj))
+                                        {
+                                            <div class="alert alert-danger alert-dismissible fade show my-custom-alert" role="alert">
+                                                @ViewBag.mesaj
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        }
+                                       
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <input type="checkbox" class="custom-control-input" name="rememberMe" id="customCheck">
                                                 <label class="custom-control-label" style="font-size: 1rem" for="customCheck">
                                                     Beni Hatırla
                                                 </label>

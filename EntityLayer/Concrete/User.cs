@@ -35,6 +35,8 @@ namespace EntityLayer.Concrete
 
         public List<UserReadingActivity> UserReadingActivities { get; set; }
 
+        public virtual bool RememberMe { get; set; }
+
         public Roles UserRole { get; set; } = Roles.User;
     }
 }
