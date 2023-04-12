@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +11,13 @@ namespace GroupProject.Controllers
 {
     public class ContactController : Controller
     {
-        public IActionResult Index()
+        ContactManager contactManager = new ContactManager(new EfContactRepository());
+      
+        public IActionResult IncomingMessages()
         {
-            return View();
+            Context c = new Context();
+            var model = contactManager.TGetList();
+            return View(model);
         }
     }
 }

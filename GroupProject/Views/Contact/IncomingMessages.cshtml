@@ -1,0 +1,92 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Contact>
+@{
+    ViewData["Title"] = "IncomingMessages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .btn-a {
+        border: 2px solid #E3E6F0;
+        background-color: transparent;
+        color: #E3E6F0;
+        color: #000;
+    }
+    .btn-a:hover {
+        background-color: #E3E6F0;
+        color: #000;
+    }
+</style>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="row">
+            <div class="col-sm-6">
+                <h6 class="m-0 font-weight-bold text-primary mt-2">KULLANICIDAN GELEN MESAJLAR</h6>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="dropdown show mb-2 col-lg-2">
+                <a class="btn btn-a form-control dropdown-toggle" href="#" role="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sırala
+                </a>
+                <div class="dropdown-menu" aria-labelledby="sortDropdown">
+                    <a class="dropdown-item" href="?sort=BookNameASC">Kitap Adı (A-Z)</a>
+                    <a class="dropdown-item" href="?sort=BookNameDESC">Kitap Adı (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=BookAuthorASC">Yazar (A-Z)</a>
+                    <a class="dropdown-item" href="?sort=BookAuthorDESC">Yazar (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=BookPageCountASC">Sayfa Sayısı (Azdan Çoğa)</a>
+                    <a class="dropdown-item" href="?sort=BookPageCountDESC">Sayfa Sayısı (Çoktan Aza)</a>
+                    <a class="dropdown-item" href="?sort=ReadingDateASC">Okuma Başlangıç Tarihi (Yeni-Eski)</a>
+                    <a class="dropdown-item" href="?sort=ReadingDateDESC">Okuma Başlangıç Tarihi (Eski-Yeni)</a>
+                    <a class="dropdown-item" href="?sort=CompletionDateASC">Okuma Bitiş Tarihi (Yeni-Eski)</a>
+                    <a class="dropdown-item" href="?sort=CompletionDateDESC">Okuma Bitiş Tarihi (Eski-Yeni)</a>
+                </div>
+            </div>
+            <div class="form-group  col-lg-2">
+                <input type="text" id="searchInput" class="form-control" placeholder="Ara...">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Kullanıcı Adı Soyadı</th>
+                        <th>Mail</th>
+                        <th>Tarih</th>
+                        <th>Konu</th>
+                        <th>Mesaj</th>
+                        <th>Okunma Durumu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ContactName @item.ContactSurname</td>
+                            <td>@item.ContactMail</td>
+                            <td>@item.ContactDate.ToString("dd MMMM yyyy")</td>
+                            <td>@item.ContactSubject</td>
+                            <td>@item.ContactMessage</td>
+                            <td>@item.ContactStatus</td>
+                            @*<td>@Html.ActionLink("Güncelle", "EditBook", new { id = item.ReadBookID })</td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts{ 
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("table tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+}
+

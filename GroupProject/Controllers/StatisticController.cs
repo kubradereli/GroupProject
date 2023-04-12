@@ -23,11 +23,12 @@ namespace GroupProject.Controllers
         [HttpGet]
         public Object OkunanKitapSayfalari(DataSourceLoadOptionsBase loadOptions)
         {
-            string sql = $@"SELECT B.BookName,b.BookPageCount FROM ReadBooks RB
-                LEFT OUTER JOIN Books B ON RB.BookID=B.BookID
-                WHERE BookReadStatus=1 AND UserID=1";
-            var values = _database.ReadBook_Page.FromSqlRaw(sql).ToList();
-            return DataSourceLoader.Load(values, loadOptions);
+            return "";
+           // string sql = $@"SELECT B.BookName,b.BookPageCount FROM ReadBooks RB
+           //     LEFT OUTER JOIN Books B ON RB.BookID=B.BookID
+           //     WHERE BookReadStatus=1 AND UserID=1";
+           //// var values = _database.ReadBook_Page.FromSqlRaw(sql).ToList();
+           // return DataSourceLoader.Load(values, loadOptions);
         }
     }
 }
