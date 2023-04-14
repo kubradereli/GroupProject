@@ -11,10 +11,11 @@
         color: #E3E6F0;
         color: #000;
     }
-    .btn-a:hover {
-        background-color: #E3E6F0;
-        color: #000;
-    }
+
+        .btn-a:hover {
+            background-color: #E3E6F0;
+            color: #000;
+        }
 </style>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -31,16 +32,22 @@
                     Sırala
                 </a>
                 <div class="dropdown-menu" aria-labelledby="sortDropdown">
-                    <a class="dropdown-item" href="?sort=BookNameASC">Kitap Adı (A-Z)</a>
-                    <a class="dropdown-item" href="?sort=BookNameDESC">Kitap Adı (Z-A)</a>
-                    <a class="dropdown-item" href="?sort=BookAuthorASC">Yazar (A-Z)</a>
-                    <a class="dropdown-item" href="?sort=BookAuthorDESC">Yazar (Z-A)</a>
-                    <a class="dropdown-item" href="?sort=BookPageCountASC">Sayfa Sayısı (Azdan Çoğa)</a>
-                    <a class="dropdown-item" href="?sort=BookPageCountDESC">Sayfa Sayısı (Çoktan Aza)</a>
-                    <a class="dropdown-item" href="?sort=ReadingDateASC">Okuma Başlangıç Tarihi (Yeni-Eski)</a>
-                    <a class="dropdown-item" href="?sort=ReadingDateDESC">Okuma Başlangıç Tarihi (Eski-Yeni)</a>
-                    <a class="dropdown-item" href="?sort=CompletionDateASC">Okuma Bitiş Tarihi (Yeni-Eski)</a>
-                    <a class="dropdown-item" href="?sort=CompletionDateDESC">Okuma Bitiş Tarihi (Eski-Yeni)</a>
+                    <a class="dropdown-item" href="?sort=UserNameSurnameASC">Kullanıcı Adı Soyadı (A-Z)</a>
+                    <a class="dropdown-item" href="?sort=UserNameSurnameDESC">Kullanıcı Adı Soyadı (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=SubjectASC">Konu (A-Z)</a>
+                    <a class="dropdown-item" href="?sort=SubjectDESC">Konu (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=DateASC">Etkinlik Başlangıç Tarihi (Yeni-Eski)</a>
+                    <a class="dropdown-item" href="?sort=DateDESC">Etkinlik Başlangıç Tarihi (Eski-Yeni)</a>
+                </div>
+            </div>
+            <div class="dropdown show mb-2 col-lg-2">
+                <a class="btn btn-a form-control dropdown-toggle" href="#" role="button" id="sort2Dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filtrele
+                </a>
+                <div class="dropdown-menu" aria-labelledby="sort2Dropdown">
+                    <a class="dropdown-item" href="?sort2=StatusActive">Okunmuş Mesajlar</a>
+                    <a class="dropdown-item" href="?sort2=StatusPassive">Okunmamış Mesajlar</a>
+                    <a class="dropdown-item" href="?sort2=StatusAll">Tüm Mesajlar</a>
                 </div>
             </div>
             <div class="form-group  col-lg-2">
@@ -68,8 +75,23 @@
                             <td>@item.ContactDate.ToString("dd MMMM yyyy")</td>
                             <td>@item.ContactSubject</td>
                             <td>@item.ContactMessage</td>
-                            <td>@item.ContactStatus</td>
-                            @*<td>@Html.ActionLink("Güncelle", "EditBook", new { id = item.ReadBookID })</td>*@
+                            @if (@item.ContactStatus == true)
+                            {
+                                <td>
+                                    <a href="/Contact/ChangeContactStatus/@item.ContactID" class="btn btn-success btn-circle">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a href="/Contact/ChangeContactStatus/@item.ContactID" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-question"></i>
+                                    </a>
+                                </td>
+
+                            }
                         </tr>
                     }
                 </tbody>
@@ -77,16 +99,15 @@
         </div>
     </div>
 </div>
-@section scripts{ 
-<script>
-    $(document).ready(function () {
-        $("#searchInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("table tbody tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#searchInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("table tbody tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
             });
         });
-    });
-</script>
+    </script>
 }
-

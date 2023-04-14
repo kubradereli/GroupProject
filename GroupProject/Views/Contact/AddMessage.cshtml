@@ -1,7 +1,6 @@
-﻿@model EntityLayer.Concrete.User
-
+﻿@model EntityLayer.Concrete.Contact
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "AddMessage";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
@@ -49,21 +48,18 @@
             <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-5">
                 <div class="row">
                     <div class="col-lg-6">
-
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Adınız" value="@Model.UserName" required disabled>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Adınız" value="@ViewData["Ad"]" required disabled>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="surname" placeholder="Soyadınız" value="@Model.UserSurname" required disabled>
+                                <input type="text" name="name" class="form-control" id="surname" placeholder="Soyadınız" value="@ViewData["Soyad"]" required disabled>
                             </div>
                         </div>
 
                         <div class="form-group col-12">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="@Model.UserMail" required disabled>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="@ViewData["Mail"]" required disabled>
                         </div>
-
-
                         <div class="col-md-12 form-group">
                             <input type="text" name="name" class="form-control" id="topic" placeholder="Konu" required>
                         </div>
