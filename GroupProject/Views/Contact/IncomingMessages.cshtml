@@ -11,11 +11,10 @@
         color: #E3E6F0;
         color: #000;
     }
-
-        .btn-a:hover {
-            background-color: #E3E6F0;
-            color: #000;
-        }
+    .btn-a:hover {
+        background-color: #E3E6F0;
+        color: #000;
+    }
 </style>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -70,8 +69,8 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.ContactName @item.ContactSurname</td>
-                            <td>@item.ContactMail</td>
+                            <td>@item.User.UserName @item.User.UserSurname</td>
+                            <td>@item.User.UserMail</td>
                             <td>@item.ContactDate.ToString("dd MMMM yyyy")</td>
                             <td>@item.ContactSubject</td>
                             <td>@item.ContactMessage</td>
@@ -90,7 +89,6 @@
                                         <i class="fas fa-question"></i>
                                     </a>
                                 </td>
-
                             }
                         </tr>
                     }

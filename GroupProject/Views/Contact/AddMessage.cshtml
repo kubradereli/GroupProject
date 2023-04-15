@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-</section><!-- End Hero -->
+</section>
 
 <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">
@@ -45,39 +45,41 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.911439413432!2d30.329982815342294!3d40.74197417932875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ccadf2977958d7%3A0xc7996fa884f94c03!2sSakarya%20%C3%9Cniversitesi!5e0!3m2!1str!2str!4v1670759921962!5m2!1str!2str" width="850" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-5">
+            <h2 class="mb-3" style="text-align:center; color:#2487CE">Kiitaphane'ye Mesaj Gönder</h2>
+            <hr />
+
+            @using (Html.BeginForm("AddMessage", "Contact", FormMethod.Post))
+            {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-6 form-group mb-3">
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Adınız" value="@ViewData["Ad"]" required disabled>
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-6 form-group mb-3">
                                 <input type="text" name="name" class="form-control" id="surname" placeholder="Soyadınız" value="@ViewData["Soyad"]" required disabled>
                             </div>
                         </div>
 
-                        <div class="form-group col-12">
+                        <div class="form-group col-12 mb-3">
                             <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="@ViewData["Mail"]" required disabled>
                         </div>
-                        <div class="col-md-12 form-group">
-                            <input type="text" name="name" class="form-control" id="topic" placeholder="Konu" required>
-                        </div>
 
-                        <div class="my-3 col-12">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Mesajınız gönderildi. Teşekkürler!</div>
+                        <div class="col-lg-12 mb-3">
+                            @Html.TextBoxFor(x => x.ContactSubject, new { @class = "form-control", required = "required", placeholder = "Konu" })
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group col-12">
-                            <textarea class="form-control" name="message" rows="6" placeholder="Mesaj" required></textarea>
+                        <div class="col-lg-12 mb-3">
+                            @Html.TextAreaFor(x => x.ContactMessage, new { @class = "form-control", required = "required", placeholder = "Mesajınız ...", rows = "5" })
                         </div>
-                        <div class="text-center col-12"><button type="submit">Mesajı Gönder</button></div>
+
+                        <div class="text-center">
+                            <button class="btn btn-success pr-4 pl-4 pt-2 pb-2" > <i class="fas fa-plus pr-3"></i>Mesajı Gönder</button>
+                        </div>
                     </div>
                 </div>
-            </form>
+            }
         </div>
     </div>
-</section><!-- End Contact Section -->
+</section>

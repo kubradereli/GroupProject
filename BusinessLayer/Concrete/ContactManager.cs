@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _contactDal = contactDal;
         }
 
+        public List<Contact> GetContactListWithUser()
+        {
+            return _contactDal.GetListWithUser();
+        }
+
         public void TAdd(Contact t)
         {
             _contactDal.Insert(t);
@@ -42,5 +47,6 @@ namespace BusinessLayer.Concrete
         {
             _contactDal.Update(t);
         }
+
     }
 }

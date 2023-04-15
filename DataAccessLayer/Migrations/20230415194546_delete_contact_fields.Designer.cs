@@ -4,14 +4,16 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230415194546_delete_contact_fields")]
+    partial class delete_contact_fields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,12 +155,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("ContactSubject")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.HasKey("ContactID");
-
-                    b.HasIndex("UserID");
 
                     b.ToTable("Contacts");
                 });
@@ -344,17 +341,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Book");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Contact", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.User", "User")
-                        .WithMany("Contacts")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.ReadBook", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Book", "Book")
@@ -431,8 +417,6 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.User", b =>
                 {
-                    b.Navigation("Contacts");
-
                     b.Navigation("ReadBooks");
 
                     b.Navigation("UserReadingActivities");

@@ -27,16 +27,16 @@ namespace GroupProject.Controllers
         // Admin panelinde kullanıcıdan gelen mesajların listelenmesi
         public IActionResult IncomingMessages(string sort,string sort2)
         {
-            var model = contactManager.TGetList();
+            var model = contactManager.GetContactListWithUser();
 
             switch (sort)
             {
-                case "UserNameSurnameASC":
-                    model = model.OrderBy(r => r.ContactName).ToList();
-                    break;
-                case "UserNameSurnameDESC":
-                    model = model.OrderByDescending(r => r.ContactName).ToList();
-                    break;
+                //case "UserNameSurnameASC":
+                //    model = model.OrderBy(r => r.ContactName).ToList();
+                //    break;
+                //case "UserNameSurnameDESC":
+                //    model = model.OrderByDescending(r => r.ContactName).ToList();
+                    //break;
                 case "SubjectASC":
                     model = model.OrderBy(r => r.ContactSubject).ToList();
                     break;
@@ -107,15 +107,13 @@ namespace GroupProject.Controllers
             var user = c.Users.Where(x => x.UserMail == userMail).FirstOrDefault();
 
             Contact contact = new Contact();
-            contact.ContactName = user.UserName;
-            contact.ContactSurname = user.UserSurname;
-            contact.ContactMail = user.UserMail;
+            contact.UserID = user.UserID;
             contact.ContactSubject = p.ContactSubject;
             contact.ContactMessage = p.ContactMessage;
             contact.ContactDate = DateTime.Now;
             contact.ContactStatus = false;
             contactManager.TUpdate(contact);
-            return RedirectToAction("Index", "Contact");
+            return RedirectToAction("Index", "About");
         }
     }
 }

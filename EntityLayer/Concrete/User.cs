@@ -38,5 +38,7 @@ namespace EntityLayer.Concrete
         public virtual bool RememberMe { get; set; }
 
         public Roles UserRole { get; set; } = Roles.User;
+
+        public List<Contact> Contacts { get; set; }
     }
 }

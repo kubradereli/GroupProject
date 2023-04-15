@@ -12,12 +12,6 @@ namespace EntityLayer.Concrete
         [Key]
         public int ContactID { get; set; }
 
-        public string ContactName { get; set; }
-
-        public string ContactSurname { get; set; }
-
-        public string ContactMail { get; set; }
-
         public string ContactSubject { get; set; }
 
         public string ContactMessage { get; set; }
@@ -25,5 +19,9 @@ namespace EntityLayer.Concrete
         public DateTime ContactDate { get; set; }
 
         public bool ContactStatus { get; set; }
+
+        public int UserID { get; set; }
+
+        public User User { get; set; }
     }
 }
