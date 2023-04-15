@@ -49,5 +49,9 @@ namespace BusinessLayer.Concrete
             return _readingActivityDal.GetListWithBook();
         }
 
+        public ReadingActivity GetReadinActivityByIdWithBook(int id)
+        {
+            return _readingActivityDal.GetByIdWithBook(id);
+        }
     }
 }

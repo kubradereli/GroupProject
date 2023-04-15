@@ -20,5 +20,13 @@ namespace DataAccessLayer.EntityFramework
                 return c.ReadingActivities.Include(x => x.Book.Category).ToList();
             }
         }
+
+        public ReadingActivity GetByIdWithBook(int id)
+        {
+            using (var c = new Context())
+            {
+                return c.ReadingActivities.Include(x => x.Book.Category).Where(s=>s.ActivityID==id).FirstOrDefault();
+            }
+        }
     }
 }

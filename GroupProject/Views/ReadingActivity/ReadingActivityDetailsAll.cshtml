@@ -1,0 +1,133 @@
+﻿@model EntityLayer.Concrete.ReadingActivity
+@{
+    ViewData["Title"] = "ReadingActivityDetailsAll";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<section id="about-video" class="about-video">
+    <div class="container" data-aos="fade-up">
+
+        <div class="row mt-5">
+
+            <div class="col-lg-6 video-box align-self-baseline p-3" data-aos="fade-right" data-aos-delay="100">
+                <img src="@Model.ActivityImage" class="img-fluid" alt="">
+                @*<a href="/Book/BookDetailsAll/@item.BookID" class=" "></a>*@
+            </div>
+
+            <div class="col-lg-6 pt-3 pt-lg-0 content mt-2 p-4" data-aos="fade-left" data-aos-delay="100">
+                <h3>@Model.ActivityTitle</h3>
+
+                <p class="mt-2">@Model.ActivityContent</p>
+
+                <div class="row mt-3 p-3">
+                    <table class="table border">
+                        <tr>
+                            <th>
+                                <h5 style="color: #2487CE">Kitap Bilgileri</h5>
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bx bx-check-double" style="color: #2487CE"></i>
+                                Kitap Adı :
+                            </td>
+                            <td>@Model.Book.BookName</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bx bx-check-double" style="color: #2487CE"></i>
+                                Kategori :
+                            </td>
+                            <td>@Model.Book.Category.CategoryName</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bx bx-check-double" style="color: #2487CE"></i>
+                                Yazar :
+                            </td>
+                            <td>@Model.Book.BookAuthor</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bx bx-check-double" style="color: #2487CE"></i>
+                                Yayınevi :
+                            </td>
+                            <td>@Model.Book.BookPublishingHouse</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bx bx-check-double" style="color: #2487CE"></i>
+                                Sayfa Sayısı :
+                            </td>
+                            <td>@Model.Book.BookPageCount Sayfa</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bx bx-check-double" style="color: #2487CE"></i>
+                                Etkinlik Başlama Tarihi: :
+                            </td>
+                            <td>@Model.ActivityStartDate.ToString("dd MMMM yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bx bx-check-double" style="color: #2487CE"></i>
+                                Etkinlik Başlama Tarihi: :
+                            </td>
+                            <td>@Model.ActivityFinishDate.ToString("dd MMMM yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bx bx-check-double" style="color: #2487CE"></i>
+                                Etkinlik Süresi :
+                            </td>
+                            <td>@((Model.ActivityFinishDate-Model.ActivityStartDate).Days) Gün</td>
+                        </tr>
+                    </table>
+                    <div class="col-12">
+                        <a class="btn btn-success" style="float:right" href="#">
+                            <i class="bx bx-book-add"></i>
+                            ETKİNLİĞE KATIL
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <section id="faq" class="faq section-bg">
+                <div class="container" data-aos="fade-up">
+
+                    <div class="section-title">
+                        <h2>ETKİNLİK HAKKINDA</h2>
+                    </div>
+
+                    <div class="faq-list">
+                        <ul>
+                            <li data-aos="fade-up" data-aos-delay="100">
+                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapse">Etkinliğin Kaçıncı Günündeyiz?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
+                                    <div class="row m-4 mb-1">
+                                        <div class="col-sm-6">Geçen Gün: 5</div>
+                                        <div class="col-sm-6" style="text-align:right">Kalan Gün: 24</div>
+                                    </div>
+                                    <div class="progress m-4 mt-1">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li data-aos="fade-up">
+                                <i class="bx bx-user-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-1" class="collapsed">Etkinlik Katılımcıları <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <div id="faq-list-1" class="collapse" data-bs-parent=".faq-list">
+                                    @*Bu kısmı table ile yapabiliriz.*@
+                                    <p>Kübra Dereli - 120.Sayfa</p>
+                                    <p>Aleyna Barut - 245.Sayfa</p>
+                                    <p>Selin Göl - 290.Sayfa</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>

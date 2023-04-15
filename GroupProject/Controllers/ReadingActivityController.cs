@@ -19,7 +19,8 @@ namespace GroupProject.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var values = readingActivityManager.GetReadingActivitiesListWithBook().OrderByDescending(s=>s.ActivityCreateDate).ToList();
+            return View(values);
         }
         public IActionResult ReadingActivityList(string sort)
         {
@@ -131,5 +132,10 @@ namespace GroupProject.Controllers
             return RedirectToAction("ReadingActivityList");
         }
 
+        public IActionResult ReadingActivityDetailsAll(int id)
+        {
+            var values = readingActivityManager.GetReadinActivityByIdWithBook(id);
+            return View(values);
+        }
     }
 }

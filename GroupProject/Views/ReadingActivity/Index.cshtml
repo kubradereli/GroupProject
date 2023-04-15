@@ -1,15 +1,54 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<ReadingActivity>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
-<br />
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<h1>Index</h1>
 
+<section id="team" class="team section-bg">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title mt-5">
+            <h2>KİTAP ETKİNLİKLERİ</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-6 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="member">
+                                <div class="member-img">
+                                    <img src="@item.ActivityImage" class="img-fluid" alt="">
+                                    <div class="social">
+                                        <a href="/ReadingActivity/ReadingActivityDetailsAll/@item.ActivityID/"><i class="bi bi-info-circle-fill"></i>Kitap etkinliği detayına git</a> @*detay url değişecek*@
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>@item.ActivityTitle</h4>
+                                    <hr />
+                                    <h5><i class="bi bi-book"></i> @item.Book.BookName (@item.Book.Category.CategoryName)</h5>
+                                    <h6>@item.ActivityStartDate.ToString("dd MMMM yyyy") / @item.ActivityFinishDate.ToString("dd MMMM yyyy")</h6>
+                                    <span>Sayfa Sayısı: @item.Book.BookPageCount</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="member">
+                    <div class="card-header">
+                        <h4>Kategoriler</h4>
+                        <hr />
+                    </div>
+                    <div class="card-body">
+                        <p>1</p>
+                        <p>2</p>
+                        <p>3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
