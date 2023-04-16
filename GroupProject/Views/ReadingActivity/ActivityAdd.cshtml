@@ -10,24 +10,27 @@
     <div class="card-body">
         @using (Html.BeginForm("ActivityAdd", "ReadingActivity", FormMethod.Post))
         {
-            <div class="row pt-3">
-                <div class="col-lg-12">
-                    @Html.Label("Etkinlik Adı")
-                    @Html.TextBoxFor(x => x.ActivityTitle, new { @class = "form-control", required = "required" })
-                </div>
-                
-              
+        <div class="row pt-3">
+            <div class="col-lg-6">
+                @Html.Label("Etkinlik Adı")
+                @Html.TextBoxFor(x => x.ActivityTitle, new { @class = "form-control", required = "required" })
             </div>
-            <div class="row pt-3">
-                <div class="col-lg-6">
-                    @Html.Label("Kitap Adı")
-                    @Html.TextBoxFor(x => x.Book.BookName, new { @class = "form-control", required = "required" })
-                </div>
-                <div class="col-lg-6">
-                    @Html.Label("Kitap Yazarı")
-                    @Html.TextBoxFor(x => x.Book.BookAuthor, new { @class = "form-control", required = "required" })
-                </div>
+            <div class="col-lg-6">
+                @Html.Label("Kitap Adı")
+                @Html.TextBoxFor(x => x.Book.BookName, new { @class = "form-control", required = "required" })
             </div>
+
+        </div>
+        <div class="row pt-3">
+            <div class="col-lg-6">
+                @Html.Label("Kitap Yazarı")
+                @Html.TextBoxFor(x => x.Book.BookAuthor, new { @class = "form-control", required = "required" })
+            </div>
+            <div class="col-lg-6">
+                @Html.Label("Kitap Yayınevi")
+                @Html.TextBoxFor(x => x.Book.BookPublishingHouse, new { @class = "form-control", required = "required" })
+            </div>
+        </div>
             <div class="row pt-3">
                 <div class="col-lg-6">
                     @Html.Label("Kategori")

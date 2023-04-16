@@ -67,6 +67,7 @@
                         <th>Kitap Adı</th>
                         <th>Yazar</th>
                         <th>Sayfa Sayısı</th>
+                        <th>Kitap Yayınevi</th>
                         <th>Kategori</th>
                         <th>Aktif/Pasif</th>
                         <th>Güncelle</th>
@@ -84,6 +85,7 @@
                         <td>@item.Book.BookName</td>
                         <td>@item.Book.BookAuthor</td>
                         <td>@item.Book.BookPageCount</td>
+                        <td>@item.Book.BookPublishingHouse</td>
                         <td>@item.Book.Category.CategoryName</td>
                         @if (@item.ActivityStatus == true)
                         {
