@@ -1,0 +1,106 @@
+﻿@model EntityLayer.Concrete.About
+@{
+    ViewData["Title"] = "EditAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .col-lg-6 label, .col-lg-4 label, .col-lg-8 {
+        color: black;
+        font-weight: bold;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #2370FB;
+        margin: 10px 0;
+    }
+</style>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h5 class="m-0 font-weight-bold text-primary">HAKKIMDA BİLGİLERİ GÜNCELLE </h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("EditAbout", "About", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.AboutID, new { @class = "form-control" })
+            <br />
+
+            <div class="row pt-3">
+                <div class="col-lg-4">
+                    @Html.Label("Ana Başlık")
+                    @Html.TextBoxFor(x => x.MainTitle, new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-4">
+                    @Html.Label("Kart-1 Başlık")
+                    @Html.TextBoxFor(x => x.CardTitle1, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-lg-8">
+                    @Html.Label("Kart-1 Açıklama")
+                    @Html.TextBoxFor(x => x.CardDescription1, new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-4">
+                    @Html.Label("Kart-2 Başlık")
+                    @Html.TextBoxFor(x => x.CardTitle2, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-lg-8">
+                    @Html.Label("Kart-2 Açıklama")
+                    @Html.TextBoxFor(x => x.CardDescription2, new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-4">
+                    @Html.Label("Kart-3 Başlık")
+                    @Html.TextBoxFor(x => x.CardTitle3, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-lg-8">
+                    @Html.Label("Kart-3 Açıklama")
+                    @Html.TextBoxFor(x => x.CardDescription3, new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-4">
+                    @Html.Label("Kart-4 Başlık")
+                    @Html.TextBoxFor(x => x.CardTitle4, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-lg-8">
+                    @Html.Label("Kart-4 Açıklama")
+                    @Html.TextBoxFor(x => x.CardDescription4, new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+            <hr class="mt-5" />
+            <div class="row pt-3">
+                <div class="col-lg-4">
+                    @Html.Label("Resim-1")
+                    @Html.TextBoxFor(x => x.AboutSmallImage1, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-lg-8">
+                    @Html.Label("Açıklama-1")
+                    @Html.TextAreaFor(x => x.AboutDetails1, new { @class = "form-control", required = "required", rows = "5" })
+                </div>
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-4">
+                    @Html.Label("Resim-2")
+                    @Html.TextBoxFor(x => x.AboutSmallImage2, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-lg-8">
+                    @Html.Label("Açıklama-2")
+                    @Html.TextAreaFor(x => x.AboutDetails2, new { @class = "form-control", required = "required", rows = "5" })
+                </div>
+            </div>
+
+
+            <div class="pt-3">
+                <button class="btn btn-success pr-4 pl-4 pt-2 pb-2" style="float:right; font-size: 20px"> <i class="fas fa-edit pr-3"></i>GÜNCELLE</button>
+            </div>
+        }
+    </div>
+</div>
+
+

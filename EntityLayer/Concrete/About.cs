@@ -16,6 +16,15 @@ namespace EntityLayer.Concrete
         public string AboutBackgroundImage { get; set; }
         public string AboutSmallImage1 { get; set; }
         public string AboutSmallImage2 { get; set; }
-        public bool AboutStatus { get; set; }
+        public bool AboutStatus { get; set; }        
+        public string CardTitle1 { get; set; }
+        public string CardTitle2 { get; set; }
+        public string CardTitle3 { get; set; }
+        public string CardTitle4 { get; set; }
+        public string CardDescription1 { get; set; }
+        public string CardDescription2 { get; set; }
+        public string CardDescription3 { get; set; }
+        public string CardDescription4 { get; set; }
+        public string MainTitle { get; set; }
     }
 }

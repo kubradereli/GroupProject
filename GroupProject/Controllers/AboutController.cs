@@ -17,11 +17,11 @@ namespace GroupProject.Controllers
         // Hakkımda sayfasındaki bilgiler
         public IActionResult Index()
         {
-            var values = aboutManager.TGetList();
+            var values = aboutManager.TGetList().FirstOrDefault();
             return View(values);
         }
 
-        // Admin panelinde hakkımızda güncelleme sayfası --View daha oluşturulmadı. !!!!!!!!
+        // Admin panelinde hakkımızda güncelleme sayfası
         [HttpGet]
         public IActionResult EditAbout()
         {
