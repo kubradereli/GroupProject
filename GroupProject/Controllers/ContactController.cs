@@ -3,6 +3,7 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,12 +32,12 @@ namespace GroupProject.Controllers
 
             switch (sort)
             {
-                //case "UserNameSurnameASC":
-                //    model = model.OrderBy(r => r.ContactName).ToList();
-                //    break;
-                //case "UserNameSurnameDESC":
-                //    model = model.OrderByDescending(r => r.ContactName).ToList();
-                    //break;
+                case "UserNameSurnameASC":
+                    model = model.OrderBy(r => r.User.UserName).ToList();
+                    break;
+                case "UserNameSurnameDESC":
+                    model = model.OrderByDescending(r => r.User.UserName).ToList();
+                    break;
                 case "SubjectASC":
                     model = model.OrderBy(r => r.ContactSubject).ToList();
                     break;
@@ -97,6 +98,17 @@ namespace GroupProject.Controllers
             ViewData["Ad"] = model.UserName;
             ViewData["Soyad"] = model.UserSurname;
             ViewData["Mail"] = model.UserMail;
+
+            List<SelectListItem> subjects = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Öneri", Value = "Öneri" },
+                new SelectListItem { Text = "İstek", Value = "İstek" },
+                new SelectListItem { Text = "Kitap Etkinliği Önerisi", Value = "Kitap Etkinliği Önerisi" },
+                new SelectListItem { Text = "Şikayet", Value = "Şikayet" },
+                new SelectListItem { Text = "Diğer", Value = "Diğer" },
+            };
+            ViewBag.Subjects = subjects;
+
             return View();
         }
         [HttpPost]
