@@ -13,6 +13,8 @@ namespace EntityLayer.Concrete
         public int AdminID { get; set; }
         public string AdminMail { get; set; }
         public string AdminPassword { get; set; }
+        public string AdminUserName { get; set; }
+        public string AdminImage { get; set; }
         public List<ReadingActivity> ReadingActivities { get; set; }
     }
 }

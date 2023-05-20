@@ -65,10 +65,7 @@
                     </li>
 
                     <li>
-                        <a class="getstarted scrollto" href="/User/Index/">
-                            Kullanıcı Paneli
-                            <div class="icon"><i class="ri-user-3-fill"></i></div>
-                        </a>
+                        @await Component.InvokeAsync("PanelButton")
                     </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>

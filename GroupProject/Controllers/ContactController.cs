@@ -15,7 +15,7 @@ namespace GroupProject.Controllers
     {
         ContactManager contactManager = new ContactManager(new EfContactRepository());
         UserManager userManager = new UserManager(new EfUserRepository());
-      
+
         public IActionResult Index()
         {
             Context c = new Context();
@@ -26,7 +26,7 @@ namespace GroupProject.Controllers
         }
 
         // Admin panelinde kullanıcıdan gelen mesajların listelenmesi
-        public IActionResult IncomingMessages(string sort,string sort2)
+        public IActionResult IncomingMessages(string sort, string sort2)
         {
             var model = contactManager.GetContactListWithUser();
 
@@ -58,7 +58,7 @@ namespace GroupProject.Controllers
             switch (sort2)
             {
                 case "StatusActive":
-                    model = model.Where(s=>s.ContactStatus == true).ToList();
+                    model = model.Where(s => s.ContactStatus == true).ToList();
                     break;
                 case "StatusPassive":
                     model = model.Where(s => s.ContactStatus == false).ToList();
@@ -92,12 +92,24 @@ namespace GroupProject.Controllers
         public IActionResult AddMessage()
         {
             Context c = new Context();
-            var userMail = User.Identity.Name;
-            var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
-            var model = userManager.TGetById(userID);
-            ViewData["Ad"] = model.UserName;
-            ViewData["Soyad"] = model.UserSurname;
-            ViewData["Mail"] = model.UserMail;
+            var mail = User.Identity.Name;
+            var userID = c.Users.Where(x => x.UserMail == mail).Select(y => y.UserID).FirstOrDefault();
+            var adminID = c.Admins.Where(x => x.AdminMail == mail).Select(y => y.AdminID).FirstOrDefault();
+            if (userID != null && userID != 0)
+            {
+                var model = userManager.TGetById(userID);
+                ViewData["Ad"] = model.UserName;
+                ViewData["Soyad"] = model.UserSurname;
+                ViewData["Mail"] = model.UserMail;
+            }
+            else if (adminID != null)
+            {
+                var model = c.Admins.Where(x => x.AdminID == adminID).FirstOrDefault();
+                ViewData["Ad"] = model.AdminUserName;
+                ViewData["Soyad"] = "";
+                ViewData["Mail"] = model.AdminMail;
+            }
+
 
             List<SelectListItem> subjects = new List<SelectListItem>()
             {
@@ -115,11 +127,20 @@ namespace GroupProject.Controllers
         public IActionResult AddMessage(Contact p)
         {
             Context c = new Context();
-            var userMail = User.Identity.Name;
-            var user = c.Users.Where(x => x.UserMail == userMail).FirstOrDefault();
+            var mail = User.Identity.Name;
+            var user = c.Users.Where(x => x.UserMail == mail).FirstOrDefault();
+            var admin = c.Admins.Where(x => x.AdminMail == mail).FirstOrDefault();
 
             Contact contact = new Contact();
-            contact.UserID = user.UserID;
+            if (user !=null)
+            {
+                contact.UserID = user.UserID;
+            }
+            else if (admin!=null)
+            {
+                contact.UserID = admin.AdminID;
+            }
+            
             contact.ContactSubject = p.ContactSubject;
             contact.ContactMessage = p.ContactMessage;
             contact.ContactDate = DateTime.Now;

@@ -35,5 +35,6 @@ namespace GroupProject.Controllers
             aboutManager.TUpdate(p);
             return RedirectToAction("Index");
         }
+
     }
 }

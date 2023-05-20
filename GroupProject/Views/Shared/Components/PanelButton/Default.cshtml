@@ -1,0 +1,16 @@
+﻿@model EntityLayer.Concrete.User
+
+@if (Model.UserID != 0)
+{
+    <a class="getstarted scrollto" href="/User/Index/">
+        Kullanıcı Paneli
+        <div class="icon"><i class="ri-user-3-fill"></i></div>
+    </a>
+}
+else {
+<a class="getstarted scrollto" href="/ReadingActivity/ReadingActivityList/">
+    Admin Paneli
+    <div class="icon"><i class="ri-user-3-fill"></i></div>
+</a>
+}
+

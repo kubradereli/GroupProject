@@ -28,7 +28,7 @@ namespace GroupProject.Controllers
             Context c = new Context();
             var datavalue = c.Users.FirstOrDefault(x => x.UserMail == p.UserMail && x.UserPassword == p.UserPassword);
             var datavalueAdmin = c.Admins.FirstOrDefault(x => x.AdminMail == p.UserMail && x.AdminPassword == p.UserPassword);
-            if (datavalue != null)
+            if (datavalue != null || datavalueAdmin !=null)
             {
                 var claims = new List<Claim>
                 {
@@ -43,22 +43,6 @@ namespace GroupProject.Controllers
 
                 await HttpContext.SignInAsync(principal, authProperties);
                 return RedirectToAction("Index", "About");
-            }
-            else if(datavalueAdmin != null)
-            {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name,p.UserMail)
-                };
-                var useridentity = new ClaimsIdentity(claims, "a");
-                ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = rememberMe // Set the persistent flag based on the "rememberMe" parameter
-                };
-
-                await HttpContext.SignInAsync(principal, authProperties);
-                return RedirectToAction("ReadingActivityList", "ReadingActivity");
             }
             else
             {
