@@ -90,7 +90,7 @@
                         @if (@item.ActivityStatus == true)
                         {
                             <td>
-                                <a href="/ReadingActivity/DeleteActivity/@item.ActivityID" class="btn btn-success btn-circle">
+                                <a href="/ReadingActivity/DeleteActivity/@item.ReadingActivityID" class="btn btn-success btn-circle">
                                     <i class="fas fa-minus"></i>
                                 </a>
                             </td>
@@ -98,14 +98,14 @@
                         else
                         {
                             <td>
-                                <a href="/ReadingActivity/DeleteActivity/@item.ActivityID" class="btn btn-danger btn-circle">
+                                <a href="/ReadingActivity/DeleteActivity/@item.ReadingActivityID" class="btn btn-danger btn-circle">
                                     <i class="fas fa-plus"></i>
                                 </a>
                             </td>
 
                         }
 
-                        <td><a href="/ReadingActivity/EditActivity/@item.ActivityID" class="btn btn-primary">Güncelle</a></td>
+                        <td><a href="/ReadingActivity/EditActivity/@item.ReadingActivityID" class="btn btn-primary">Güncelle</a></td>
 
                     </tr>
                     }

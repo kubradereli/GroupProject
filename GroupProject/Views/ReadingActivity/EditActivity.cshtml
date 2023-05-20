@@ -13,7 +13,7 @@
         @using (Html.BeginForm("EditActivity", "ReadingActivity", FormMethod.Post))
         {
             @Html.HiddenFor(x => x.BookID, new { @class = "form-control" })
-            @Html.HiddenFor(x => x.ActivityID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.ReadingActivityID, new { @class = "form-control" })
             @Html.HiddenFor(x => x.Book.BookID, new { @class = "form-control" })
             <br />
 

@@ -25,7 +25,7 @@ namespace DataAccessLayer.EntityFramework
         {
             using (var c = new Context())
             {
-                return c.ReadingActivities.Include(x => x.Book.Category).Where(s=>s.ActivityID==id).FirstOrDefault();
+                return c.ReadingActivities.Include(x => x.Book.Category).Where(s=>s.ReadingActivityID == id).FirstOrDefault();
             }
         }
     }

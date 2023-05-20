@@ -11,19 +11,12 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int UserReadingActivityID { get; set; }
-
         public int UserID { get; set; }
-
         public User User { get; set; }
-
-        public int ActivityID { get; set; }
-
+        public int ReadingActivityID { get; set; }
         public ReadingActivity ReadingActivity { get; set; }
-
         public DateTime DateOfRegistration { get; set; }
-
         public int NumberOfPages { get; set; }
-
         public int BookReviewScore { get; set; }
     }
 }

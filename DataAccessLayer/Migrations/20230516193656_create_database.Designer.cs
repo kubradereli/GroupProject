@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230317185630_TableFieldsUpdte")]
-    partial class TableFieldsUpdte
+    [Migration("20230516193656_create_database")]
+    partial class create_database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,33 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("AboutStatus")
                         .HasColumnType("bit");
 
+                    b.Property<string>("CardDescription1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardDescription2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardDescription3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardDescription4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardTitle1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardTitle2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardTitle3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardTitle4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MainTitle")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("AboutID");
 
                     b.ToTable("Abouts");
@@ -58,10 +85,10 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AdminPassword")
+                    b.Property<string>("AdminMail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AdminUsername")
+                    b.Property<string>("AdminPassword")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AdminID");
@@ -164,13 +191,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("ContactDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ContactMail")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ContactMessage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("ContactStatus")
@@ -179,10 +200,12 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("ContactSubject")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ContactSurname")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
 
                     b.HasKey("ContactID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("Contacts");
                 });
@@ -226,7 +249,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.ReadingActivity", b =>
                 {
-                    b.Property<int>("ActivityID")
+                    b.Property<int>("ReadingActivityID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -258,7 +281,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("BookID")
                         .HasColumnType("int");
 
-                    b.HasKey("ActivityID");
+                    b.HasKey("ReadingActivityID");
 
                     b.HasIndex("AdminID");
 
@@ -273,6 +296,9 @@ namespace DataAccessLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("RememberMe")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserAbout")
                         .HasColumnType("nvarchar(max)");
@@ -316,9 +342,6 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ActivityID")
-                        .HasColumnType("int");
-
                     b.Property<int>("BookReviewScore")
                         .HasColumnType("int");
 
@@ -328,7 +351,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("NumberOfPages")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ReadingActivityActivityID")
+                    b.Property<int>("ReadingActivityID")
                         .HasColumnType("int");
 
                     b.Property<int>("UserID")
@@ -336,7 +359,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("UserReadingActivityID");
 
-                    b.HasIndex("ReadingActivityActivityID");
+                    b.HasIndex("ReadingActivityID");
 
                     b.HasIndex("UserID");
 
@@ -363,6 +386,17 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Contact", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.User", "User")
+                        .WithMany("Contacts")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.ReadBook", b =>
@@ -407,7 +441,9 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("EntityLayer.Concrete.ReadingActivity", "ReadingActivity")
                         .WithMany("UserReadingActivities")
-                        .HasForeignKey("ReadingActivityActivityID");
+                        .HasForeignKey("ReadingActivityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.User", "User")
                         .WithMany("UserReadingActivities")
@@ -446,6 +482,8 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.User", b =>
                 {
+                    b.Navigation("Contacts");
+
                     b.Navigation("ReadBooks");
 
                     b.Navigation("UserReadingActivities");

@@ -18,7 +18,16 @@ namespace DataAccessLayer.Migrations
                     AboutBackgroundImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AboutSmallImage1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AboutSmallImage2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AboutStatus = table.Column<bool>(type: "bit", nullable: false)
+                    AboutStatus = table.Column<bool>(type: "bit", nullable: false),
+                    CardTitle1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CardTitle2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CardTitle3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CardTitle4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CardDescription1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CardDescription2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CardDescription3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CardDescription4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MainTitle = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -31,7 +40,7 @@ namespace DataAccessLayer.Migrations
                 {
                     AdminID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AdminUsername = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AdminMail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AdminPassword = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -54,25 +63,6 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Contacts",
-                columns: table => new
-                {
-                    ContactID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ContactName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactSurname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactMail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactSubject = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactMessage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ContactStatus = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Contacts", x => x.ContactID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -86,7 +76,9 @@ namespace DataAccessLayer.Migrations
                     UserImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserMail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserStatus = table.Column<bool>(type: "bit", nullable: false)
+                    UserStatus = table.Column<bool>(type: "bit", nullable: false),
+                    RememberMe = table.Column<bool>(type: "bit", nullable: false),
+                    UserRole = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -116,6 +108,29 @@ namespace DataAccessLayer.Migrations
                         column: x => x.CategoryID,
                         principalTable: "Categories",
                         principalColumn: "CategoryID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Contacts",
+                columns: table => new
+                {
+                    ContactID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ContactSubject = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContactMessage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContactDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ContactStatus = table.Column<bool>(type: "bit", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contacts", x => x.ContactID);
+                    table.ForeignKey(
+                        name: "FK_Contacts_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -151,7 +166,10 @@ namespace DataAccessLayer.Migrations
                     BookID = table.Column<int>(type: "int", nullable: false),
                     UserID = table.Column<int>(type: "int", nullable: false),
                     ReadingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReadBookReviewPoint = table.Column<int>(type: "int", nullable: false)
+                    CompletionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReadBookReviewPoint = table.Column<int>(type: "int", nullable: false),
+                    BookReadStatus = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -174,19 +192,21 @@ namespace DataAccessLayer.Migrations
                 name: "ReadingActivities",
                 columns: table => new
                 {
-                    ActivityID = table.Column<int>(type: "int", nullable: false)
+                    ReadingActivityID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ActivityTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ActivityContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ActivityImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ActivityCreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ActivityStartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ActivityFinishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ActivityStatus = table.Column<bool>(type: "bit", nullable: false),
                     BookID = table.Column<int>(type: "int", nullable: false),
                     AdminID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReadingActivities", x => x.ActivityID);
+                    table.PrimaryKey("PK_ReadingActivities", x => x.ReadingActivityID);
                     table.ForeignKey(
                         name: "FK_ReadingActivities_Admins_AdminID",
                         column: x => x.AdminID,
@@ -208,8 +228,7 @@ namespace DataAccessLayer.Migrations
                     UserReadingActivityID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID = table.Column<int>(type: "int", nullable: false),
-                    ActivityID = table.Column<int>(type: "int", nullable: false),
-                    ReadingActivityActivityID = table.Column<int>(type: "int", nullable: true),
+                    ReadingActivityID = table.Column<int>(type: "int", nullable: false),
                     DateOfRegistration = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NumberOfPages = table.Column<int>(type: "int", nullable: false),
                     BookReviewScore = table.Column<int>(type: "int", nullable: false)
@@ -218,11 +237,11 @@ namespace DataAccessLayer.Migrations
                 {
                     table.PrimaryKey("PK_UserReadingActivities", x => x.UserReadingActivityID);
                     table.ForeignKey(
-                        name: "FK_UserReadingActivities_ReadingActivities_ReadingActivityActivityID",
-                        column: x => x.ReadingActivityActivityID,
+                        name: "FK_UserReadingActivities_ReadingActivities_ReadingActivityID",
+                        column: x => x.ReadingActivityID,
                         principalTable: "ReadingActivities",
-                        principalColumn: "ActivityID",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "ReadingActivityID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UserReadingActivities_Users_UserID",
                         column: x => x.UserID,
@@ -240,6 +259,11 @@ namespace DataAccessLayer.Migrations
                 name: "IX_Comments_BookID",
                 table: "Comments",
                 column: "BookID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Contacts_UserID",
+                table: "Contacts",
+                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ReadBooks_BookID",
@@ -262,9 +286,9 @@ namespace DataAccessLayer.Migrations
                 column: "BookID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserReadingActivities_ReadingActivityActivityID",
+                name: "IX_UserReadingActivities_ReadingActivityID",
                 table: "UserReadingActivities",
-                column: "ReadingActivityActivityID");
+                column: "ReadingActivityID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserReadingActivities_UserID",

@@ -76,6 +76,24 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Abouts");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Admin", b =>
+                {
+                    b.Property<int>("AdminID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AdminMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdminPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AdminID");
+
+                    b.ToTable("Admins");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Book", b =>
                 {
                     b.Property<int>("BookID")
@@ -229,7 +247,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.ReadingActivity", b =>
                 {
-                    b.Property<int>("ActivityID")
+                    b.Property<int>("ReadingActivityID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -261,7 +279,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("BookID")
                         .HasColumnType("int");
 
-                    b.HasKey("ActivityID");
+                    b.HasKey("ReadingActivityID");
 
                     b.HasIndex("AdminID");
 
@@ -301,9 +319,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("UserPassword")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserRole")
-                        .HasColumnType("int");
-
                     b.Property<bool>("UserStatus")
                         .HasColumnType("bit");
 
@@ -322,9 +337,6 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ActivityID")
-                        .HasColumnType("int");
-
                     b.Property<int>("BookReviewScore")
                         .HasColumnType("int");
 
@@ -334,7 +346,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("NumberOfPages")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ReadingActivityActivityID")
+                    b.Property<int>("ReadingActivityID")
                         .HasColumnType("int");
 
                     b.Property<int>("UserID")
@@ -342,7 +354,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("UserReadingActivityID");
 
-                    b.HasIndex("ReadingActivityActivityID");
+                    b.HasIndex("ReadingActivityID");
 
                     b.HasIndex("UserID");
 
@@ -403,8 +415,8 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.ReadingActivity", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.User", "Admin")
-                        .WithMany()
+                    b.HasOne("EntityLayer.Concrete.Admin", "Admin")
+                        .WithMany("ReadingActivities")
                         .HasForeignKey("AdminID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -424,7 +436,9 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("EntityLayer.Concrete.ReadingActivity", "ReadingActivity")
                         .WithMany("UserReadingActivities")
-                        .HasForeignKey("ReadingActivityActivityID");
+                        .HasForeignKey("ReadingActivityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.User", "User")
                         .WithMany("UserReadingActivities")
@@ -435,6 +449,11 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("ReadingActivity");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Admin", b =>
+                {
+                    b.Navigation("ReadingActivities");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Book", b =>

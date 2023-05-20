@@ -12,23 +12,14 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int ReadBookID { get; set; }
-
         public int BookID { get; set; }
-
         public Book Book { get; set; }
-
         public int UserID { get; set; }
-
         public User User { get; set; }
-
         public DateTime ReadingDate { get; set; }
-
         public DateTime CompletionDate { get; set; }
-
         public int ReadBookReviewPoint { get; set; }
-
         public BookReadStatusEnum BookReadStatus { get; set; }
-
         public string Description { get; set; }
     }
 }

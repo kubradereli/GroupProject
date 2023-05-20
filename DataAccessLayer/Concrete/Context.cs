@@ -12,7 +12,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-9LUSC50;database=BookDb2;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-9LUSC50;database=BookDb7;integrated security=true;");
         }
 
         //--Database Tables--//
@@ -24,6 +24,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<ReadBook> ReadBooks { get; set; }
         public DbSet<ReadingActivity> ReadingActivities { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<UserReadingActivity> UserReadingActivities { get; set; }
 
         //--Dto--//

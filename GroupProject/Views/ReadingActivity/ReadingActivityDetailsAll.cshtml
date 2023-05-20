@@ -9,6 +9,9 @@
 
         <div class="row mt-5">
 
+            <input type="hidden" id="activityId" value="@Model.ReadingActivityID" />
+            <input type="hidden" id="date" value="@DateTime.Now.ToString("dd MMM yyyy")" />
+
             <div class="col-lg-6 video-box align-self-baseline p-3" data-aos="fade-right" data-aos-delay="100">
                 <img src="@Model.ActivityImage" class="img-fluid" alt="">
                 @*<a href="/Book/BookDetailsAll/@item.BookID" class=" "></a>*@
@@ -86,7 +89,7 @@
                         </tr>
                     </table>
                     <div class="col-12">
-                        <a class="btn btn-success" style="float:right" href="#">
+                        <a class="btn btn-success" style="float:right" onclick="katil()">
                             <i class="bx bx-book-add"></i>
                             ETKİNLİĞE KATIL
                         </a>
@@ -131,3 +134,28 @@
         </div>
     </div>
 </section>
+
+@section scripts{
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        function katil() {
+            var activityId = $("#activityId").val();
+            var date = $("#date").val();
+            let activity = {
+                ReadingActivityID: activityId,
+                DateOfRegistration: date,
+                NumberOfPages: "0",
+                BookReviewScore: "0",
+            };
+            $.ajax({
+                type: "post",
+                url: "/UserReadingActivity/UserJoinActivity/",
+                data: activity,
+                success: function (func) {
+                    let result = jQuery.parseJSON(func);
+                    alert("Etkinliğe katıldınız...");
+                }
+            });
+        }
+    </script>
+}

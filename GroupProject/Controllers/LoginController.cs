@@ -27,6 +27,7 @@ namespace GroupProject.Controllers
         {
             Context c = new Context();
             var datavalue = c.Users.FirstOrDefault(x => x.UserMail == p.UserMail && x.UserPassword == p.UserPassword);
+            var datavalueAdmin = c.Admins.FirstOrDefault(x => x.AdminMail == p.UserMail && x.AdminPassword == p.UserPassword);
             if (datavalue != null)
             {
                 var claims = new List<Claim>
@@ -41,15 +42,23 @@ namespace GroupProject.Controllers
                 };
 
                 await HttpContext.SignInAsync(principal, authProperties);
-                if (datavalue.UserRole == EntityLayer.Enums.Roles.Admin)
+                return RedirectToAction("Index", "About");
+            }
+            else if(datavalueAdmin != null)
+            {
+                var claims = new List<Claim>
                 {
-                    return RedirectToAction("ReadingActivityList", "ReadingActivity");
-                }
-                else
+                    new Claim(ClaimTypes.Name,p.UserMail)
+                };
+                var useridentity = new ClaimsIdentity(claims, "a");
+                ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
+                var authProperties = new AuthenticationProperties
                 {
-                    return RedirectToAction("Index", "About");
-                }
-                
+                    IsPersistent = rememberMe // Set the persistent flag based on the "rememberMe" parameter
+                };
+
+                await HttpContext.SignInAsync(principal, authProperties);
+                return RedirectToAction("ReadingActivityList", "ReadingActivity");
             }
             else
             {
