@@ -9,6 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IUserReadingActivityDal : IGenericDal<UserReadingActivity>
     {
-
+        List<UserReadingActivity> GetListWithUser();
     }
 }

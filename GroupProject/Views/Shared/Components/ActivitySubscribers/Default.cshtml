@@ -1,0 +1,14 @@
+﻿
+@model IEnumerable<EntityLayer.Concrete.UserReadingActivity>
+<li data-aos="fade-up">
+    <i class="bx bx-user-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-1" class="collapsed">Etkinlik Katılımcıları <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+    <div id="faq-list-1" class="collapse" data-bs-parent=".faq-list">
+        @*Bu kısmı table ile yapabiliriz.*@
+        @foreach (var item in Model)
+        {
+            <p>@item.User.UserName @item.User.UserSurname - @item.NumberOfPages .Sayfa</p>
+        }
+
+
+    </div>
+</li>

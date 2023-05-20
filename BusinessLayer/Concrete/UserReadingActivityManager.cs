@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _userReadingActivityDal = userReadingActivityDal;
         }
 
+        public List<UserReadingActivity> GetUserReadingActivitiesWithUser()
+        {
+            return _userReadingActivityDal.GetListWithUser();
+        }
+
         public void TAdd(UserReadingActivity t)
         {
             _userReadingActivityDal.Insert(t);
