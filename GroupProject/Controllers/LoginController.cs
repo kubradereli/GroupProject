@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using GroupProject.MailService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -25,6 +26,8 @@ namespace GroupProject.Controllers
         [AllowAnonymous]
         public async  Task<IActionResult> Index(User p,bool rememberMe = false)
         {
+            //var message = new Message(new string[] { "aleynaebrt@gmail.com" }, "Test email", "This is the content from our email.");
+            //new EMailService().SendEmail(message);
             Context c = new Context();
             var datavalue = c.Users.FirstOrDefault(x => x.UserMail == p.UserMail && x.UserPassword == p.UserPassword);
             var datavalueAdmin = c.Admins.FirstOrDefault(x => x.AdminMail == p.UserMail && x.AdminPassword == p.UserPassword);

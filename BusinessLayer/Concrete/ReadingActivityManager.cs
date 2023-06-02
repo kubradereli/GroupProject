@@ -53,5 +53,10 @@ namespace BusinessLayer.Concrete
         {
             return _readingActivityDal.GetByIdWithBook(id);
         }
+
+        public List<CategoryCount> GetCountofCategoriesFromActivity()
+        {
+            return _readingActivityDal.GetCountofCategoriesFromActivity();
+        }
     }
 }

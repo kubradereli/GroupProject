@@ -22,6 +22,14 @@ namespace GroupProject.Controllers
             var userMail = User.Identity.Name;
             var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
 
+            bool isUserRegistered = c.UserReadingActivities.Any(x => x.UserID == userID);
+            if (isUserRegistered)
+            {
+                // Kullanıcı zaten kayıtlı ise işlemi durdur ve uygun bir yanıt döndür
+                return Content("<script>alert('Bu etkinliğe zaten kayıtlı olduğunuz için tekrar kaydolamazsınız.');</script>");
+
+            }
+
             activity.UserID = userID;
             userReadingActivityManager.TAdd(activity);
             var jsonActivity = JsonConvert.SerializeObject(activity);

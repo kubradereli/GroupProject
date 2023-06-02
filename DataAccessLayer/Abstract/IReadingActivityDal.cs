@@ -12,5 +12,6 @@ namespace DataAccessLayer.Abstract
         List<ReadingActivity> GetListWithBook();
 
         ReadingActivity GetByIdWithBook(int id);
+        List<CategoryCount> GetCountofCategoriesFromActivity();
     }
 }

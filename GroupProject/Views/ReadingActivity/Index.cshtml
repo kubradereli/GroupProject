@@ -37,17 +37,8 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="member">
-                    <div class="card-header">
-                        <h4>Kategoriler</h4>
-                        <hr />
-                    </div>
-                    <div class="card-body">
-                        <p>1</p>
-                        <p>2</p>
-                        <p>3</p>
-                    </div>
-                </div>
+                @await Component.InvokeAsync("CategoryList")
+                
             </div>
         </div>
     </div>

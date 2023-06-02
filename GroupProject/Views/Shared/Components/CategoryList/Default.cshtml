@@ -1,0 +1,16 @@
+﻿@model IEnumerable<EntityLayer.Concrete.CategoryCount>
+<div class="member">
+    <div class="card-header">
+        <br />
+        <h4>Kategoriler</h4>
+        <hr />
+    </div>
+    <div class="card-body">
+        @*Bu kısmı table ile yapabiliriz.*@
+        @foreach (var item in Model)
+        {
+            <p>@item.CategoryName - @item.Count</p>
+        }
+      
+    </div>
+</div>

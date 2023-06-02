@@ -133,6 +133,7 @@
 @section scripts{
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
+        
         function katil() {
             var activityId = $("#activityId").val();
             var date = $("#date").val();
@@ -149,7 +150,15 @@
                 success: function (func) {
                     let result = jQuery.parseJSON(func);
                     alert("Etkinliğe katıldınız...");
+                    var katilButton = document.querySelector('.btn.btn-success');
+
+                    // Butonun içeriğini ve işaretini değiştirin
+                    katilButton.innerHTML = '<i class="bx bx-check"></i> KATILIM GERÇEKLEŞTİ';
+                    
                 }
+
+              
+            
             });
         }
     </script>

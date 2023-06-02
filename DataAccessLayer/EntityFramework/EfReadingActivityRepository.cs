@@ -28,5 +28,21 @@ namespace DataAccessLayer.EntityFramework
                 return c.ReadingActivities.Include(x => x.Book.Category).Where(s=>s.ReadingActivityID == id).FirstOrDefault();
             }
         }
+
+        public List<CategoryCount> GetCountofCategoriesFromActivity()
+        {
+            using (var c = new Context())
+            {
+                var x = c.ReadingActivities.Include(x => x.Book).ThenInclude(x => x.Category).ToList();
+                List<CategoryCount> counts = x.GroupBy(info => info.Book.Category.CategoryName)
+                            .Select(group => new CategoryCount()
+                            {
+                                CategoryName = group.Key,
+                                Count = group.Count()
+                            })
+                            .OrderBy(x => x.CategoryName).ToList();
+                return counts;
+            }
+        }
     }
 }
