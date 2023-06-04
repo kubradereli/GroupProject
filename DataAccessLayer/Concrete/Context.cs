@@ -12,13 +12,14 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-9LUSC50;database=BookDb7;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-9LUSC50;database=BookDb9;integrated security=true;");
         }
 
         //--Database Tables--//
         public DbSet<About> Abouts { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<BookQuote> BookQuotes { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ReadBook> ReadBooks { get; set; }

@@ -18,7 +18,7 @@ namespace EntityLayer.Concrete
         public string BookCoverImage { get; set; }
         public string BookBackCoverImage { get; set; }
         public bool BookStatus { get; set; }
-        public List<Comment> Comments { get; set; }
+        public List<BookQuote> Comments { get; set; }
         public List<ReadBook> ReadBooks { get; set; }
         public List<ReadingActivity> ReadingActivities { get; set; }
         public int CategoryID { get; set; }

@@ -4,14 +4,16 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230604121929_comment-field-change")]
+    partial class commentfieldchange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -138,32 +140,6 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.BookQuote", b =>
-                {
-                    b.Property<int>("BookQuoteID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BookID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("BookQuoteContent")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("BookQuoteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("BookQuoteStatus")
-                        .HasColumnType("bit");
-
-                    b.HasKey("BookQuoteID");
-
-                    b.HasIndex("BookID");
-
-                    b.ToTable("BookQuotes");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.Category", b =>
                 {
                     b.Property<int>("CategoryID")
@@ -189,6 +165,9 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BookID")
+                        .HasColumnType("int");
+
                     b.Property<string>("CommentContent")
                         .HasColumnType("nvarchar(max)");
 
@@ -198,12 +177,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("CommentStatus")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ReadingActivityID")
-                        .HasColumnType("int");
-
                     b.HasKey("CommentID");
 
-                    b.HasIndex("ReadingActivityID");
+                    b.HasIndex("BookID");
 
                     b.ToTable("Comments");
                 });
@@ -401,7 +377,7 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.BookQuote", b =>
+            modelBuilder.Entity("EntityLayer.Concrete.Comment", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Book", "Book")
                         .WithMany("Comments")
@@ -410,17 +386,6 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("Book");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Comment", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.ReadingActivity", "ReadingActivity")
-                        .WithMany()
-                        .HasForeignKey("ReadingActivityID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ReadingActivity");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Contact", b =>

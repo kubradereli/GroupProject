@@ -19,7 +19,7 @@ namespace GroupProject.Controllers
 
         public IActionResult Index()
         {
-            var values = readingActivityManager.GetReadingActivitiesListWithBook().OrderByDescending(s=>s.ActivityCreateDate).ToList();
+            var values = readingActivityManager.GetReadingActivitiesListWithBook().Where(s => s.ActivityStatus == true).OrderByDescending(s => s.ActivityCreateDate).ToList();
             return View(values);
         }
         public IActionResult ReadingActivityList(string sort)

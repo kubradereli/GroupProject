@@ -15,7 +15,6 @@ namespace EntityLayer.Concrete
         public DateTime CommentDate { get; set; }
         public bool CommentStatus { get; set; }
         public int ReadingActivityID { get; set; }
-        public int BookID { get; set; }
-        public Book Book { get; set; }
+        public ReadingActivity ReadingActivity { get; set; }
     }
 }

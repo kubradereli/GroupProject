@@ -1,0 +1,16 @@
+﻿@model EntityLayer.Concrete.UserReadingActivity
+
+@if (Model.UserID != 0)
+{
+    <a class="btn btn-success" style="float:right">
+        <i class="bx bx-check"></i>
+        ETKİNLİĞE KATILDINIZ
+    </a>
+}
+else
+{
+    <a class="btn btn-success" style="float:right" onclick="katil()">
+        <i class="bx bx-book-add"></i>
+        ETKİNLİĞE KATIL
+    </a>
+}
