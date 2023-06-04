@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ICommentService : IGenericService<BookQuote>
+    public interface ICommentService : IGenericService<Comment>
     {
+        List<Comment> GetCommentListWithUser();
     }
 }

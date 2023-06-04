@@ -18,27 +18,32 @@ namespace BusinessLayer.Concrete
             _commentDal = commentDal;
         }
 
-        public void TAdd(BookQuote t)
+        public List<Comment> GetCommentListWithUser()
+        {
+            return _commentDal.GetListWithUser();
+        }
+
+        public void TAdd(Comment t)
         {
             _commentDal.Insert(t);
         }
 
-        public void TDelete(BookQuote t)
+        public void TDelete(Comment t)
         {
             _commentDal.Delete(t);
         }
 
-        public BookQuote TGetById(int id)
+        public Comment TGetById(int id)
         {
             return _commentDal.GetByID(id);
         }
 
-        public List<BookQuote> TGetList()
+        public List<Comment> TGetList()
         {
             return _commentDal.GetListAll();
         }
 
-        public void TUpdate(BookQuote t)
+        public void TUpdate(Comment t)
         {
             _commentDal.Update(t);
         }

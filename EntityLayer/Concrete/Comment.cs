@@ -16,5 +16,8 @@ namespace EntityLayer.Concrete
         public bool CommentStatus { get; set; }
         public int ReadingActivityID { get; set; }
         public ReadingActivity ReadingActivity { get; set; }
+        public int UserID { get; set; }
+        public User User { get; set; }
+
     }
 }

@@ -26,5 +26,7 @@ namespace EntityLayer.Concrete
         
         public virtual bool RememberMe { get; set; }
         public List<Contact> Contacts { get; set; }
+        public List<BookQuote> BookQuotes { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
