@@ -18,7 +18,16 @@ namespace GroupProject.ViewComponents.Join
         {
             Context c = new Context();
             var userMail = User.Identity.Name;
-            var userId = c.Users.Where(x => x.UserMail == userMail).FirstOrDefault().UserID;
+            var user = c.Users.Where(x => x.UserMail == userMail).FirstOrDefault();
+            var userId = 0;
+            if (user == null)
+            {
+                userId = c.Admins.Where(x => x.AdminMail == userMail).FirstOrDefault().AdminID;
+            }
+            else
+            {
+                userId = user.UserID;
+            }
 
             var values = userReadingActivityManager.TGetList().Where(s=>s.UserID == userId).FirstOrDefault();
 

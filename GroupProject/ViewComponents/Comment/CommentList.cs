@@ -12,9 +12,9 @@ namespace GroupProject.ViewComponents.Comment
     {
         CommentManager commentManager = new CommentManager(new EfCommentRepository());
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            var values = commentManager.GetCommentListWithUser();
+            var values = commentManager.GetCommentListWithUser().Where(s=>s.ReadingActivityID == id);
             return View(values);
         }
     }

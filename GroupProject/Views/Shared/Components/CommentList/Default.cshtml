@@ -1,54 +1,19 @@
 ﻿@model IEnumerable<EntityLayer.Concrete.Comment>
-<section id="faq" class="faq section-bg">
-    <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-            <h2>YORUMLAR</h2>
-        </div>
-        <div class="faq-list">
-            <ul>
-                @foreach (var item in Model)
-                {
-                    <li data-aos="fade-up" data-aos-delay="100">
-                        <p style="text-align:right">@item.CommentDate</p>
-                        <p style="color: #2487CE; font-size: 1.5rem">@item.User.UserName @item.User.UserSurname </p>
-                        <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
-                            <p>@item.CommentContent</p>
-                        </div>
-                        <br />
-                    </li>
-                }
-            </ul>
-        </div>
-        <div class="container" data-aos="fade-up">
-            <div class="faq-list">
-                <div class="section-title">
-                    <h2 class="mt-5">YORUM YAP</h2>
+<div class="section-title">
+    <h2>YORUMLAR</h2>
+</div>
+<div class="faq-list">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li data-aos="fade-up" data-aos-delay="100">
+                <p style="text-align:right">@item.CommentDate</p>
+                <p style="color: #2487CE; font-size: 1.5rem">@item.User.UserName @item.User.UserSurname </p>
+                <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
+                    <p>@item.CommentContent</p>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-md-6 form-group mb-3">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Adınız" value="" required disabled>
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <input type="text" name="name" class="form-control" id="surname" placeholder="Soyadınız" value="" required disabled>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="col-lg-12 mb-3">
-                            mesajınız...
-                        </div>
-
-                        <div class="text-center">
-                            <button class="btn btn-success pr-4 pl-4 pt-2 pb-2"> <i class="fas fa-plus pr-3"></i>Yorum Ekle</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
+                <br />
+            </li>
+        }
+    </ul>
+</div>

@@ -16,6 +16,8 @@ namespace GroupProject.Controllers
         Context c = new Context();
         ReadingActivityManager readingActivityManager = new ReadingActivityManager(new EfReadingActivityRepository());
         BookManager bookManager = new BookManager(new EfBookRepository());
+        CommentManager commentManager = new CommentManager(new EfCommentRepository());
+
 
         public IActionResult Index()
         {
@@ -86,7 +88,7 @@ namespace GroupProject.Controllers
 
             Context c = new Context();
             var userMail = User.Identity.Name;
-            p.AdminID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            p.AdminID = c.Admins.Where(x => x.AdminMail == userMail).Select(y => y.AdminID).FirstOrDefault();
             p.ActivityStatus = true;
             p.Book.BookStatus = true;
             p.ActivityCreateDate = DateTime.Now;
@@ -136,6 +138,20 @@ namespace GroupProject.Controllers
         {
             var values = readingActivityManager.GetReadinActivityByIdWithBook(id);
             return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult ReadingActivityAddComment(Comment p, int id)
+        {
+            p.CommentDate = DateTime.Now;
+            p.CommentStatus = true;
+            p.ReadingActivityID = id;
+            var userMail = User.Identity.Name;
+            p.UserID = new Context().Users.
+                Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            commentManager.TAdd(p);
+
+            return RedirectToAction("ReadingActivityDetailsAll", "ReadingActivity", new { @id = id });
         }
     }
 }
