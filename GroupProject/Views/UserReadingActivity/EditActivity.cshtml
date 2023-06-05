@@ -14,10 +14,10 @@
     <div class="card-body">
         @using (Html.BeginForm("EditActivity", "UserReadingActivity", FormMethod.Post))
         {
-            @Html.HiddenFor(x => x.UserReadingActivityID, new { @class = "form-control" })
-            @Html.HiddenFor(x => x.UserID, new { @class = "form-control" })
-            @Html.HiddenFor(x => x.ReadingActivityID, new { @class = "form-control" })
-            @Html.HiddenFor(x => x.DateOfRegistration, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.UserReadingActivityID, new { @class = "form-control", Value = @Model.UserReadingActivityID})
+            @Html.HiddenFor(x => x.UserID, new { @class = "form-control", Value = @Model.UserID })
+            @Html.HiddenFor(x => x.ReadingActivityID, new { @class = "form-control", Value = @Model.ReadingActivityID })
+            @Html.HiddenFor(x => x.DateOfRegistration, new { @class = "form-control", Value = @Model.DateOfRegistration })
             <br />
 
             <div class="row pt-3">

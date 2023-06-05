@@ -4,50 +4,12 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<!-- ======= Contact Section ======= -->
-<section id="hero" class="d-flex align-items-center">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-        <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-9 text-center">
-                <h1>İletişim</h1>
-                <h4>Bize Ulaşın</h4>
-                <p>Düşünceleriniz bizim için çok önemli.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="contact">
+@await Component.InvokeAsync("ContactInformation")
+<section id="contact" class="contact">   
     <div class="container" data-aos="fade-up">
-        <div class="row mt-2">
-            <div class="col-lg-4">
-                <div class="info">
-                    <div class="address">
-                        <i class="bi bi-geo-alt"></i>
-                        <h4>Adres:</h4>
-                        <p>Serdivan, Sakarya, TÜRKİYE</p>
-                    </div>
-
-                    <div class="email">
-                        <i class="bi bi-envelope"></i>
-                        <h4>E-mail:</h4>
-                        <p>kiitaphane@example.com</p>
-                    </div>
-
-                    <div class="phone">
-                        <i class="bi bi-phone"></i>
-                        <h4>Telefon:</h4>
-                        <p>+90 555 555 55 55</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 mt-2 mt-lg-0 mb-5">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.911439413432!2d30.329982815342294!3d40.74197417932875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ccadf2977958d7%3A0xc7996fa884f94c03!2sSakarya%20%C3%9Cniversitesi!5e0!3m2!1str!2str!4v1670759921962!5m2!1str!2str" width="850" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
-            <h2 class="mb-3" style="text-align:center; color:#2487CE">Kiitaphane'ye Mesaj Gönder</h2>
-            <hr />
-
+        <h2 class="mb-3" style="text-align:center; color:#2487CE">Kiitaphane'ye Mesaj Gönder</h2>
+        <hr />
+        <div class="row">
             @using (Html.BeginForm("AddMessage", "Contact", FormMethod.Post))
             {
                 <div class="row">
@@ -75,7 +37,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button class="btn btn-success pr-4 pl-4 pt-2 pb-2" > <i class="fas fa-plus pr-3"></i>Mesajı Gönder</button>
+                            <button class="btn btn-success pr-4 pl-4 pt-2 pb-2"> <i class="fas fa-plus pr-3"></i>Mesajı Gönder</button>
                         </div>
                     </div>
                 </div>

@@ -14,8 +14,9 @@ namespace GroupProject.Controllers
     public class ContactController : Controller
     {
         ContactManager contactManager = new ContactManager(new EfContactRepository());
+        ContactInformationManager contactInformationManager = new ContactInformationManager(new EfContactInformationRepository());
         UserManager userManager = new UserManager(new EfUserRepository());
-
+        
         public IActionResult Index()
         {
             Context c = new Context();
@@ -148,5 +149,20 @@ namespace GroupProject.Controllers
             contactManager.TUpdate(contact);
             return RedirectToAction("Index", "About");
         }
-    }
+
+        // Admin panelinde iletişim bilgileri güncelleme sayfası
+        [HttpGet]
+        public IActionResult EditContact()
+        {
+            ContactInformation contactInformation = contactInformationManager.TGetList().FirstOrDefault();
+            return View(contactInformation);
+        }
+
+        [HttpPost]
+        public IActionResult EditContact(ContactInformation p)
+        {
+            contactInformationManager.TUpdate(p);
+            return RedirectToAction("AddMessage", "Contact");
+        }
+    }    
 }

@@ -52,5 +52,28 @@ namespace GroupProject.Controllers
             }
             return View(user);
         }
+        public IActionResult UserStatusList()
+        {
+            var values = userManager.TGetList();
+            return View(values);
+        }
+    
+        public IActionResult UserStatusChange(int id)
+        {
+
+            var value = userManager.TGetById(id);
+            if (value.UserStatus == true)
+            {
+                value.UserStatus = false;
+
+            }
+            else
+            {
+                value.UserStatus = true;
+            }
+            userManager.TUpdate(value);
+
+            return RedirectToAction("UserStatusList");
+        }
     }
 }

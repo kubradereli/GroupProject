@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.ContactInformation
+<!-- ======= Contact Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-9 text-center">
+                <h1>İletişim</h1>
+                <h4>@Model.MainTitle</h4>
+                <p>@Model.SubTitle</p>
+            </div>
+        </div>
+    </div>
+</section><!-- End Hero -->
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+        <div class="row mt-2">
+            <div class="col-lg-4">
+                <div class="info">
+                    <div class="address">
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>Adres:</h4>
+                        <p>@Model.Address</p>
+                    </div>
+
+                    <div class="email">
+                        <i class="bi bi-envelope"></i>
+                        <h4>E-mail:</h4>
+                        <p>@Model.Email</p>
+                    </div>
+
+                    <div class="phone">
+                        <i class="bi bi-phone"></i>
+                        <h4>Telefon:</h4>
+                        <p>@Model.TelephoneNumber</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 mt-2 mt-lg-0">
+                <iframe src="@Model.Location" width="850" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</section>

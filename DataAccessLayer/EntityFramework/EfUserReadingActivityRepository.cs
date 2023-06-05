@@ -33,6 +33,7 @@ namespace DataAccessLayer.EntityFramework
                     NumberOfPages = userActivity.NumberOfPages,
                     BookReviewScore = userActivity.BookReviewScore,
                     ReadingActivityID = userActivity.ReadingActivityID,
+                    UserReadingActivityID = userActivity.UserReadingActivityID,
                     ReadingActivity = readingActivity};
                 return result.ToList();
 

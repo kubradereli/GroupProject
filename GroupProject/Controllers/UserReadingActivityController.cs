@@ -104,18 +104,15 @@ namespace GroupProject.Controllers
         {
             
             UserReadingActivity userReadingActivity = userReadingActivityManager.TGetById(id);
-            return View();
+            return View(userReadingActivity);
         }
 
         [HttpPost]
         public IActionResult EditActivity(UserReadingActivity p)
         {
-            Context c = new Context();
-            var userMail = User.Identity.Name;
-            p.UserID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
-           
+            Context c = new Context();           
             userReadingActivityManager.TUpdate(p);
-            return RedirectToAction("ActivityIRead");
+            return RedirectToAction("ActivityIJoin");
         }
     }
 }
