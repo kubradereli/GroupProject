@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             return _userReadingActivityDal.GetListWithUser();
         }
 
+        public List<UserReadingActivity> GetListofActivityInfo(int userId)
+        {
+            return _userReadingActivityDal.GetListofActivityInfo(userId);
+        }
+
         public void TAdd(UserReadingActivity t)
         {
             _userReadingActivityDal.Insert(t);

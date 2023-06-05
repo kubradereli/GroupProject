@@ -39,6 +39,11 @@ namespace BusinessLayer.Concrete
             return _readingActivityDal.GetListAll();
         }
 
+        public List<ReadingActivity> GetListFromListofIds(List<int> readingActivityIds)
+        {
+            return _readingActivityDal.GetListAll(x => readingActivityIds.Contains(x.ReadingActivityID));
+        }
+
         public void TUpdate(ReadingActivity t)
         {
             _readingActivityDal.Update(t);

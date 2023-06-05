@@ -20,5 +20,23 @@ namespace DataAccessLayer.EntityFramework
                 return c.UserReadingActivities.Include(x => x.User).ToList();
             }
         }
+
+        public List<UserReadingActivity> GetListofActivityInfo(int userId)
+        {
+            using (var c = new Context())
+            {
+                var result =
+                from userActivity in c.UserReadingActivities
+                join readingActivity in c.ReadingActivities on userActivity.ReadingActivityID equals readingActivity.ReadingActivityID
+                where userActivity.UserID == userId
+                select new UserReadingActivity{
+                    NumberOfPages = userActivity.NumberOfPages,
+                    BookReviewScore = userActivity.BookReviewScore,
+                    ReadingActivityID = userActivity.ReadingActivityID,
+                    ReadingActivity = readingActivity};
+                return result.ToList();
+
+            }
+        } 
     }
 }

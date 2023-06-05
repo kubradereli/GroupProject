@@ -10,5 +10,6 @@ namespace BusinessLayer.Abstract
     public interface IUserReadingActivityService : IGenericService<UserReadingActivity>
     {
         List<UserReadingActivity> GetUserReadingActivitiesWithUser();
+        List<UserReadingActivity> GetListofActivityInfo(int userId);
     }
 }

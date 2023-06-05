@@ -1,0 +1,38 @@
+﻿@model EntityLayer.Concrete.UserReadingActivity
+@{
+    ViewData["Title"] = "EditActivity";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>EditActivity</h1>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h5 class="m-0 font-weight-bold text-primary">ETKİNLİK BİLGİLERİMİ GÜNCELLE</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("EditActivity", "UserReadingActivity", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.UserReadingActivityID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.UserID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.ReadingActivityID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.DateOfRegistration, new { @class = "form-control" })
+            <br />
+
+            <div class="row pt-3">
+                <div class="col-lg-6">
+                    @Html.Label("Okuduğum Sayfa Sayısı")
+                    @Html.TextBoxFor(x => x.NumberOfPages, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-lg-6">
+                    @Html.Label("Etkinlik Puanı")
+                    @Html.TextBoxFor(x => x.BookReviewScore, new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+            <div class="pt-3">
+                <button class="btn btn-success pr-4 pl-4 pt-2 pb-2" style="float:right; font-size: 20px"> <i class="fas fa-edit pr-3"></i>GÜNCELLE</button>
+            </div>
+        }
+    </div>
+</div>
