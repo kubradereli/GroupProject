@@ -58,15 +58,10 @@
                     <li><a class="nav-link scrollto" href="/ReadingActivity/Index/">Kitap Etkinlikleri</a></li>
                     <li><a class="nav-link scrollto o" href="/Contact/AddMessage/">İletişim</a></li>
                     <li>
-                        <a class="getstarted scrollto" href="/Login/Logout/">
-                            Çıkış Yap
-                            <div class="icon"><i class="ri-user-3-fill"></i></div>
-                        </a>
-                    </li>
-
-                    <li>
                         @await Component.InvokeAsync("PanelButton")
                     </li>
+
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -85,15 +80,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-6 col-md-6 footer-contact">
-                        <h3>Kiitaphane</h3>
-                        <p>
-                            Serdivan, Sakarya<br>
-                            TÜRKİYE <br><br>
-                            <strong>Telefon:</strong> +90 555 555 55 55<br>
-                            <strong>E-mail:</strong> kiitaphane@example.com<br>
-                        </p>
-                    </div>
+              @await Component.InvokeAsync("FooterContact")
 
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Site Linkleri</h4>
@@ -137,11 +124,10 @@
                 </div>
             </div>
             <div class="social-links text-center text-md-right pt-3 pt-md-0">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/kubradereli/GroupProject" class="github"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/kubradereli/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/aleynabarut/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/selinnurgol/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
         </div>
     </footer><!-- End Footer -->

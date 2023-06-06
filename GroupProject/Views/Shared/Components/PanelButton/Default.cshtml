@@ -2,15 +2,14 @@
 
 @if (Model.UserID != 0)
 {
-    <a class="getstarted scrollto" href="/User/Index/">
-        Kullanıcı Paneli
-        <div class="icon"><i class="ri-user-3-fill"></i></div>
+    <a class="getstarted scrollto"   style="font-size:1.2rem" href="/ReadBook/BookStatistics/">
+        @Model.UserName.Substring(0, 1)@Model.UserSurname.Substring(0, 1)
     </a>
 }
-else {
-<a class="getstarted scrollto" href="/ReadingActivity/ReadingActivityList/">
-    Admin Paneli
-    <div class="icon"><i class="ri-user-3-fill"></i></div>
-</a>
+else
+{
+    <a class="getstarted scrollto" href="/ReadingActivity/ReadingActivityList/">
+        Admin
+    </a>
 }
 
