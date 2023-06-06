@@ -89,7 +89,7 @@
                         </tr>
                     </table>
                     <div class="col-12">
-                        @await Component.InvokeAsync("JoinButton")
+                        @await Component.InvokeAsync("JoinButton",new { id = @Model.ReadingActivityID })
                     </div>
                 </div>
 

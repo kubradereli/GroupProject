@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.ReadingActivity
+﻿@model GroupProject.Models.AddActivityImage
 @{
     ViewData["Title"] = "ActivityAdd";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -15,53 +15,52 @@
                 <div class="row pt-3">
                     <div class="col-lg-6">
                         @Html.Label("Etkinlik Adı")
-                        @Html.TextBoxFor(x => x.ActivityTitle, new { @class = "form-control", required = "required" })
+                        @Html.TextBoxFor(x => x.ReadingActivity.ActivityTitle, new { @class = "form-control", required = "required" })
                     </div>
                     <div class="col-lg-6">
                         @Html.Label("Kitap Adı")
-                        @Html.TextBoxFor(x => x.Book.BookName, new { @class = "form-control", required = "required" })
+                        @Html.TextBoxFor(x => x.ReadingActivity.Book.BookName, new { @class = "form-control", required = "required" })
                     </div>
 
                 </div>
                 <div class="row pt-3">
                     <div class="col-lg-6">
                         @Html.Label("Kitap Yazarı")
-                        @Html.TextBoxFor(x => x.Book.BookAuthor, new { @class = "form-control", required = "required" })
+                        @Html.TextBoxFor(x => x.ReadingActivity.Book.BookAuthor, new { @class = "form-control", required = "required" })
                     </div>
                     <div class="col-lg-6">
                         @Html.Label("Kitap Yayınevi")
-                        @Html.TextBoxFor(x => x.Book.BookPublishingHouse, new { @class = "form-control", required = "required" })
+                        @Html.TextBoxFor(x => x.ReadingActivity.Book.BookPublishingHouse, new { @class = "form-control", required = "required" })
                     </div>
                 </div>
                 <div class="row pt-3">
                     <div class="col-lg-6">
                         @Html.Label("Kategori")
-                        @Html.DropDownListFor(x => x.Book.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+                        @Html.DropDownListFor(x => x.ReadingActivity.Book.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
                     </div>
                     <div class="col-lg-6">
                         @Html.Label("Kitap Sayfa Sayısı")
-                        @Html.TextBoxFor(x => x.Book.BookPageCount, new { @class = "form-control", type = "number", required = "required" })
+                        @Html.TextBoxFor(x => x.ReadingActivity.Book.BookPageCount, new { @class = "form-control", type = "number", required = "required" })
                     </div>
                 </div>
                 <div class="row pt-3">
                     <div class="col-lg-6">
                         @Html.Label("Aktivite Başlangıç Tarihi")
-                        @Html.TextBoxFor(x => x.ActivityStartDate, new { @class = "form-control", type = "date", required = "required" })
+                        @Html.TextBoxFor(x => x.ReadingActivity.ActivityStartDate, new { @class = "form-control", type = "date", required = "required" })
                     </div>
                     <div class="col-lg-6">
                         @Html.Label("Aktivite Bitiş Tarihi")
-                        @Html.TextBoxFor(x => x.ActivityFinishDate, new { @class = "form-control", type = "date", required = "required" })
+                        @Html.TextBoxFor(x => x.ReadingActivity.ActivityFinishDate, new { @class = "form-control", type = "date", required = "required" })
                     </div>
                 </div>
                 <div class="row pt-3">
                     <div class="col-lg-6">
                         @Html.Label("Etkinlik Açıklaması")
-                        @Html.TextAreaFor(x => x.ActivityContent, new { @class = "form-control", required = "required" })
+                        @Html.TextAreaFor(x => x.ReadingActivity.ActivityContent, new { @class = "form-control", required = "required" })
                     </div>
                     <div class="col-lg-6">
                         @Html.Label("Etkinlik Resmi")
                         @Html.TextBoxFor(x => x.ActivityImage, new { @class = "form-control", required = "required", type ="file",style= "max-widht:2px" })
-                        @*<input type="file" name="ActivityImage" />*@
                     </div>
                 </div>
                 <div class="pt-3">

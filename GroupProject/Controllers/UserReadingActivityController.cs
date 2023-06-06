@@ -25,7 +25,7 @@ namespace GroupProject.Controllers
             var userMail = User.Identity.Name;
             var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
 
-            bool isUserRegistered = c.UserReadingActivities.Any(x => x.UserID == userID);
+            bool isUserRegistered = c.UserReadingActivities.Any(x => x.UserID == userID && x.ReadingActivityID==activity.ReadingActivityID);
             if (isUserRegistered)
             {
                 // Kullanıcı zaten kayıtlı ise işlemi durdur ve uygun bir yanıt döndür

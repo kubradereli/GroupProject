@@ -96,10 +96,10 @@ namespace GroupProject.Controllers
                 var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Tema/assets/img/kitap-img", newImageName);
                 var stream = new FileStream(location, FileMode.Create);
                 p.ActivityImage.CopyTo(stream);
-                p.ReadingActivity.ActivityImage = Path.Combine("/Tema/assets/img/kitap-img", newImageName); ;
-
+                p.ReadingActivity.ActivityImage = Path.Combine("/Tema/assets/img/kitap-img", newImageName);
+                p.ReadingActivity.Book.BookCoverImage = Path.Combine("/Tema/assets/img/kitap-img", newImageName);
             }
-            
+
             var userMail = User.Identity.Name;
             p.ReadingActivity.AdminID = c.Admins.Where(x => x.AdminMail == userMail).Select(y => y.AdminID).FirstOrDefault();
             p.ReadingActivity.ActivityStatus = true;
@@ -132,7 +132,8 @@ namespace GroupProject.Controllers
                 var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Tema/assets/img/kitap-img", newImageName);
                 var stream = new FileStream(location, FileMode.Create);
                 p.ActivityImage.CopyTo(stream);
-                p.ReadingActivity.ActivityImage = Path.Combine("/Tema/assets/img/kitap-img", newImageName); ;
+                p.ReadingActivity.ActivityImage = Path.Combine("/Tema/assets/img/kitap-img", newImageName);
+                p.ReadingActivity.Book.BookCoverImage = Path.Combine("/Tema/assets/img/kitap-img", newImageName);
 
             }
             var userMail = User.Identity.Name;

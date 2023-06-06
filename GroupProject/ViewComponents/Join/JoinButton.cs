@@ -14,7 +14,7 @@ namespace GroupProject.ViewComponents.Join
     {
         UserReadingActivityManager userReadingActivityManager = new UserReadingActivityManager(new EfUserReadingActivityRepository());
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
             Context c = new Context();
             var userMail = User.Identity.Name;
@@ -29,7 +29,7 @@ namespace GroupProject.ViewComponents.Join
                 userId = user.UserID;
             }
 
-            var values = userReadingActivityManager.TGetList().Where(s=>s.UserID == userId).FirstOrDefault();
+            var values = userReadingActivityManager.TGetList().Where(s=>s.UserID == userId && s.ReadingActivityID == id).FirstOrDefault();
 
             UserReadingActivity userReadingActivity = new UserReadingActivity();
             if(values == null)
