@@ -16,7 +16,6 @@ namespace GroupProject.Controllers
         UserManager userManager = new UserManager(new EfUserRepository());
 
         [HttpGet]
-
         public PartialViewResult PartialAddComment(int id)
         {
             Context c = new Context();
@@ -40,9 +39,42 @@ namespace GroupProject.Controllers
             commentManager.TAdd(p);
             Response.Redirect("/ReadingActivity/ReadingActivityDetailsAll/" + id);
             return PartialView();
+        }
 
-            //return new ReadingActivityController().ReadingActivityDetailsAll(2);
-            //return RedirectToAction("ReadingActivityDetailsAll", "/ReadingActivity/ReadingActivityDetailsAll/2/", new ReadingActivity() { ReadingActivityID = 2});
+        // Kullanıcı panelinde etkinlik yorumlarım sayfası
+        public IActionResult UserCommentList(string sort)
+        {
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            var model = commentManager.GetCommentListWithReadingActivity().Where(s=>s.UserID == userID);
+
+            switch (sort)
+            {
+                case "ActivityNameASC":
+                    model = model.OrderBy(r => r.ReadingActivity.ActivityTitle).ToList();
+                    break;
+                case "ActivityNameDESC":
+                    model = model.OrderByDescending(r => r.ReadingActivity.ActivityTitle).ToList();
+                    break;
+                case "BookNameASC":
+                    model = model.OrderBy(r => r.ReadingActivity.Book.BookName).ToList();
+                    break;
+                case "BookNameDESC":
+                    model = model.OrderByDescending(r => r.ReadingActivity.Book.BookName).ToList();
+                    break;
+                case "ComemntDateASC":
+                    model = model.OrderBy(r => r.CommentDate).ToList();
+                    break;
+                case "CommentDateDESC":
+                    model = model.OrderByDescending(r => r.CommentDate).ToList();
+                    break;                
+                default:
+                    model = model.OrderByDescending(r => r.CommentDate).ToList();
+                    break;
+            }
+
+            return View(model);
         }
     }
 }

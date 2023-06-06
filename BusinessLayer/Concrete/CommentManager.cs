@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _commentDal = commentDal;
         }
 
+        public List<Comment> GetCommentListWithReadingActivity()
+        {
+            return _commentDal.GetListWithReadingActivity();
+        }
+
         public List<Comment> GetCommentListWithUser()
         {
             return _commentDal.GetListWithUser();

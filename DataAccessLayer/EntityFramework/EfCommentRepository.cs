@@ -13,6 +13,14 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfCommentRepository : GenericRepository<Comment>, ICommentDal
     {
+        public List<Comment> GetListWithReadingActivity()
+        {
+            using (var c = new Context())
+            {
+                return c.Comments.Include(x => x.ReadingActivity.Book).ToList();
+            }
+        }
+
         public List<Comment> GetListWithUser()
         {
             using (var c = new Context())

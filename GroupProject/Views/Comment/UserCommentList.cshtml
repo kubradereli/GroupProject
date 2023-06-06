@@ -1,0 +1,89 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+@{
+    ViewData["Title"] = "UserCommentList";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .btn-a {
+        border: 2px solid #E3E6F0;
+        background-color: transparent;
+        color: #E3E6F0;
+        color: #000;
+    }
+
+    .btn-a:hover {
+        background-color: #E3E6F0;
+        color: #000;
+    }
+</style>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="row">
+            <div class="col-sm-6">
+                <h6 class="m-0 font-weight-bold text-primary mt-2">ETKİNLİK YORUMLARIM</h6>
+            </div>            
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="dropdown show mb-2 col-lg-2">
+                <a class="btn btn-a form-control dropdown-toggle" href="#" role="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sırala
+                </a>
+                <div class="dropdown-menu" aria-labelledby="sortDropdown">
+                    <a class="dropdown-item" href="?sort=ActivityNameASC">Etkinlik Adı (A-Z)</a>
+                    <a class="dropdown-item" href="?sort=ActivityNameDESC">Etkinlik Adı (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=BookNameASC">Kitap Adı (A-Z)</a>
+                    <a class="dropdown-item" href="?sort=BookNameDESC">Kitap Adı (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=ComemntDateASC">Yorum Tarihi (Yeni-Eski)</a>
+                    <a class="dropdown-item" href="?sort=CommentDateDESC">Yorum Tarihi (Eski-Yeni)</a>
+                </div>
+            </div>
+            <div class="form-group  col-lg-2">
+                <input type="text" id="searchInput" class="form-control" placeholder="Ara...">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Etkinlik Adı</th>
+                        <th>Kitap Adı</th>
+                        <th>Etkinlik Başlangıç Tarihi</th>
+                        <th>Etkinlik Bitiş Tarihi</th>
+                        <th>Yorum</th>
+                        <th>Yorum Tarihi</th>
+                        <th>Yorum Saati</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ReadingActivity.ActivityTitle</td>
+                            <td>@item.ReadingActivity.Book.BookName</td>
+                            <td>@item.ReadingActivity.ActivityStartDate.ToString("dd MMMM yyyy")</td>
+                            <td>@item.ReadingActivity.ActivityFinishDate.ToString("dd MMMM yyyy")</td>
+                            <td>@item.CommentContent</td>
+                            <td>@item.CommentDate.ToString("dd MMMM yyyy")</td>
+                            <td>@item.CommentDate.ToString("HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#searchInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("table tbody tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}

@@ -52,9 +52,21 @@ namespace GroupProject.Controllers
             }
             return View(user);
         }
-        public IActionResult UserStatusList()
+        public IActionResult UserStatusList(string sort)
         {
             var values = userManager.TGetList();
+            switch (sort)
+            {
+                case "UserASC":
+                    values = values.OrderBy(r => r.UserName).ToList();
+                    break;
+                case "UserDESC":
+                    values = values.OrderByDescending(r => r.UserName).ToList();
+                    break;
+                default:
+                    values = values.OrderBy(r => r.UserName).ToList();
+                    break;
+            }
             return View(values);
         }
     

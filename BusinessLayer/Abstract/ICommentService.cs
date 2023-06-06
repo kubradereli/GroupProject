@@ -10,5 +10,7 @@ namespace BusinessLayer.Abstract
     public interface ICommentService : IGenericService<Comment>
     {
         List<Comment> GetCommentListWithUser();
+
+        List<Comment> GetCommentListWithReadingActivity();
     }
 }
