@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.ReadingActivity
+﻿@model GroupProject.Models.AddActivityImage
 @{
     ViewData["Title"] = "EditActivity";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -10,58 +10,63 @@
         <h5 class="m-0 font-weight-bold text-primary">KİTAP BİLGİLERİ GÜNCELLE - OKUDUĞUM KİTAPLAR</h5>
     </div>
     <div class="card-body">
-        @using (Html.BeginForm("EditActivity", "ReadingActivity", FormMethod.Post))
+        @using (Html.BeginForm("EditActivity", "ReadingActivity", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            @Html.HiddenFor(x => x.BookID, new { @class = "form-control" })
-            @Html.HiddenFor(x => x.ReadingActivityID, new { @class = "form-control" })
-            @Html.HiddenFor(x => x.Book.BookID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.ReadingActivity.BookID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.ReadingActivity.ReadingActivityID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.ReadingActivity.Book.BookID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.ReadingActivity.ActivityStatus, new { @class = "form-control", Value = @Model.ReadingActivity.ActivityStatus })
             <br />
 
             <div class="row pt-3">
                 <div class="col-lg-6">
                     @Html.Label("Etkinlik Adı")
-                    @Html.TextBoxFor(x => x.ActivityTitle, new { @class = "form-control", required = "required" })
+                    @Html.TextBoxFor(x => x.ReadingActivity.ActivityTitle, new { @class = "form-control", required = "required" })
                 </div>
                 <div class="col-lg-6">
                     @Html.Label("Kitap Adı")
-                    @Html.TextBoxFor(x => x.Book.BookName, new { @class = "form-control", required = "required" })
+                    @Html.TextBoxFor(x => x.ReadingActivity.Book.BookName, new { @class = "form-control", required = "required" })
                 </div>
 
             </div>
             <div class="row pt-3">
                 <div class="col-lg-6">
                     @Html.Label("Kitap Yazarı")
-                    @Html.TextBoxFor(x => x.Book.BookAuthor, new { @class = "form-control", required = "required" })
+                    @Html.TextBoxFor(x => x.ReadingActivity.Book.BookAuthor, new { @class = "form-control", required = "required" })
                 </div>
                 <div class="col-lg-6">
                     @Html.Label("Kitap Yayınevi")
-                    @Html.TextBoxFor(x => x.Book.BookPublishingHouse, new { @class = "form-control", required = "required" })
+                    @Html.TextBoxFor(x => x.ReadingActivity.Book.BookPublishingHouse, new { @class = "form-control", required = "required" })
                 </div>
             </div>
             <div class="row pt-3">
                 <div class="col-lg-6">
                     @Html.Label("Kategori")
-                    @Html.DropDownListFor(x => x.Book.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+                    @Html.DropDownListFor(x => x.ReadingActivity.Book.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
                 </div>
                 <div class="col-lg-6">
                     @Html.Label("Kitap Sayfa Sayısı")
-                    @Html.TextBoxFor(x => x.Book.BookPageCount, new { @class = "form-control", type = "number", required = "required" })
+                    @Html.TextBoxFor(x => x.ReadingActivity.Book.BookPageCount, new { @class = "form-control", type = "number", required = "required" })
                 </div>
             </div>
             <div class="row pt-3">
                 <div class="col-lg-6">
                     @Html.Label("Aktivite Başlangıç Tarihi")
-                    @Html.EditorFor(x => x.ActivityStartDate, new { htmlAttributes = new { @class = "form-control datepicker w-100", required = "required" } })
+                    @Html.EditorFor(x => x.ReadingActivity.ActivityStartDate, new { htmlAttributes = new { @class = "form-control datepicker w-100", required = "required" } })
                 </div>
                 <div class="col-lg-6">
                     @Html.Label("Aktivite Bitiş Tarihi")
-                    @Html.EditorFor(x => x.ActivityFinishDate, new { htmlAttributes = new { @class = "form-control datepicker w-100", required = "required" } })
+                    @Html.EditorFor(x => x.ReadingActivity.ActivityFinishDate, new { htmlAttributes = new { @class = "form-control datepicker w-100", required = "required" } })
                 </div>
             </div>
             <div class="row pt-3">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     @Html.Label("Etkinlik Açıklaması")
-                    @Html.TextAreaFor(x => x.ActivityContent, new { @class = "form-control", required = "required" })
+                    @Html.TextAreaFor(x => x.ReadingActivity.ActivityContent, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-lg-6">
+                    @Html.Label("Etkinlik Resmi")
+                    <input type="file" name="ActivityImage" />
                 </div>
             </div>
             <div class="pt-3">

@@ -2,10 +2,13 @@
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using GroupProject.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -83,16 +86,26 @@ namespace GroupProject.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult ActivityAdd(ReadingActivity p)
+        public IActionResult ActivityAdd(AddActivityImage p)
         {
 
-            Context c = new Context();
+            if (p.ActivityImage != null)
+            {
+                var extension = Path.GetExtension(p.ActivityImage.FileName);
+                var newImageName = Guid.NewGuid() + extension;
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Tema/assets/img/kitap-img", newImageName);
+                var stream = new FileStream(location, FileMode.Create);
+                p.ActivityImage.CopyTo(stream);
+                p.ReadingActivity.ActivityImage = Path.Combine("/Tema/assets/img/kitap-img", newImageName); ;
+
+            }
+            
             var userMail = User.Identity.Name;
-            p.AdminID = c.Admins.Where(x => x.AdminMail == userMail).Select(y => y.AdminID).FirstOrDefault();
-            p.ActivityStatus = true;
-            p.Book.BookStatus = true;
-            p.ActivityCreateDate = DateTime.Now;
-            readingActivityManager.TAdd(p);
+            p.ReadingActivity.AdminID = c.Admins.Where(x => x.AdminMail == userMail).Select(y => y.AdminID).FirstOrDefault();
+            p.ReadingActivity.ActivityStatus = true;
+            p.ReadingActivity.Book.BookStatus = true;
+            p.ReadingActivity.ActivityCreateDate = DateTime.Now;
+            readingActivityManager.TAdd(p.ReadingActivity);
             return RedirectToAction("ReadingActivityList", "ReadingActivity");
         }
         [HttpGet]
@@ -102,18 +115,30 @@ namespace GroupProject.Controllers
             ReadingActivity readingActivity = readingActivityManager.TGetById(id);
             Book book = bookManager.TGetById(readingActivity.BookID);
             readingActivity.Book = book;
-            return View(readingActivity);
+            AddActivityImage addActivityImage = new AddActivityImage() 
+            {
+                ReadingActivity = readingActivity
+            };
+            return View(addActivityImage);
         }
 
         [HttpPost]
-        public IActionResult EditActivity(ReadingActivity p)
+        public IActionResult EditActivity(AddActivityImage p)
         {
+            if (p.ActivityImage != null)
+            {
+                var extension = Path.GetExtension(p.ActivityImage.FileName);
+                var newImageName = Guid.NewGuid() + extension;
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Tema/assets/img/kitap-img", newImageName);
+                var stream = new FileStream(location, FileMode.Create);
+                p.ActivityImage.CopyTo(stream);
+                p.ReadingActivity.ActivityImage = Path.Combine("/Tema/assets/img/kitap-img", newImageName); ;
 
-            Context c = new Context();
+            }
             var userMail = User.Identity.Name;
-            p.AdminID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
-            p.Book.BookStatus = true;
-            readingActivityManager.TUpdate(p);
+            p.ReadingActivity.AdminID = c.Admins.Where(x => x.AdminMail == userMail).FirstOrDefault().AdminID;
+            p.ReadingActivity.Book.BookStatus = true;
+            readingActivityManager.TUpdate(p.ReadingActivity);
             return RedirectToAction("ReadingActivityList");
         }
         public IActionResult DeleteActivity(int id)

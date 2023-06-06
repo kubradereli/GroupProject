@@ -14,9 +14,9 @@ namespace GroupProject.ViewComponents.ReadingActivity
     {
         UserReadingActivityManager userReadingActivityManager = new UserReadingActivityManager(new EfUserReadingActivityRepository());
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            var values = userReadingActivityManager.GetUserReadingActivitiesWithUser();  
+            var values = userReadingActivityManager.GetUserReadingActivitiesWithUser().Where(s=>s.ReadingActivityID == id);  
             
             return View(values);
         }

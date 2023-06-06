@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
                             </li>
-                            @await Component.InvokeAsync("ActivitySubscribers")
+                            @await Component.InvokeAsync("ActivitySubscribers", new { id = @Model.ReadingActivityID })
                         </ul>
                     </div>
                 </div>
