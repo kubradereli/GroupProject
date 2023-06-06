@@ -9,5 +9,8 @@ namespace BusinessLayer.Abstract
 {
     public interface IBookQuoteService: IGenericService<BookQuote>
     {
+        List<BookQuote> GetBookQuoteListWithUser();
+
+        List<BookQuote> GetBookQuoteListWithBook();
     }
 }

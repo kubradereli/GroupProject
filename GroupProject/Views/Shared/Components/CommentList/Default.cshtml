@@ -6,14 +6,17 @@
     <ul>
         @foreach (var item in Model)
         {
-            <li data-aos="fade-up" data-aos-delay="100">
-                <p style="text-align:right">@item.CommentDate</p>
-                <p style="color: #2487CE; font-size: 1.5rem">@item.User.UserName @item.User.UserSurname </p>
-                <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
-                    <p>@item.CommentContent</p>
-                </div>
-                <br />
-            </li>
+        <li>
+            <div class="row">
+                <div class="col-sm-8"><h4 style="color: #2487CE; font-size: 1.5rem">@item.User.UserName @item.User.UserSurname </h4></div>
+                <div class="col-sm-4"><h6 style="text-align:right">@item.CommentDate.ToString("dd MMMM yyyy") / @item.CommentDate.ToString("HH:mm")</h6></div>
+            </div>
+
+
+            <div>
+                <p style="color:black">@item.CommentContent</p>
+            </div>
+        </li>
         }
     </ul>
 </div>

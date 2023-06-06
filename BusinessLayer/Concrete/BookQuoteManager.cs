@@ -18,6 +18,16 @@ namespace BusinessLayer.Concrete
             _bookQuoteDal = bookQuoteDal;
         }
 
+        public List<BookQuote> GetBookQuoteListWithBook()
+        {
+            return _bookQuoteDal.GetListWithBook();
+        }
+
+        public List<BookQuote> GetBookQuoteListWithUser()
+        {
+            return _bookQuoteDal.GetListWithUser();
+        }
+
         public void TAdd(BookQuote t)
         {
             _bookQuoteDal.Insert(t);

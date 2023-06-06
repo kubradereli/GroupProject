@@ -14,6 +14,8 @@ namespace EntityLayer.Concrete
         public string BookName { get; set; }
         public string BookAuthor { get; set; }
         public int BookPageCount { get; set; }
+        public string BookAbout { get; set; }
+        public string BookAbout2 { get; set; }
         public string BookPublishingHouse { get; set; }
         public string BookCoverImage { get; set; }
         public string BookBackCoverImage { get; set; }

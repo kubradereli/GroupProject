@@ -1,0 +1,32 @@
+﻿@model IEnumerable<EntityLayer.Concrete.BookQuote>
+    <section id="testimonials" class="testimonials">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>KİTAP ALINTILARI</h2>
+            </div>
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    @foreach (var item in Model)
+                    {
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                   @item.BookQuoteContent
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+
+                                <h3>@item.User.UserName @item.User.UserSurname</h3>
+                                <h4>@item.BookQuoteDate.ToString("dd MMMM yyyy HH:mm") </h4>
+                            </div>
+                        </div><!-- End testimonial item -->
+                    }
+                    </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+  

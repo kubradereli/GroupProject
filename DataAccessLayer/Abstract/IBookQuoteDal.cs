@@ -9,6 +9,7 @@ namespace DataAccessLayer.Abstract
 {
      public interface IBookQuoteDal : IGenericDal<BookQuote>
     {
-
+        List<BookQuote> GetListWithUser();
+        List<BookQuote> GetListWithBook();
     }
 }
