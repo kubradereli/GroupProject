@@ -248,7 +248,12 @@ namespace GroupProject.Controllers
 
         public IActionResult BookStatistics()
         {
-            return View();
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            int userId = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            var readBookStatistics = readBookManager.GetReadBookStatistics(userId);
+
+            return View(readBookStatistics);
         }
     }
 }

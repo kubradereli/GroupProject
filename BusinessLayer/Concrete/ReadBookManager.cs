@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
+using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,11 @@ namespace BusinessLayer.Concrete
         public List<ReadBook> GetReadBookListWithBook()
         {
             return _readBookDal.GetListWithBook();
+        }
+
+        public ReadBookCounts GetReadBookStatistics(int userID)
+        {
+            return _readBookDal.GetReadBookStatistics(userID);
         }
     }
 }
