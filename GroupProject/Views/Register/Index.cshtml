@@ -7,7 +7,7 @@
 
 <style>
     .bg-register-image {
-        background: url("https://img.freepik.com/free-vector/mobile-browsers-concept-illustration_114360-1267.jpg") !important;
+        background: url("https://i.hizliresim.com/7tuybko.jpg") !important;
     }
 
     .bg-gradient-primary {
@@ -31,7 +31,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Kiitaphane</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/AdminTema/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -53,10 +53,10 @@
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                     <div class="col-lg-7">
-                        <div class="p-5">
+                        <div class="pt-3 pb-4 pr-4 pl-4">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900" style="font-size: 2.3rem; color: #4D72DF !important">
-                                    <b><i class="fas fa-user"></i> Hesap Oluştur</b>
+                                <h1 class="h4 text-gray-900" style="font-size: 2.3rem ">
+                                    <img src="/logo2.png" style="width:55%" />
                                 </h1>
                             </div>
                             <hr />
@@ -64,7 +64,6 @@
                             @using (Html.BeginForm("Index", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
                                 <form class="user">
-                                    <br />
                                     <div class="form-group row">
                                         <div class="form-outline col-lg-6">
                                             <label for="validationCustom01">Ad</label>
@@ -124,10 +123,10 @@
                             }
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Şifremi unuttum.</a>
+                                <a class="small" style="font-size:1rem" href="forgot-password.html">Şifremi unuttum.</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="/Login/Index/">Zaten bir hesabın var mı? Giriş Yap.</a>
+                                <a class="small" style="font-size:1rem" href="/Login/Index/">Zaten bir hesabın var mı? Giriş Yap.</a>
                             </div>
                         </div>
                     </div>

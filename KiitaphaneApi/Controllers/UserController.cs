@@ -20,15 +20,6 @@ namespace KiitaphaneApi.Controllers
             return Ok(values);
         }
 
-        //[HttpPost]
-        //public IActionResult UserAdd(User user)
-        //{
-        //    using var c = new Context();
-        //    c.Add(user);
-        //    c.SaveChanges();
-        //    return Ok();
-        //}
-
         [HttpGet("{id}")]
         public IActionResult UserGet(int id)
         {
