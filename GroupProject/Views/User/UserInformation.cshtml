@@ -5,38 +5,50 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h1>Api İle Kişisel Bilgiler Güncelleme Sayfası</h1>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h5 class="m-0 font-weight-bold text-primary">Kişisel Bilgileri Güncelleme Sayfası</h5>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            @Html.HiddenFor(x => x.UserID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.UserStatus, new { @class = "form-control" })
+            <br />
 
-<form method="post">
-    <label>Kullanıcı ID:</label>
-    @Html.TextBoxFor(x => x.UserID, new { @class = "form-control" })
-    <br />
-    @*<label>E-mail:</label>
-    @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control" })
-    <br />
-    <label>Şifre:</label>
-    @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control" })*@
-    <br />
-    <label>Durum:</label>
-    @Html.TextBoxFor(x => x.UserStatus, new { @class = "form-control" })
-    <br />
-    <label>Resim:</label>
-    @Html.TextBoxFor(x => x.UserImage, new { @class = "form-control" })
-    <br />
-    <label>Kullanıcı Adı:</label>
-    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
-    <br />
-    <label>Kullanıcı Soyadı:</label>
-    @Html.TextBoxFor(x => x.UserSurname, new { @class = "form-control" })
-    <br />
-    <label>Doğum Tarihi:</label>
-    @Html.TextBoxFor(x => x.UserDateOfBirth, new { @class = "form-control" })
-    <br />
-    <label>Şehir:</label>
-    @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control" })
-    <br />
-    <label>Hakkında</label>
-    @Html.TextAreaFor(x => x.UserAbout, new { @class = "form-control" })
-    <br />
-    <button class="btn btn-outline-success">Güncelle</button>
-</form>
+            <div class="row pt-3">
+                <div class="col-lg-6">
+                    <label>Kullanıcı Adı:</label>
+                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6">
+                    <label>Kullanıcı Soyadı:</label>
+                    @Html.TextBoxFor(x => x.UserSurname, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-6">
+                    <label>Doğum Tarihi:</label>
+                    @Html.TextBoxFor(x => x.UserDateOfBirth, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6">
+                    <label>Şehir:</label>
+                    @Html.TextBoxFor(x => x.UserCity, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-lg-6">
+                    <label>Resim:</label>
+                    @Html.TextBoxFor(x => x.UserImage, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6">
+                    <label>Hakkında</label>
+                    @Html.TextAreaFor(x => x.UserAbout, new { @class = "form-control" })
+                </div>
+            </div>
+
+           
+            <br />
+            <button class="btn btn-outline-success">Güncelle</button>
+        </form>
+    </div>
+</div>

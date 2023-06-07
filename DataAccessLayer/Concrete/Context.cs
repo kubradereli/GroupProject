@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using EntityLayer.Concrete.Dto;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,13 +28,16 @@ namespace DataAccessLayer.Concrete
         public DbSet<User> Users { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<UserReadingActivity> UserReadingActivities { get; set; }
+        public DbSet<ContactInformation> ContactInformation { get; set; }
+        public DbSet<FamousQuote> FamousQuotes { get; set; }
 
-        //--Dto--//
-        //public DbSet<ReadBook_Page> ReadBook_Page { get; set; }
+        
+        public DbSet<Statistic> Statistics { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<ReadBook_Page>(eb => { eb.HasNoKey(); });
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Statistic>(eb => { eb.HasNoKey(); });
+        }
+
     }
 }

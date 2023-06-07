@@ -85,5 +85,24 @@ namespace KiitaphaneApi.Controllers
                 return Ok();
             }
         }
+
+        //[HttpPut]
+        //public IActionResult UserChangePassword(User user)
+        //{
+        //    using var c = new Context();
+        //    var u = c.Find<User>(user.UserID);
+        //    if (u == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        u.UserPassword = user.UserPassword;
+        //        c.Update(u);
+        //        c.SaveChanges();
+        //        return Ok();
+        //    }
+        //}
+        
     }
 }

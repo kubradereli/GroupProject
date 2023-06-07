@@ -10,7 +10,7 @@ namespace KiitaphaneApi.DataAccessLayer
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-9LUSC50;database=BookDb2;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-9LUSC50;database=BookDb9;integrated security=true;");
         }
 
         public DbSet<About> Abouts { get; set; }
