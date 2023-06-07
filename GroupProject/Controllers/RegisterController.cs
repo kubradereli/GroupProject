@@ -3,11 +3,13 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using GroupProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -121,15 +123,26 @@ namespace GroupProject.Controllers
 
 
         [HttpPost]
-        public IActionResult Index(User p)
+        public IActionResult Index(AddUserImage p)
         {
             UserValidator uv = new UserValidator();
-            ValidationResult results = uv.Validate(p);
+            ValidationResult results = uv.Validate(p.User);
+
+
             if (results.IsValid)
             {
-                p.UserStatus = true;
-                p.UserAbout = "deneme";
-                um.TAdd(p);
+                if (p.UserImage != null)
+                {
+                    var extension = Path.GetExtension(p.UserImage.FileName);
+                    var newImageName = Guid.NewGuid() + extension;
+                    var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Tema/assets/img/user-img", newImageName);
+                    var stream = new FileStream(location, FileMode.Create);
+                    p.UserImage.CopyTo(stream);
+                    p.User.UserImage = Path.Combine("/Tema/assets/img/user-img", newImageName);
+
+                }
+                p.User.UserStatus = true;
+                um.TAdd(p.User);
                 return RedirectToAction("Index", "About");
             }
             else

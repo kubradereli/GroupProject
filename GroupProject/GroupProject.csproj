@@ -29,4 +29,8 @@
     <ProjectReference Include="..\KiitaphaneApi\KiitaphaneApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Tema\assets\img\user-img\" />
+  </ItemGroup>
+
 </Project>
