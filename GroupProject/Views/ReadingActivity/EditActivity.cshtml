@@ -66,7 +66,7 @@
                 </div>
                 <div class="col-lg-6">
                     @Html.Label("Etkinlik Resmi")
-                    <input type="file" name="ActivityImage" />
+                    @Html.TextBoxFor(x => x.ActivityImage, new { @class = "form-control", required = "required", type = "file", style = "max-widht:2px" })
                 </div>
             </div>
             <div class="pt-3">
