@@ -87,5 +87,15 @@ namespace GroupProject.Controllers
 
             return RedirectToAction("UserStatusList");
         }
+
+        public IActionResult UserChangePassword()
+        {
+            return View();
+        }
+
+        public IActionResult AdminChangePassword()
+        {
+            return View();
+        }
     }
 }
