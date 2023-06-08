@@ -1,6 +1,6 @@
-﻿@model IEnumerable<EntityLayer.Concrete.User>
+﻿@model IEnumerable<EntityLayer.Concrete.BookQuote>
 @{
-    ViewData["Title"] = "UserList";
+    ViewData["Title"] = "BookQuoteStatusList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -21,7 +21,7 @@
     <div class="card-header py-3">
         <div class="row">
             <div class="col-sm-6">
-                <h6 class="m-0 font-weight-bold text-primary mt-2">KULLANICI AKTİF / PASİF</h6>
+                <h6 class="m-0 font-weight-bold text-primary mt-2">ALINTI AKTİF / PASİF</h6>
             </div>
         </div>
     </div>
@@ -46,9 +46,7 @@
                     <tr>
                         <th>Kullanıcı Ad Soyad</th>
                         <th>Email</th>
-                        <th>Doğum Tarihi</th>
-                        <th>Şehir</th>
-                        <th>Hakkında</th>
+                        <th>Alıntı</th>
                         <th>Aktif/ Pasif</th>
                     </tr>
                 </thead>
@@ -56,15 +54,13 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.UserName @item.UserSurname</td>
-                            <td>@item.UserMail</td>
-                            <td>@item.UserDateOfBirth.ToString("dd MMMM yyyy")</td>
-                            <td>@item.UserCity</td>
-                            <td>@item.UserAbout</td>
-                            @if (@item.UserStatus == true)
+                            <td>@item.User.UserName @item.User.UserSurname</td>
+                            <td>@item.User.UserMail</td>
+                            <td>@item.BookQuoteContent</td>
+                            @if (@item.BookQuoteStatus == true)
                             {
                                 <td>
-                                    <a href="/User/UserStatusChange/@item.UserID" class="btn btn-success btn-circle">
+                                    <a href="/Book/BookQuoteStatusChange/@item.BookQuoteID" class="btn btn-success btn-circle">
                                         <i class="fas fa-minus"></i>
                                     </a>
                                 </td>
@@ -72,11 +68,10 @@
                             else
                             {
                                 <td>
-                                    <a href="/User/UserStatusChange/@item.UserID" class="btn btn-danger btn-circle">
+                                    <a href="/Book/BookQuoteStatusChange/@item.BookQuoteID" class="btn btn-danger btn-circle">
                                         <i class="fas fa-plus"></i>
                                     </a>
                                 </td>
-
                             }
                         </tr>
                     }
@@ -97,4 +92,8 @@
         });
     </script>
 }
+
+
+
+
 

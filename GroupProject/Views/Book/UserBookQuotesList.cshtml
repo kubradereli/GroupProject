@@ -1,7 +1,7 @@
-﻿@model IEnumerable<EntityLayer.Concrete.User>
+﻿@model IEnumerable<EntityLayer.Concrete.BookQuote>
 @{
-    ViewData["Title"] = "UserList";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "UserBookQuotesList";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
 <style>
@@ -21,7 +21,7 @@
     <div class="card-header py-3">
         <div class="row">
             <div class="col-sm-6">
-                <h6 class="m-0 font-weight-bold text-primary mt-2">KULLANICI AKTİF / PASİF</h6>
+                <h6 class="m-0 font-weight-bold text-primary mt-2">KİTAP ALINTILARIM</h6>
             </div>
         </div>
     </div>
@@ -32,8 +32,10 @@
                     Sırala
                 </a>
                 <div class="dropdown-menu" aria-labelledby="sortDropdown">
-                    <a class="dropdown-item" href="?sort=UserASC">Kullanıcı Ad Soyad (A-Z)</a>
-                    <a class="dropdown-item" href="?sort=UserDESC">Kullanıcı Ad Soyad (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=BookNameASC">Kitap Adı (A-Z)</a>
+                    <a class="dropdown-item" href="?sort=BookNameDESC">Kitap Adı (Z-A)</a>
+                    <a class="dropdown-item" href="?sort=DateASC">Alıntı Eklenme Tarihi (Yeni-Eski)</a>
+                    <a class="dropdown-item" href="?sort=DateDESC">Alıntı Eklenme Tarihi (Eski-Yeni)</a>
                 </div>
             </div>
             <div class="form-group  col-lg-2">
@@ -44,40 +46,20 @@
             <table class="table table-bordered" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Kullanıcı Ad Soyad</th>
-                        <th>Email</th>
-                        <th>Doğum Tarihi</th>
-                        <th>Şehir</th>
-                        <th>Hakkında</th>
-                        <th>Aktif/ Pasif</th>
+                        <th>Kitap Adı</th>
+                        <th>Alıntı</th>
+                        <th>Alıntı Eklenme Tarihi</th>
+                        <th>Alıntı Eklenme Saati</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.UserName @item.UserSurname</td>
-                            <td>@item.UserMail</td>
-                            <td>@item.UserDateOfBirth.ToString("dd MMMM yyyy")</td>
-                            <td>@item.UserCity</td>
-                            <td>@item.UserAbout</td>
-                            @if (@item.UserStatus == true)
-                            {
-                                <td>
-                                    <a href="/User/UserStatusChange/@item.UserID" class="btn btn-success btn-circle">
-                                        <i class="fas fa-minus"></i>
-                                    </a>
-                                </td>
-                            }
-                            else
-                            {
-                                <td>
-                                    <a href="/User/UserStatusChange/@item.UserID" class="btn btn-danger btn-circle">
-                                        <i class="fas fa-plus"></i>
-                                    </a>
-                                </td>
-
-                            }
+                            <td>@item.Book.BookName</td>
+                            <td>@item.BookQuoteContent</td>
+                            <td>@item.BookQuoteDate.ToString("dd MMMM yyyy")</td>
+                            <td>@item.BookQuoteDate.ToString("HH:mm")</td>
                         </tr>
                     }
                 </tbody>
@@ -97,4 +79,3 @@
         });
     </script>
 }
-

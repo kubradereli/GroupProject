@@ -14,7 +14,7 @@ namespace GroupProject.ViewComponents.Comment
 
         public IViewComponentResult Invoke(int id)
         {
-            var values = commentManager.GetCommentListWithUser().Where(s=>s.ReadingActivityID == id);
+            var values = commentManager.GetCommentListWithUser().Where(s=>s.ReadingActivityID == id && s.CommentStatus == true);
             return View(values);
         }
     }

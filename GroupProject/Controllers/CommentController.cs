@@ -76,5 +76,40 @@ namespace GroupProject.Controllers
 
             return View(model);
         }
+
+        public IActionResult CommentStatusList(string sort)
+        {
+            var values = commentManager.GetCommentListWithUser();
+            switch (sort)
+            {
+                case "UserASC":
+                    values = values.OrderBy(r => r.User.UserName).ToList();
+                    break;
+                case "UserDESC":
+                    values = values.OrderByDescending(r => r.User.UserName).ToList();
+                    break;
+                default:
+                    values = values.OrderBy(r => r.User.UserName).ToList();
+                    break;
+            }
+            return View(values);
+        }
+
+        public IActionResult CommentStatusChange(int id)
+        {
+            var value = commentManager.TGetById(id);
+            if (value.CommentStatus == true)
+            {
+                value.CommentStatus = false;
+
+            }
+            else
+            {
+                value.CommentStatus = true;
+            }
+            commentManager.TUpdate(value);
+
+            return RedirectToAction("CommentStatusList");
+        }
     }
 }

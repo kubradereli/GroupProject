@@ -14,7 +14,7 @@ namespace GroupProject.ViewComponents.BookQuote
 
         public IViewComponentResult Invoke(int id)
         {
-            var values = bookQuoteManager.GetBookQuoteListWithUser().Where(s => s.BookID == id);
+            var values = bookQuoteManager.GetBookQuoteListWithUser().Where(s => s.BookID == id && s.BookQuoteStatus == true);
             return View(values);
         }
     }
