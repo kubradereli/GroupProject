@@ -144,10 +144,21 @@
 @section scripts{
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
+        var a = document.getElementById("faq");
+        var id = $("userID").val();
+        //$(document).ready(function () {
+
+        //    if (id != undefined) {
+        //        a.style.display = "block";
+        //    } else {
+        //        a.style.display = "none";
+        //    }
+        //});
 
         function katil() {
             var activityId = $("#activityId").val();
             var date = $("#date").val();
+                   
             let activity = {
                 ReadingActivityID: activityId,
                 DateOfRegistration: date,
@@ -166,11 +177,8 @@
                     // Butonun içeriğini ve işaretini değiştirin
                     katilButton.innerHTML = '<i class="bx bx-check"></i> KATILIM GERÇEKLEŞTİ';
 
-                    //faq-list-1 bu listeyi refresh yaptır.
+                    window.location.reload(true);
                 }
-
-
-
             });
         }
     </script>

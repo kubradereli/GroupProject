@@ -18,6 +18,7 @@ namespace GroupProject.Controllers
         Context c = new Context();
         private static bool activitySortAsc = false;
 
+        // Kullanıcılar etkinliğe katıl butonuna basınca 
         [HttpPost]
         public IActionResult UserJoinActivity(UserReadingActivity activity)
         {
@@ -30,7 +31,6 @@ namespace GroupProject.Controllers
             {
                 // Kullanıcı zaten kayıtlı ise işlemi durdur ve uygun bir yanıt döndür
                 return Content("<script>alert('Bu etkinliğe zaten kayıtlı olduğunuz için tekrar kaydolamazsınız.');</script>");
-
             }
 
             activity.UserID = userID;
@@ -40,7 +40,6 @@ namespace GroupProject.Controllers
         }
 
         // Kullanıcı paneli katıldığım etkinlikler listesi
-
         public IActionResult ActivityIJoin(string sort)
         {
             var userMail = User.Identity.Name;
@@ -95,10 +94,10 @@ namespace GroupProject.Controllers
                     model = model.OrderByDescending(r => r.BookReviewScore).ToList();
                     break;
             }
-
             return View(model);
         }
 
+        // Kullanıcı panelinde katıldığım etkinlik bilgisi güncelleme (sayfa sayısı-kitap puanı)
         [HttpGet]
         public IActionResult EditActivity(int id)
         {
@@ -106,7 +105,6 @@ namespace GroupProject.Controllers
             UserReadingActivity userReadingActivity = userReadingActivityManager.TGetById(id);
             return View(userReadingActivity);
         }
-
         [HttpPost]
         public IActionResult EditActivity(UserReadingActivity p)
         {

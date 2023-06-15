@@ -17,15 +17,6 @@ namespace GroupProject.Controllers
         ContactInformationManager contactInformationManager = new ContactInformationManager(new EfContactInformationRepository());
         UserManager userManager = new UserManager(new EfUserRepository());
         
-        public IActionResult Index()
-        {
-            Context c = new Context();
-            var userMail = User.Identity.Name;
-            var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
-            var model = userManager.TGetById(userID);
-            return View(model);
-        }
-
         // Admin panelinde kullanıcıdan gelen mesajların listelenmesi
         public IActionResult IncomingMessages(string sort, string sort2)
         {
@@ -75,7 +66,7 @@ namespace GroupProject.Controllers
             return View(model);
         }
 
-        // Kullanıcıdan gelen mesajın okundu/okunmadı bilgisini değiştirme
+        // Admin paneli - Kullanıcıdan gelen mesajın okundu/okunmadı bilgisini değiştirme
         public IActionResult ChangeContactStatus(int id)
         {
             var value = contactManager.TGetById(id);
@@ -88,7 +79,7 @@ namespace GroupProject.Controllers
             return RedirectToAction("IncomingMessages");
         }
 
-        // Siteden mesaj gönderme işlemi 
+        // Vitrin panel - mesaj gönderme işlemi - iletişim sayfası
         [HttpGet]
         public IActionResult AddMessage()
         {
@@ -110,7 +101,6 @@ namespace GroupProject.Controllers
                 ViewData["Soyad"] = "";
                 ViewData["Mail"] = model.AdminMail;
             }
-
 
             List<SelectListItem> subjects = new List<SelectListItem>()
             {
@@ -150,19 +140,28 @@ namespace GroupProject.Controllers
             return RedirectToAction("Index", "About");
         }
 
-        // Admin panelinde iletişim bilgileri güncelleme sayfası
+        // Admin panelin - iletişim bilgileri güncelleme sayfası
         [HttpGet]
         public IActionResult EditContact()
         {
             ContactInformation contactInformation = contactInformationManager.TGetList().FirstOrDefault();
             return View(contactInformation);
         }
-
         [HttpPost]
         public IActionResult EditContact(ContactInformation p)
         {
             contactInformationManager.TUpdate(p);
             return RedirectToAction("AddMessage", "Contact");
+        }
+
+        // *
+        public IActionResult Index()
+        {
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            var userID = c.Users.Where(x => x.UserMail == userMail).Select(y => y.UserID).FirstOrDefault();
+            var model = userManager.TGetById(userID);
+            return View(model);
         }
     }    
 }

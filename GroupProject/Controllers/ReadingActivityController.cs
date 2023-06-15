@@ -21,12 +21,14 @@ namespace GroupProject.Controllers
         BookManager bookManager = new BookManager(new EfBookRepository());
         CommentManager commentManager = new CommentManager(new EfCommentRepository());
 
-
+        // Vitrin paneli - Kitap Etkinlikleri Listesi
         public IActionResult Index()
         {
             var values = readingActivityManager.GetReadingActivitiesListWithBook().Where(s => s.ActivityStatus == true).OrderByDescending(s => s.ActivityCreateDate).ToList();
             return View(values);
         }
+
+        // Admin paneli - Kitap etkinlikleri listesi
         public IActionResult ReadingActivityList(string sort)
         {
             var userMail = User.Identity.Name;
@@ -68,10 +70,10 @@ namespace GroupProject.Controllers
                     model = model.OrderBy(r => r.ActivityStartDate).ToList();
                     break;
             }
-
             return View(model);
-
         }
+
+        // Admin paneli - Kitap etkinliği ekleme
         [HttpGet]
         public IActionResult ActivityAdd()
         {
@@ -108,6 +110,8 @@ namespace GroupProject.Controllers
             readingActivityManager.TAdd(p.ReadingActivity);
             return RedirectToAction("ReadingActivityList", "ReadingActivity");
         }
+
+        // Admin paneli - Kitap Etkinliği Güncelleme
         [HttpGet]
         public IActionResult EditActivity(int id)
         {
@@ -121,7 +125,6 @@ namespace GroupProject.Controllers
             };
             return View(addActivityImage);
         }
-
         [HttpPost]
         public IActionResult EditActivity(AddActivityImage p)
         {
@@ -142,9 +145,10 @@ namespace GroupProject.Controllers
             readingActivityManager.TUpdate(p.ReadingActivity);
             return RedirectToAction("ReadingActivityList");
         }
+
+        // Admin paneli - Kitap etkinliği aktif pasif
         public IActionResult DeleteActivity(int id)
         {
-
             var value = readingActivityManager.TGetById(id);
             if (value.ActivityStatus == true)
             {
@@ -160,12 +164,12 @@ namespace GroupProject.Controllers
             return RedirectToAction("ReadingActivityList");
         }
 
+        // Vitrin paneli - Kitap etkinliği detay sayfası
         public IActionResult ReadingActivityDetailsAll(int id)
         {
             var values = readingActivityManager.GetReadinActivityByIdWithBook(id);
             return View(values);
         }
-
         [HttpPost]
         public IActionResult ReadingActivityAddComment(Comment p, int id)
         {

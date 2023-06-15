@@ -16,12 +16,12 @@ namespace GroupProject.Controllers
 {
     public class LoginController : Controller
     {
+        // Login Sayfası
         [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
-
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Index(User p, bool rememberMe = false)
@@ -63,6 +63,7 @@ namespace GroupProject.Controllers
             }
         }
 
+        // Çıkış yap
         [HttpGet]
         public async Task<IActionResult> Logout()
         {

@@ -22,6 +22,7 @@ namespace GroupProject.Controllers
         BookManager bookManager = new BookManager(new EfBookRepository());
         private static bool bookSortAsc = false;
 
+        // Kullanıcı paneli - Okuduğum kitaplar listesi
         public IActionResult BooksIRead(string sort)
         {
             Context c = new Context();
@@ -76,6 +77,7 @@ namespace GroupProject.Controllers
             return View(model);
         }
 
+        // Kullanıcı paneli - Okuyacağım kitaplar listesi
         public IActionResult BooksIWillRead(string sort)
         {
             Context c = new Context();
@@ -116,7 +118,7 @@ namespace GroupProject.Controllers
             return View(model);
         }
 
-        // Okuduğum Kitaplar Sayfası için
+        // Kullanıcı Paneli - Okuduğum Kitap Ekleme
         [HttpGet]
         public IActionResult BookAdd()
         {
@@ -130,7 +132,6 @@ namespace GroupProject.Controllers
             ViewBag.cv = categoryvalues;
             return View();
         }
-
         [HttpPost]
         public IActionResult BookAdd(ReadBook p)
         {
@@ -145,6 +146,7 @@ namespace GroupProject.Controllers
             return RedirectToAction("BooksIRead", "ReadBook");
         }
 
+        // Kullanıcı Paneli - Okuduğum Kitap Güncelleme
         [HttpGet]
         public IActionResult EditBook(int id)
         {
@@ -154,7 +156,6 @@ namespace GroupProject.Controllers
             readBook.Book = book;
             return View(readBook);
         }
-
         [HttpPost]
         public IActionResult EditBook(ReadBook p)
         {
@@ -168,8 +169,7 @@ namespace GroupProject.Controllers
             return RedirectToAction("BooksIRead");
         }
 
-        //Satın Alacağım Kitaplar İçin
-
+        // Kullanıcı Paneli - Okuyacağım Kitap Ekleme
         [HttpGet]
         public IActionResult BooksIWillReadAdd()
         {
@@ -183,7 +183,6 @@ namespace GroupProject.Controllers
             ViewBag.cv = categoryvalues;
             return View();
         }
-
         [HttpPost]
         public IActionResult BooksIWillReadAdd(ReadBook p)
         {
@@ -197,6 +196,7 @@ namespace GroupProject.Controllers
             return RedirectToAction("BooksIWillRead", "ReadBook");
         }
 
+        // Kullanıcı Paneli - Okuyacağım Kitap Güncelleme
         [HttpGet]
         public IActionResult BooksIWillReadEdit(int id)
         {
@@ -206,7 +206,6 @@ namespace GroupProject.Controllers
             readBook.Book = book;
             return View(readBook);
         }
-
         [HttpPost]
         public IActionResult BooksIWillReadEdit(ReadBook p)
         {
@@ -220,8 +219,7 @@ namespace GroupProject.Controllers
             return RedirectToAction("BooksIWillRead");
         }
 
-        // Okundu Bilgisi Butona Tıklayınca
-
+        // Kullanıcı Paneli - Okundu Bilgisi Butona Tıklayınca
         [HttpGet]
         public IActionResult CheckReadBooks(int id)
         {
@@ -230,9 +228,7 @@ namespace GroupProject.Controllers
             Book book = bookManager.TGetById(readBook.BookID);
             readBook.Book = book;
             return View(readBook);
-
         }
-
         [HttpPost]
         public IActionResult CheckReadBooks(ReadBook p)
         {
@@ -246,6 +242,7 @@ namespace GroupProject.Controllers
             return RedirectToAction("BooksIWillRead");
         }
 
+        // Kullanıcı Paneli - Genel Kitap İstatistikleri
         public IActionResult BookStatistics()
         {
             Context c = new Context();

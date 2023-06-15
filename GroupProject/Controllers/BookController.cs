@@ -16,17 +16,21 @@ namespace GroupProject.Controllers
         BookQuoteManager bookQuoteManager = new BookQuoteManager(new EfBookQuoteRepository());
         ReadingActivityManager readingActivityManager = new ReadingActivityManager(new EfReadingActivityRepository());
 
+        // Vitrin paneli - Kitaplar sayfası
         public IActionResult Index()
         {
             var values = readingActivityManager.GetReadingActivitiesListWithBook();
             return View(values);
         }
 
+        // Vitrin paneli - Kitap detay sayfası
         public IActionResult BookDetailsAll(int id)
         {
             var values = bookManager.GetBookListWithCategory().Where(s=>s.BookID == id).FirstOrDefault();
             return View(values);
         }
+
+        // Vitrin paneli - Kitap alıntısı ekleme
         [HttpPost]
         public IActionResult BookQuoteAdd(BookQuote p, int id)
         {
@@ -39,7 +43,6 @@ namespace GroupProject.Controllers
             bookQuoteManager.TAdd(p);
 
             return RedirectToAction("BookDetailsAll", "Book", new { @id = id });
-
         }
 
         // Kullanıcı panelindeki kitap alıntılarım 

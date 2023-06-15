@@ -28,13 +28,11 @@ namespace GroupProject.Controllers
             About about = aboutManager.TGetList().FirstOrDefault();
             return View(about);
         }
-
         [HttpPost]
         public IActionResult EditAbout(About p)
         {
             aboutManager.TUpdate(p);
             return RedirectToAction("Index");
         }
-
     }
 }

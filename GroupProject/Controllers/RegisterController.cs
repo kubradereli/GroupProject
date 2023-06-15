@@ -20,19 +20,10 @@ namespace GroupProject.Controllers
     {
         UserManager um = new UserManager(new EfUserRepository());
 
+        // Kayıt ol sayfası
         [HttpGet]
         public IActionResult Index()
         {
-
-            //List<SelectListItem> cityvalues = (from x in um.TGetList().OrderBy(s => s.UserCity)
-            //                                       select new SelectListItem
-            //                                       {
-            //                                           Text = x.UserCity,
-            //                                           Value = x.UserCity.ToString()
-            //                                       }).ToList();
-            //ViewBag.cv = cityvalues;
-            //return View();
-
             List<SelectListItem> cities = new List<SelectListItem>()
             {
                 new SelectListItem { Text = "Adana", Value = "Adana" },
@@ -118,16 +109,12 @@ namespace GroupProject.Controllers
             };
             ViewBag.Cities = cities;
             return View();
-
         }
-
-
         [HttpPost]
         public IActionResult Index(AddUserImage p)
         {
             UserValidator uv = new UserValidator();
             ValidationResult results = uv.Validate(p.User);
-
 
             if (results.IsValid)
             {
@@ -139,7 +126,6 @@ namespace GroupProject.Controllers
                     var stream = new FileStream(location, FileMode.Create);
                     p.UserImage.CopyTo(stream);
                     p.User.UserImage = Path.Combine("/Tema/assets/img/user-img", newImageName);
-
                 }
                 p.User.UserStatus = true;
                 um.TAdd(p.User);
@@ -153,7 +139,6 @@ namespace GroupProject.Controllers
                 }
             }
             return View();
-
         }
     }
 }

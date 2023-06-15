@@ -15,6 +15,7 @@ namespace GroupProject.Controllers
         CommentManager commentManager = new CommentManager(new EfCommentRepository());
         UserManager userManager = new UserManager(new EfUserRepository());
 
+        // Vitrin paneli - kitap etkinliği yorum ekleme
         [HttpGet]
         public PartialViewResult PartialAddComment(int id)
         {
@@ -26,7 +27,6 @@ namespace GroupProject.Controllers
             ViewData["Soyad"] = model.UserSurname;
             return PartialView();
         }
-
         [HttpPost]
         public PartialViewResult PartialAddComment(Comment p, int id)
         {
@@ -41,7 +41,7 @@ namespace GroupProject.Controllers
             return PartialView();
         }
 
-        // Kullanıcı panelinde etkinlik yorumlarım sayfası
+        // Kullanıcı panelin - etkinlik yorumlarım sayfası
         public IActionResult UserCommentList(string sort)
         {
             Context c = new Context();
@@ -77,6 +77,7 @@ namespace GroupProject.Controllers
             return View(model);
         }
 
+        // Afmin paneli - yorum listesi
         public IActionResult CommentStatusList(string sort)
         {
             var values = commentManager.GetCommentListWithUser();
@@ -95,6 +96,7 @@ namespace GroupProject.Controllers
             return View(values);
         }
 
+        // Admin paneli - Yorum aktif pasif butonu
         public IActionResult CommentStatusChange(int id)
         {
             var value = commentManager.TGetById(id);

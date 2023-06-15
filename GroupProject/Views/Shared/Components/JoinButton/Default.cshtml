@@ -1,5 +1,8 @@
 ﻿@model EntityLayer.Concrete.UserReadingActivity
 
+<input type="hidden" value="@Model.UserID" id="userID" />
+
+
 @if (Model.UserID != 0)
 {
     <a class="btn btn-success" style="float:right">
